@@ -1,0 +1,6 @@
+<contentList>
+	<content contentuid="h5776c885gb285g4ceeg8e7ag4d39d0a7079a">Material Tweaks</content>
+	<content contentuid="h8ddf6d1dg544cg470cgad9dgfef5ae5a2d7b">Disables the light that surrounds characters.</content>
+	<content contentuid="hc4141145g6f6eg49c1gb087g2c19adf13fac">Disable Player Light</content>
+	<content contentuid="hf4fc7ca7gbc07g4218gb098g58e026c3c592">Removes fresnel from character materials using extender path overrides, and disables the player light.</content>
+</contentList>
