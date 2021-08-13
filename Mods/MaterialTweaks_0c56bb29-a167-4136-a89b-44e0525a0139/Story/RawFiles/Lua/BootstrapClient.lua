@@ -15,7 +15,7 @@ local Settings = {
 local function OnSettingsLoaded()
 	local settings = GetSettings()
 	if settings then
-		if settings:FlagEquals("LLMATERIAL_DisablePlayerLight", true) then
+		if settings.Global:FlagEquals("LLMATERIAL_DisablePlayerLight", true) then
 			playerLight.Enable()
 		else
 			playerLight.Disable()
