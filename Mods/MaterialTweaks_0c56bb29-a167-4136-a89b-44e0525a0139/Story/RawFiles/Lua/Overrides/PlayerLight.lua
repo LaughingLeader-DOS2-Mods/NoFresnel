@@ -1,3 +1,6 @@
+
+--TODO Can't seem to get this sort of path override to work. Not sure if it's a timing issue, or the way the game loads root template overrides.
+
 local function Enable()
 	Ext.Print("[MaterialTweaks] Disabling player light.")
 	Ext.AddPathOverride("Public/MaterialTweaks_0c56bb29-a167-4136-a89b-44e0525a0139/RootTemplates/Player_Light_3faa1c66-5d35-4e87-868e-d124168b660f.lsf", "Public/MaterialTweaks_0c56bb29-a167-4136-a89b-44e0525a0139/Overrides_Manual/Player_Light_Disabled_3faa1c66-5d35-4e87-868e-d124168b660f.lsf")
