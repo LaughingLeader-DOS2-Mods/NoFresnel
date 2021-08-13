@@ -1,0 +1,20 @@
+{
+	"TitleColor": "#AA99FF",
+	"Data": {
+		"Flags": [
+			{
+				"Type" : "Global",
+				"Entries" : [
+					"LLMATERIAL_DisablePlayerLight"
+				]
+			}
+		]
+	},
+	"MenuOrder": [
+		{
+			"Entries" : [
+				"LLMATERIAL_DisablePlayerLight"
+			]
+		}
+	]
+}

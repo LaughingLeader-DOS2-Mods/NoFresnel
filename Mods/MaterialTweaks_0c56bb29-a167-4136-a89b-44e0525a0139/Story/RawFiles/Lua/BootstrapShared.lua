@@ -1,1 +1,6 @@
-Ext.Require("Shared/FileOverrides.lua")
+---@return SettingsData
+function GetSettings()
+	if Mods.LeaderLib then
+		return Mods.LeaderLib.SettingsManager.GetMod(ModuleUUID, false)
+	end
+end
