@@ -1,0 +1,65 @@
+[Vertex shader]
+
+#version 450
+#extension GL_NV_gpu_shader5 : enable
+#include "Shaders/NX/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_NX.shdh"
+
+layout(location = 0) in vec3 inPosition0;
+layout(location = 10) in vec4 inColor1;
+layout(location = 11) in vec4 inColor2;
+layout(location = 12) in vec4 inColor3;
+
+layout(location = 0) out gl_PerVertex
+{
+	vec4 gl_Position;
+};
+layout(location = 1) out vec4 Position0;
+layout(location = 2) out float TexCoord0;
+
+void main()
+{
+	//Create Instance World Matrix
+	vec4 col1 = vec4(inColor1.x, inColor1.y, inColor1.z, 0.0f);
+	vec4 col2 = vec4(inColor1.w, inColor2.x, inColor2.y, 0.0f);
+	vec4 col3 = vec4(inColor2.z, inColor2.w, inColor3.x, 0.0f);
+	vec4 col4 = vec4(inColor3.y, inColor3.z, inColor3.w, 1.0f);
+	mat4x4 WorldMatrix = mat4x4(col1, col2, col3, col4);
+
+	//World space position
+	vec4 worldPosition = (WorldMatrix * vec4(inPosition0, 1.0f));
+
+	//Projected position
+	vec4 projectedPosition = (global_ViewProjection * worldPosition);
+
+	//Pass projected position to pixel shader
+	Position0 = projectedPosition;
+
+	float vertexDepth;
+	vertexDepth = distance(worldPosition.xyz, global_ViewPos.xyz);
+	//Pass depth to pixel shader
+	TexCoord0 = vertexDepth;
+
+	gl_Position = Position0;
+}
+
+
+[Fragment shader]
+
+#version 450
+#extension GL_NV_gpu_shader5 : enable
+#include "Shaders/NX/CommonHelpers.shdh"
+
+layout(location = 1) in vec4 Position0;
+layout(location = 2) in float TexCoord0;
+
+layout(location = 0) out vec4 outColor0;
+
+void main()
+{
+	float Local0 = dFdx(TexCoord0);
+	float Local1 = dFdy(TexCoord0);
+	outColor0 = vec4(0.0f, 0.0f, 0.0f, 0.0f);
+	outColor0.x = TexCoord0;
+	outColor0.y = ((TexCoord0 * TexCoord0) + (((Local0 * Local0) + (Local1 * Local1)) * 0.25f));
+}

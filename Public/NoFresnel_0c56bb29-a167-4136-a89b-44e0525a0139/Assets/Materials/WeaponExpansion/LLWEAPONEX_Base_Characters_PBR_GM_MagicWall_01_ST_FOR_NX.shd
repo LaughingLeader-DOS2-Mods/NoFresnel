@@ -1,0 +1,397 @@
+[Vertex shader]
+
+#version 450
+#extension GL_NV_gpu_shader5 : enable
+#include "Shaders/NX/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_NX.shdh"
+
+layout(location = 0) in vec3 inPosition0;
+layout(location = 4) in vec2 inTexCoord0;
+layout(location = 1) in vec4 inNormal0;
+
+layout(location = 0) out gl_PerVertex
+{
+	vec4 gl_Position;
+};
+layout(location = 1) out vec4 Position0;
+layout(location = 2) out vec2 TexCoord0;
+layout(location = 3) out vec3 TexCoord1;
+layout(location = 4) out vec3 TexCoord2;
+layout(location = 5) out vec3 TexCoord3;
+layout(location = 6) out vec3 WorldView;
+layout(location = 7) out float HeightFog;
+layout(location = 8) out float DistanceFog;
+
+layout(binding = 0, std140) uniform PGlobals
+{
+	layout(row_major) mat4x4 WorldMatrix;
+};
+
+void main()
+{
+	//World space position
+	vec4 worldPosition = (WorldMatrix * vec4(inPosition0, 1.0f));
+
+	//Projected position
+	vec4 projectedPosition = (global_ViewProjection * worldPosition);
+
+	//Pass projected position to pixel shader
+	Position0 = projectedPosition;
+
+	TexCoord0 = inTexCoord0;
+	//Compute local tangent frame
+	mat3x3 LocalTangentFrame = GetTangentFrame(inNormal0);
+
+	vec3 localNormal = LocalTangentFrame[2];
+
+	//Normalize Local Normal
+	vec3 localNormalNormalized = normalize(localNormal);
+
+	//World space Normal
+	vec3 worldNormal = (mat3x3(WorldMatrix[0].xyz, WorldMatrix[1].xyz, WorldMatrix[2].xyz) * localNormalNormalized);
+
+	//Normalize World Normal
+	vec3 worldNormalNormalized = normalize(worldNormal);
+
+	TexCoord1 = worldNormalNormalized;
+
+	vec3 LocalBinormal = LocalTangentFrame[1];
+
+	//Normalize Local Binormal
+	vec3 localBinormalNormalized = normalize(LocalBinormal);
+
+	//World space Binormal
+	vec3 worldBinormal = (mat3x3(WorldMatrix[0].xyz, WorldMatrix[1].xyz, WorldMatrix[2].xyz) * localBinormalNormalized);
+
+	//Normalize World Binormal
+	vec3 worldBinormalNormalized = normalize(worldBinormal);
+
+	TexCoord2 = worldBinormalNormalized;
+
+	vec3 LocalTangent = LocalTangentFrame[0];
+
+	//Normalize Local Tangent
+	vec3 localTangentNormalized = normalize(LocalTangent);
+
+	//World space Tangent
+	vec3 worldTangent = (mat3x3(WorldMatrix[0].xyz, WorldMatrix[1].xyz, WorldMatrix[2].xyz) * localTangentNormalized);
+
+	//Normalize World Tangent
+	vec3 worldTangentNormalized = normalize(worldTangent);
+
+	TexCoord3 = worldTangentNormalized;
+
+	//World space view vector
+	vec3 worldView = (global_ViewPos.xyz - worldPosition.xyz);
+
+	WorldView = worldView;
+
+	//Calculate Height Fog
+	float depthValue = clamp(((global_FogPropertyMatrix[3].y - length(worldView)) / (global_FogPropertyMatrix[3].y - global_FogPropertyMatrix[3].x)), 0, 1);
+	float heightDensity = ((worldPosition.y - global_FogPropertyMatrix[2].z) / global_FogPropertyMatrix[3].z);
+	float heightFog = clamp(max(depthValue, heightDensity), 0, 1);
+
+	HeightFog = heightFog;
+
+	//Calculate Distance Fog
+	float distanceFog = clamp(((global_FogPropertyMatrix[2].y - length(worldView)) / (global_FogPropertyMatrix[2].y - global_FogPropertyMatrix[2].x)), 0, 1);
+
+	DistanceFog = distanceFog;
+
+	gl_Position = Position0;
+}
+
+
+[Fragment shader]
+
+#version 450
+#extension GL_NV_gpu_shader5 : enable
+#include "Shaders/NX/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_PS_NX.shdh"
+#include "Shaders/NX/PBR.shdh"
+#include "Shaders/NX/Exposure.shdh"
+#include "Shaders/NX/ImageBasedLightingHelpers.shdh"
+
+layout(location = 1) in vec4 Position0;
+layout(location = 2) in vec2 TexCoord0;
+layout(location = 3) in vec3 TexCoord1;
+layout(location = 4) in vec3 TexCoord2;
+layout(location = 5) in vec3 TexCoord3;
+layout(location = 6) in vec3 WorldView;
+layout(location = 7) in float HeightFog;
+layout(location = 8) in float DistanceFog;
+
+layout(location = 0) out vec4 outColor0;
+
+layout(binding = 0) uniform sampler2D Texture2DParameter_GlowMap_DefaultWrapSampler;
+layout(binding = 1) uniform sampler2D Texture2DParameter_b1f13545defa4e279372be633d7527fa_DefaultWrapSampler;
+layout(binding = 2) uniform sampler2D Texture2DParameter_MagicWallTexture_DefaultWrapSampler;
+layout(binding = 3) uniform sampler2D Texture2DParameter_TilingTextureBC4_DefaultWrapSampler;
+layout(binding = 4) uniform sampler2D Texture2DParameter_TilingTextureNM_DefaultWrapSampler;
+layout(binding = 5) uniform sampler2D Texture2DParameter_PanningTextureBW_DefaultWrapSampler;
+layout(binding = 6) uniform sampler2D Texture2DParameter_NormalMap_DefaultWrapSampler;
+layout(binding = 7) uniform sampler2D Texture2DParameter_MSKskin_DefaultWrapSampler;
+layout(binding = 8) uniform sampler2D Texture2DParameter_MSKcloth_DefaultWrapSampler;
+layout(binding = 9) uniform sampler2D Texture2DParameter_BaseColor_DefaultWrapSampler;
+layout(binding = 10) uniform sampler2D Texture2DParameter_PhysicalMap_DefaultWrapSampler;
+layout(binding = 0, std140) uniform PGlobals
+{
+	float _OpacityFade;
+	float FloatParameter_PulseSpeed;
+	float FloatParameter_MinGlow;
+	float FloatParameter_MaxGlow;
+	float FloatParameter_GlowMultiplier;
+	vec3 Vector3Parameter_MainColor;
+	float FloatParameter_Brightness;
+	float FloatParameter_MultUVMagicWall;
+	float FloatParameter_PanningSpeed;
+	vec2 Vector2Parameter_ValuePannerFirstCloud;
+	float FloatParameter_PanningScaleBiasSpeed;
+	float FloatParameter_CloudUVTilingMult;
+	float FloatParameter_UseScaleBiasInsteadPanner;
+	vec2 Vector2Parameter_ValuePannerSecondCloud;
+	float FloatParameter_TurnOffParallaxTexMagicWall;
+	float FloatParameter_ObjectSize;
+	float FloatParameter_TurnOffParallaxTexNM;
+	float FloatParameter_FresnelMult;
+	vec4 _MeshVertexColor;
+	float FloatParameter_IntersectionBrightness;
+	vec3 Vector3Parameter_IntersectionColor;
+	float FloatParameter_OpacityMultiplier;
+	vec4 Vector4Parameter_Color1;
+	vec4 Vector4Parameter_Color2;
+	vec4 Vector4Parameter_Color3;
+	vec4 Vector4Parameter_Color4;
+	vec4 Vector4Parameter_Color5;
+	float FloatParameter_Reflectance;
+};
+
+void CalculateMatEmissiveColor(vec2 in_0,
+	vec3 in_1,
+	out vec3 out_0)
+{
+	float Local0 = (global_Data.x * FloatParameter_PulseSpeed);
+	float Local1 = ((((sin(Local0) * 0.5f) + 0.5f) * (FloatParameter_MaxGlow - FloatParameter_MinGlow)) + FloatParameter_MinGlow);
+	vec4 Local2 = texture(Texture2DParameter_GlowMap_DefaultWrapSampler, in_0);
+	//[Local2] Get needed components
+	vec3 Local3 = Local2.xyz;
+	vec2 Local4 = (in_0 * FloatParameter_MultUVMagicWall);
+	float Local5 = (global_Data.x * FloatParameter_PanningSpeed);
+	float Local6 = (global_Data.x * FloatParameter_PanningScaleBiasSpeed);
+	vec2 Local7 = (in_0 * FloatParameter_CloudUVTilingMult);
+	vec2 Local8 = fma(Vector2Parameter_ValuePannerFirstCloud, vec2(Local6), Local7);
+	vec2 Local9 = mix((in_0 + (vec2(0.19f, 0.1f) * Local5)), Local8, vec2(FloatParameter_UseScaleBiasInsteadPanner, FloatParameter_UseScaleBiasInsteadPanner));
+	vec4 Local10 = texture(Texture2DParameter_b1f13545defa4e279372be633d7527fa_DefaultWrapSampler, Local9);
+	//[Local10] Get needed components
+	float Local11 = Local10.x;
+	vec2 Local12 = fma(Vector2Parameter_ValuePannerSecondCloud, vec2(Local6), Local7);
+	vec2 Local13 = mix((in_0 + (vec2(-0.16f, 0.17f) * Local5)), Local12, vec2(FloatParameter_UseScaleBiasInsteadPanner, FloatParameter_UseScaleBiasInsteadPanner));
+	vec4 Local14 = texture(Texture2DParameter_b1f13545defa4e279372be633d7527fa_DefaultWrapSampler, Local13);
+	//[Local14] Get needed components
+	float Local15 = Local14.x;
+	float Local16 = (Local11 * Local15);
+	float Local17 = (Local16 - 0.5f);
+	float Local18 = (Local17 * 0.05f);
+	vec2 Local19 = (Local4 + vec2(Local18));
+	vec2 Local20 = (in_0 + vec2(Local18));
+	vec2 Local21 = (Local20 + (((0.0f * 0.5f) - 0.25f) * vec2(in_1.x, -(in_1.z))));
+	vec2 Local22 = mix(Local19, Local21, vec2(FloatParameter_TurnOffParallaxTexMagicWall, FloatParameter_TurnOffParallaxTexMagicWall));
+	vec4 Local23 = texture(Texture2DParameter_MagicWallTexture_DefaultWrapSampler, Local22);
+	//[Local23] Get needed components
+	float Local24 = Local23.x;
+	float Local25 = pow(Local16, 4.0f);
+	float Local26 = (Local17 * 0.05f);
+	float Local27 = (FloatParameter_ObjectSize / 4.0f);
+	vec2 Local28 = (in_0 * Local27);
+	vec2 Local29 = (vec2(Local26) + Local28);
+	vec4 Local30 = texture(Texture2DParameter_TilingTextureBC4_DefaultWrapSampler, Local29);
+	//[Local30] Get needed components
+	float Local31 = Local30.x;
+	vec2 Local32 = (Local29 + (((Local31 * 0.02f) - 0.01f) * vec2(in_1.x, -(in_1.z))));
+	vec2 Local33 = mix(Local29, Local32, vec2(FloatParameter_TurnOffParallaxTexNM, FloatParameter_TurnOffParallaxTexNM));
+	vec4 Local34 = texture(Texture2DParameter_TilingTextureNM_DefaultWrapSampler, Local33);
+	//[Local34] Convert normalmaps to tangent space vectors
+	Local34.xyzw = Local34.wzyx;
+	Local34.xyz = ((Local34.xyz * 2.0f) - vec3(1.0f));
+	Local34.z = -(Local34.z);
+	Local34.xyz = normalize(Local34.xyz);
+	//[Local34] Get needed components
+	vec3 Local35 = Local34.xyz;
+	float Local36 = pow((1.0f - clamp(dot(Local35, in_1), 0, 1)), 5.0f);
+	float Local37 = (Local36 * FloatParameter_FresnelMult);
+	float Local38 = (Local25 + Local37);
+	float Local39 = (Local24 + Local38);
+	float Local40 = (FloatParameter_Brightness * Local39);
+	vec3 Local41 = (Vector3Parameter_MainColor * Local40);
+	float Local42 = (1.0f - 1.0f);
+	vec4 Local43 = texture(Texture2DParameter_PanningTextureBW_DefaultWrapSampler, Local29);
+	//[Local43] Get needed components
+	float Local44 = Local43.x;
+	vec4 Local45 = texture(Texture2DParameter_PanningTextureBW_DefaultWrapSampler, (in_0 * vec2(0.4f, 0.4f)));
+	//[Local45] Get needed components
+	float Local46 = Local45.x;
+	float Local47 = (Local44 * Local46);
+	float Local48 = (1.0f - _MeshVertexColor.w);
+	float Local49 = (Local48 - 0.1f);
+	float Local50 = smoothstep(Local49, Local48, Local47);
+	float Local51 = pow(Local50, 5.0f);
+	float Local52 = (1.0f - Local51);
+	float Local53 = (Local52 * 5.0f);
+	float Local54 = (Local42 + Local53);
+	float Local55 = (Local54 * FloatParameter_IntersectionBrightness);
+	vec3 Local56 = (Local55 * Vector3Parameter_IntersectionColor);
+	vec3 Local57 = (Local41 + Local56);
+	float Local58 = pow(Local31, 5.0f);
+	float Local59 = (Local58 * 0.5f);
+	float Local60 = (Local16 + Local59);
+	float Local61 = (Local60 * Local16);
+	float Local62 = (Local61 * FloatParameter_OpacityMultiplier);
+	float Local63 = (Local62 + Local42);
+	float Local64 = clamp(Local63, 0.0f, 0.5f);
+	float Local65 = (Local64 * Local50);
+	vec3 Local66 = (Local57 * Local65);
+	vec3 Local67 = (Local3 * Local66);
+	vec3 Local68 = (FloatParameter_GlowMultiplier * Local67);
+	vec3 Local69 = (Local1 * Local68);
+	out_0 = Local69;
+}
+
+void CalculateMatNormal(vec2 in_0,
+	out vec3 out_0)
+{
+	vec4 Local0 = texture(Texture2DParameter_NormalMap_DefaultWrapSampler, in_0);
+	//[Local0] Convert normalmaps to tangent space vectors
+	Local0.xyzw = Local0.wzyx;
+	Local0.xyz = ((Local0.xyz * 2.0f) - vec3(1.0f));
+	Local0.z = -(Local0.z);
+	Local0.xyz = normalize(Local0.xyz);
+	//[Local0] Get needed components
+	vec3 Local1 = Local0.xyz;
+	out_0 = Local1;
+}
+
+void CalculateMatBaseColor(vec2 in_0,
+	out vec3 out_0)
+{
+	vec4 Local0 = texture(Texture2DParameter_MSKskin_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	vec4 Local3 = (Vector4Parameter_Color1 * Local1);
+	vec4 Local4 = (Vector4Parameter_Color2 * Local2);
+	vec4 Local5 = (Local3 + Local4);
+	vec4 Local6 = texture(Texture2DParameter_MSKcloth_DefaultWrapSampler, in_0);
+	//[Local6] Get needed components
+	float Local7 = Local6.x;
+	float Local8 = Local6.y;
+	float Local9 = Local6.z;
+	vec4 Local10 = (Vector4Parameter_Color3 * Local7);
+	vec4 Local11 = (Local5 + Local10);
+	vec4 Local12 = (Vector4Parameter_Color4 * Local8);
+	vec4 Local13 = (Local11 + Local12);
+	vec4 Local14 = (Vector4Parameter_Color5 * Local9);
+	vec4 Local15 = (Local13 + Local14);
+	float Local16 = (1.0f - Local1);
+	float Local17 = (1.0f - Local2);
+	float Local18 = (Local16 * Local17);
+	float Local19 = (1.0f - Local7);
+	float Local20 = (Local18 * Local19);
+	float Local21 = (1.0f - Local8);
+	float Local22 = (Local20 * Local21);
+	float Local23 = (1.0f - Local9);
+	float Local24 = (Local22 * Local23);
+	float Local25 = pow(Local24, 2.2f);
+	vec4 Local26 = (Local15 + vec4(Local25));
+	vec3 Local27 = Local26.xyz;
+	vec4 Local28 = texture(Texture2DParameter_BaseColor_DefaultWrapSampler, in_0);
+	//[Local28] Get needed components
+	vec3 Local29 = Local28.xyz;
+	vec3 Local30 = (Local27 * Local29);
+	out_0 = Local30;
+}
+
+void CalculateMatMetalMask(vec2 in_0,
+	out float out_0)
+{
+	vec4 Local0 = texture(Texture2DParameter_PhysicalMap_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	out_0 = Local1;
+}
+
+void CalculateMatReflectance(out float out_0)
+{
+	out_0 = FloatParameter_Reflectance;
+}
+
+void CalculateMatRoughness(vec2 in_0,
+	out float out_0)
+{
+	vec4 Local0 = texture(Texture2DParameter_PhysicalMap_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	out_0 = Local2;
+}
+
+void main()
+{
+	if(clip((_OpacityFade - (0.5f * _OpacityFade)))) discard;
+
+	vec3 matEmissiveColor;
+	//Normalize World Normal
+	vec3 worldNormalNormalized = normalize(TexCoord1);
+
+	//Normalize World Binormal
+	vec3 worldBinormalNormalized = normalize(TexCoord2);
+
+	//Normalize World Tangent
+	vec3 worldTangentNormalized = normalize(TexCoord3);
+
+	mat3x3 NBT = mat3x3(vec3(worldTangentNormalized.x, worldNormalNormalized.x, worldBinormalNormalized.x), vec3(worldTangentNormalized.y, worldNormalNormalized.y, worldBinormalNormalized.y), vec3(worldTangentNormalized.z, worldNormalNormalized.z, worldBinormalNormalized.z));
+
+	//Normalized world space view vector
+	vec3 worldViewNormalized = normalize(WorldView);
+
+	//Calculate tangent space view vector
+	vec3 tangentView = (NBT * worldViewNormalized);
+
+	CalculateMatEmissiveColor(TexCoord0, tangentView, matEmissiveColor);
+	vec3 matNormal;
+	CalculateMatNormal(TexCoord0, matNormal);
+	matNormal = normalize((matNormal * NBT));
+
+	vec3 matBaseColor;
+	CalculateMatBaseColor(TexCoord0, matBaseColor);
+	float matMetalMask;
+	CalculateMatMetalMask(TexCoord0, matMetalMask);
+	float matReflectance;
+	CalculateMatReflectance(matReflectance);
+	matReflectance = RemapReflectance(matReflectance);
+	float matRoughness;
+	CalculateMatRoughness(TexCoord0, matRoughness);
+	matRoughness = max(0.09f, matRoughness);
+	vec3 FinalColor = vec3(0.0f, 0.0f, 0.0f);
+
+	//Calculate Image Based Lighting
+	vec3 iblDiffuse;
+	vec3 iblSpecular;
+	EvaluateDistantIBL(matBaseColor, matRoughness, vec3(matReflectance, matReflectance, matReflectance), matMetalMask, matNormal, worldViewNormalized, iblDiffuse, iblSpecular);
+	FinalColor = ((FinalColor + iblDiffuse) + iblSpecular);
+
+	vec3 LightDiffuseColorOut;
+	vec3 LightSpecularColorOut;
+	DirectionLight(matNormal, worldViewNormalized, global_LightPropertyMatrix, matBaseColor, matReflectance, matRoughness, matMetalMask, LightDiffuseColorOut, LightSpecularColorOut);
+	FinalColor = ((FinalColor + LightDiffuseColorOut) + LightSpecularColorOut);
+
+	FinalColor = PreExpose(FinalColor);
+
+	FinalColor = (FinalColor + (matEmissiveColor * vec3(!bool(global_Data.y))));
+
+	FinalColor = mix(global_FogPropertyMatrix[1], FinalColor, vec3(HeightFog, HeightFog, HeightFog));
+	FinalColor = mix(global_FogPropertyMatrix[0], FinalColor, vec3(DistanceFog, DistanceFog, DistanceFog));
+
+	outColor0 = vec4(FinalColor, _OpacityFade);
+	outColor0 = max(outColor0, 0.0f);
+}

@@ -1,0 +1,89 @@
+[Vertex shader]
+
+
+#include "Shaders/DX11/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_DX11.shdh"
+
+struct VertexInput
+{
+	uint4 BoneIndices : BLENDINDICES0;
+	float4 BoneWeights : BLENDWEIGHT0;
+	float3 Position : POSITION0;
+};
+
+struct VertexOutput
+{
+	float4 ProjectedPosition : SV_Position0;
+	float ShadowDepth : TEXCOORD0;
+};
+
+cbuffer CB_BoneMatrices
+{
+	row_major float3x4 BoneMatrices[128];
+}
+
+cbuffer CB_PerInstance
+{
+	row_major float4x4 WorldMatrix;
+}
+
+VertexOutput main(VertexInput In)
+{
+	VertexOutput Out;
+
+	row_major float3x4 boneMatrix1 = BoneMatrices[In.BoneIndices.x];
+	row_major float3x4 boneMatrix2 = BoneMatrices[In.BoneIndices.y];
+	row_major float3x4 boneMatrix3 = BoneMatrices[In.BoneIndices.z];
+	row_major float3x4 boneMatrix4 = BoneMatrices[In.BoneIndices.w];
+	//World space position
+	float4 worldPosition = float4(0.0f, 0.0f, 0.0f, 1.0f);
+	worldPosition.xyz = (worldPosition.xyz + (In.BoneWeights.x * mul(boneMatrix1, float4(In.Position, 1.0f))));
+	worldPosition.xyz = (worldPosition.xyz + (In.BoneWeights.y * mul(boneMatrix2, float4(In.Position, 1.0f))));
+	worldPosition.xyz = (worldPosition.xyz + (In.BoneWeights.z * mul(boneMatrix3, float4(In.Position, 1.0f))));
+	worldPosition.xyz = (worldPosition.xyz + (In.BoneWeights.w * mul(boneMatrix4, float4(In.Position, 1.0f))));
+	worldPosition = mul(WorldMatrix, worldPosition);
+
+	//Projected position
+	float4 projectedPosition = mul(global_ViewProjection, worldPosition);
+
+	//Pass projected position to pixel shader
+	Out.ProjectedPosition = projectedPosition;
+
+	float vertexDepth;
+	vertexDepth = distance(worldPosition.xyz, global_ViewPos.xyz);
+	//Pass depth to pixel shader
+	Out.ShadowDepth = vertexDepth;
+
+
+	return Out;
+}
+
+
+[Fragment shader]
+
+
+#include "Shaders/DX11/CommonHelpers.shdh"
+
+struct PixelInput
+{
+	float4 ProjectedPosition : SV_Position0;
+	float ShadowDepth : TEXCOORD0;
+};
+
+struct PixelOutput
+{
+	float4 Color0 : SV_Target0;
+};
+
+PixelOutput main(PixelInput In)
+{
+	PixelOutput Out;
+
+	float Local0 = ddx(In.ShadowDepth);
+	float Local1 = ddy(In.ShadowDepth);
+	Out.Color0 = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	Out.Color0.x = In.ShadowDepth;
+	Out.Color0.y = ((In.ShadowDepth * In.ShadowDepth) + (((Local0 * Local0) + (Local1 * Local1)) * 0.25f));
+
+	return Out;
+}

@@ -1,0 +1,39 @@
+[Vertex shader]
+
+
+#include "Shaders/DX11/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_DX11.shdh"
+
+struct VertexInput
+{
+	float3 Position : POSITION0;
+};
+
+struct VertexOutput
+{
+	float4 ProjectedPosition : SV_Position0;
+};
+
+cbuffer CB_PerInstance
+{
+	row_major float4x4 WorldMatrix;
+}
+
+VertexOutput main(VertexInput In)
+{
+	VertexOutput Out;
+
+	//World space position
+	float4 worldPosition = mul(WorldMatrix, float4(In.Position, 1.0f));
+
+	//Projected position
+	float4 projectedPosition = mul(global_ViewProjection, worldPosition);
+
+	//Pass projected position to pixel shader
+	Out.ProjectedPosition = projectedPosition;
+
+
+	return Out;
+}
+
+

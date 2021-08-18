@@ -1,0 +1,72 @@
+[Vertex shader]
+
+#version 450
+#extension GL_NV_gpu_shader5 : enable
+#include "Shaders/NX/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_NX.shdh"
+
+layout(location = 15) in uvec4 inBlendIndices0;
+layout(location = 14) in vec4 inBlendWeight0;
+layout(location = 0) in vec3 inPosition0;
+
+layout(location = 0) out gl_PerVertex
+{
+	vec4 gl_Position;
+};
+layout(location = 1) out vec4 Position0;
+layout(location = 2) out float TexCoord0;
+
+layout(binding = 0, std140) uniform PGlobals
+{
+	mat3x4 BoneMatrices[128];
+	layout(row_major) mat4x4 WorldMatrix;
+};
+
+void main()
+{
+	mat3x4 boneMatrix1 = BoneMatrices[inBlendIndices0.x];
+	mat3x4 boneMatrix2 = BoneMatrices[inBlendIndices0.y];
+	mat3x4 boneMatrix3 = BoneMatrices[inBlendIndices0.z];
+	mat3x4 boneMatrix4 = BoneMatrices[inBlendIndices0.w];
+	//World space position
+	vec4 worldPosition = vec4(0.0f, 0.0f, 0.0f, 1.0f);
+	worldPosition.xyz = (worldPosition.xyz + (inBlendWeight0.x * (vec4(inPosition0, 1.0f) * boneMatrix1)));
+	worldPosition.xyz = (worldPosition.xyz + (inBlendWeight0.y * (vec4(inPosition0, 1.0f) * boneMatrix2)));
+	worldPosition.xyz = (worldPosition.xyz + (inBlendWeight0.z * (vec4(inPosition0, 1.0f) * boneMatrix3)));
+	worldPosition.xyz = (worldPosition.xyz + (inBlendWeight0.w * (vec4(inPosition0, 1.0f) * boneMatrix4)));
+	worldPosition = (WorldMatrix * worldPosition);
+
+	//Projected position
+	vec4 projectedPosition = (global_ViewProjection * worldPosition);
+
+	//Pass projected position to pixel shader
+	Position0 = projectedPosition;
+
+	float vertexDepth;
+	vertexDepth = distance(worldPosition.xyz, global_ViewPos.xyz);
+	//Pass depth to pixel shader
+	TexCoord0 = vertexDepth;
+
+	gl_Position = Position0;
+}
+
+
+[Fragment shader]
+
+#version 450
+#extension GL_NV_gpu_shader5 : enable
+#include "Shaders/NX/CommonHelpers.shdh"
+
+layout(location = 1) in vec4 Position0;
+layout(location = 2) in float TexCoord0;
+
+layout(location = 0) out vec4 outColor0;
+
+void main()
+{
+	float Local0 = dFdx(TexCoord0);
+	float Local1 = dFdy(TexCoord0);
+	outColor0 = vec4(0.0f, 0.0f, 0.0f, 0.0f);
+	outColor0.x = TexCoord0;
+	outColor0.y = ((TexCoord0 * TexCoord0) + (((Local0 * Local0) + (Local1 * Local1)) * 0.25f));
+}

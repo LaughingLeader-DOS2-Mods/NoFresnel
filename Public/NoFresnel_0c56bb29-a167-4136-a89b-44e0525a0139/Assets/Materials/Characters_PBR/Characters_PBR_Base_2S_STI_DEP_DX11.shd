@@ -1,0 +1,44 @@
+[Vertex shader]
+
+
+#include "Shaders/DX11/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_DX11.shdh"
+
+struct VertexInput
+{
+	float3 Position : POSITION0;
+	float4 InstanceMatrix1 : COLOR1;
+	float4 InstanceMatrix2 : COLOR2;
+	float4 InstanceMatrix3 : COLOR3;
+};
+
+struct VertexOutput
+{
+	float4 ProjectedPosition : SV_Position0;
+};
+
+VertexOutput main(VertexInput In)
+{
+	VertexOutput Out;
+
+	//Create Instance World Matrix
+	float4 row1 = float4(In.InstanceMatrix1.x, In.InstanceMatrix1.w, In.InstanceMatrix2.z, In.InstanceMatrix3.y);
+	float4 row2 = float4(In.InstanceMatrix1.y, In.InstanceMatrix2.x, In.InstanceMatrix2.w, In.InstanceMatrix3.z);
+	float4 row3 = float4(In.InstanceMatrix1.z, In.InstanceMatrix2.y, In.InstanceMatrix3.x, In.InstanceMatrix3.w);
+	float4 row4 = float4(0.0f, 0.0f, 0.0f, 1.0f);
+	row_major float4x4 WorldMatrix = float4x4(row1, row2, row3, row4);
+
+	//World space position
+	float4 worldPosition = mul(WorldMatrix, float4(In.Position, 1.0f));
+
+	//Projected position
+	float4 projectedPosition = mul(global_ViewProjection, worldPosition);
+
+	//Pass projected position to pixel shader
+	Out.ProjectedPosition = projectedPosition;
+
+
+	return Out;
+}
+
+

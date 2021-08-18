@@ -1,0 +1,66 @@
+[Vertex shader]
+
+
+#include "Shaders/PS4/srt_struct.h"
+#include "Shaders/PS4/CommonHelpers.shdh"
+
+struct VertexOutput
+{
+	float4 ProjectedPosition : S_Position;
+};
+
+VertexOutput main(uint id : S_VERTEX_ID,
+	uint idInst : S_INSTANCE_ID,
+	SrtVsData srtData : S_SRT_DATA)
+{
+	// Retrieve SRT data:
+	@uniform(global_View);
+	@uniform(global_ViewProjection);
+
+	VertexOutput Out;
+
+	//Create Instance World Matrix
+	float4 row1 = float4(SRT_VS_INSTANCE_MATRIX1(idInst).x, SRT_VS_INSTANCE_MATRIX1(idInst).w, SRT_VS_INSTANCE_MATRIX2(idInst).z, SRT_VS_INSTANCE_MATRIX3(idInst).y);
+	float4 row2 = float4(SRT_VS_INSTANCE_MATRIX1(idInst).y, SRT_VS_INSTANCE_MATRIX2(idInst).x, SRT_VS_INSTANCE_MATRIX2(idInst).w, SRT_VS_INSTANCE_MATRIX3(idInst).z);
+	float4 row3 = float4(SRT_VS_INSTANCE_MATRIX1(idInst).z, SRT_VS_INSTANCE_MATRIX2(idInst).y, SRT_VS_INSTANCE_MATRIX3(idInst).x, SRT_VS_INSTANCE_MATRIX3(idInst).w);
+	float4 row4 = float4(0.0f, 0.0f, 0.0f, 1.0f);
+	row_major float4x4 WorldMatrix = row_major float4x4(row1, row2, row3, row4);
+
+	float4 tempPosStatic = float4(SRT_VS_BUFFER_POSITION(id).xyz, 1.0f);
+	//World space position
+	float4 worldPosition = mul(WorldMatrix, tempPosStatic);
+
+	//Projected position
+	float4 projectedPosition = mul(global_ViewProjection, worldPosition);
+
+	//Pass projected position to pixel shader
+	Out.ProjectedPosition = projectedPosition;
+
+
+	return Out;
+}
+
+
+[Fragment shader]
+
+
+#include "Shaders/PS4/srt_struct.h"
+#include "Shaders/PS4/CommonHelpers.shdh"
+
+struct PixelInput
+{
+	float4 ProjectedPosition : S_Position;
+};
+
+struct PixelOutput
+{
+};
+
+PixelOutput main(PixelInput In,
+	SrtPsData srtData : S_SRT_DATA)
+{
+	PixelOutput Out;
+
+
+	return Out;
+}

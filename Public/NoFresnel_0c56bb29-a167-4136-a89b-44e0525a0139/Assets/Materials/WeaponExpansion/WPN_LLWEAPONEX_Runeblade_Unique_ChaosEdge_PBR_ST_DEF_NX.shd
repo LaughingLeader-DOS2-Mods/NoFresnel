@@ -1,0 +1,220 @@
+[Vertex shader]
+
+#version 450
+#extension GL_NV_gpu_shader5 : enable
+#include "Shaders/NX/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_NX.shdh"
+
+layout(location = 0) in vec3 inPosition0;
+layout(location = 4) in vec2 inTexCoord0;
+layout(location = 1) in vec4 inNormal0;
+
+layout(location = 0) out gl_PerVertex
+{
+	vec4 gl_Position;
+};
+layout(location = 1) out vec4 Position0;
+layout(location = 2) out vec2 TexCoord0;
+layout(location = 3) out vec3 TexCoord1;
+layout(location = 4) out vec3 TexCoord2;
+layout(location = 5) out vec3 TexCoord3;
+
+layout(binding = 0, std140) uniform PGlobals
+{
+	layout(row_major) mat4x4 WorldMatrix;
+};
+
+void main()
+{
+	//World space position
+	vec4 worldPosition = (WorldMatrix * vec4(inPosition0, 1.0f));
+
+	//Projected position
+	vec4 projectedPosition = (global_ViewProjection * worldPosition);
+
+	//Pass projected position to pixel shader
+	Position0 = projectedPosition;
+
+	TexCoord0 = inTexCoord0;
+	//Compute local tangent frame
+	mat3x3 LocalTangentFrame = GetTangentFrame(inNormal0);
+
+	vec3 localNormal = LocalTangentFrame[2];
+
+	//Normalize Local Normal
+	vec3 localNormalNormalized = normalize(localNormal);
+
+	//World space Normal
+	vec3 worldNormal = (mat3x3(WorldMatrix[0].xyz, WorldMatrix[1].xyz, WorldMatrix[2].xyz) * localNormalNormalized);
+
+	//Normalize World Normal
+	vec3 worldNormalNormalized = normalize(worldNormal);
+
+	TexCoord1 = worldNormalNormalized;
+
+	vec3 LocalBinormal = LocalTangentFrame[1];
+
+	//Normalize Local Binormal
+	vec3 localBinormalNormalized = normalize(LocalBinormal);
+
+	//World space Binormal
+	vec3 worldBinormal = (mat3x3(WorldMatrix[0].xyz, WorldMatrix[1].xyz, WorldMatrix[2].xyz) * localBinormalNormalized);
+
+	//Normalize World Binormal
+	vec3 worldBinormalNormalized = normalize(worldBinormal);
+
+	TexCoord2 = worldBinormalNormalized;
+
+	vec3 LocalTangent = LocalTangentFrame[0];
+
+	//Normalize Local Tangent
+	vec3 localTangentNormalized = normalize(LocalTangent);
+
+	//World space Tangent
+	vec3 worldTangent = (mat3x3(WorldMatrix[0].xyz, WorldMatrix[1].xyz, WorldMatrix[2].xyz) * localTangentNormalized);
+
+	//Normalize World Tangent
+	vec3 worldTangentNormalized = normalize(worldTangent);
+
+	TexCoord3 = worldTangentNormalized;
+
+	gl_Position = Position0;
+}
+
+
+[Fragment shader]
+
+#version 450
+#extension GL_NV_gpu_shader5 : enable
+#include "Shaders/NX/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_PS_NX.shdh"
+#include "Shaders/NX/PBR.shdh"
+
+layout(location = 1) in vec4 Position0;
+layout(location = 2) in vec2 TexCoord0;
+layout(location = 3) in vec3 TexCoord1;
+layout(location = 4) in vec3 TexCoord2;
+layout(location = 5) in vec3 TexCoord3;
+
+layout(location = 0) out vec4 outColor0;
+layout(location = 1) out vec4 outColor1;
+layout(location = 2) out vec4 outColor2;
+layout(location = 3) out vec4 outColor3;
+
+layout(binding = 0) uniform sampler2D Texture2DParameter_normalmap_DefaultWrapSampler;
+layout(binding = 1) uniform sampler2D Texture2DParameter_MSKcloth_DefaultWrapSampler;
+layout(binding = 2) uniform sampler2D Texture2DParameter_basecolor_DefaultWrapSampler;
+layout(binding = 3) uniform sampler2D Texture2DParameter_physicalmap_DefaultWrapSampler;
+layout(binding = 0, std140) uniform PGlobals
+{
+	vec4 Vector4Parameter_Color3;
+	vec4 Vector4Parameter_Color4;
+	vec4 Vector4Parameter_Color5;
+	float _OpacityFade;
+};
+
+void CalculateMatNormal(vec2 in_0,
+	out vec3 out_0)
+{
+	vec4 Local0 = texture(Texture2DParameter_normalmap_DefaultWrapSampler, in_0);
+	//[Local0] Convert normalmaps to tangent space vectors
+	Local0.xyzw = Local0.wzyx;
+	Local0.xyz = ((Local0.xyz * 2.0f) - vec3(1.0f));
+	Local0.z = -(Local0.z);
+	Local0.xyz = normalize(Local0.xyz);
+	//[Local0] Get needed components
+	vec3 Local1 = Local0.xyz;
+	out_0 = Local1;
+}
+
+void CalculateMatBaseColor(vec2 in_0,
+	out vec3 out_0)
+{
+	vec4 Local0 = texture(Texture2DParameter_MSKcloth_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	float Local3 = Local0.z;
+	vec4 Local4 = (Vector4Parameter_Color3 * Local1);
+	vec4 Local5 = (Vector4Parameter_Color4 * Local2);
+	vec4 Local6 = (Local4 + Local5);
+	vec4 Local7 = (Vector4Parameter_Color5 * Local3);
+	vec4 Local8 = (Local6 + Local7);
+	float Local9 = (1.0f - Local1);
+	float Local10 = (1.0f - Local2);
+	float Local11 = (Local9 * Local10);
+	float Local12 = (1.0f - Local3);
+	float Local13 = (Local11 * Local12);
+	float Local14 = pow(Local13, 2.2f);
+	vec4 Local15 = (Local8 + vec4(Local14));
+	vec3 Local16 = Local15.xyz;
+	vec4 Local17 = texture(Texture2DParameter_basecolor_DefaultWrapSampler, in_0);
+	//[Local17] Get needed components
+	vec3 Local18 = Local17.xyz;
+	vec3 Local19 = (Local16 * Local18);
+	out_0 = Local19;
+}
+
+void CalculateMatMetalMask(vec2 in_0,
+	out float out_0)
+{
+	vec4 Local0 = texture(Texture2DParameter_physicalmap_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	out_0 = Local1;
+}
+
+void CalculateMatReflectance(out float out_0)
+{
+	out_0 = 0.5f;
+}
+
+void CalculateMatRoughness(vec2 in_0,
+	out float out_0)
+{
+	vec4 Local0 = texture(Texture2DParameter_physicalmap_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	out_0 = Local2;
+}
+
+void main()
+{
+	vec3 matNormal;
+	CalculateMatNormal(TexCoord0, matNormal);
+	//Normalize World Normal
+	vec3 worldNormalNormalized = normalize(TexCoord1);
+
+	//Normalize World Binormal
+	vec3 worldBinormalNormalized = normalize(TexCoord2);
+
+	//Normalize World Tangent
+	vec3 worldTangentNormalized = normalize(TexCoord3);
+
+	mat3x3 NBT = mat3x3(vec3(worldTangentNormalized.x, worldNormalNormalized.x, worldBinormalNormalized.x), vec3(worldTangentNormalized.y, worldNormalNormalized.y, worldBinormalNormalized.y), vec3(worldTangentNormalized.z, worldNormalNormalized.z, worldBinormalNormalized.z));
+
+	matNormal = (mat3x3(global_View[0].xyz, global_View[1].xyz, global_View[2].xyz) * normalize((matNormal * NBT)));
+
+	vec3 matBaseColor;
+	CalculateMatBaseColor(TexCoord0, matBaseColor);
+	float matMetalMask;
+	CalculateMatMetalMask(TexCoord0, matMetalMask);
+	float matReflectance;
+	CalculateMatReflectance(matReflectance);
+	float matRoughness;
+	CalculateMatRoughness(TexCoord0, matRoughness);
+	GBufferData gBufferData;
+	gBufferData.Emissive = vec3(0.0f, 0.0f, 0.0f);
+	gBufferData.ViewSpaceNormal = matNormal;
+	gBufferData.BaseColor = matBaseColor;
+	gBufferData.FadeOpacity = _OpacityFade;
+	gBufferData.Roughness = matRoughness;
+	gBufferData.Reflectance = matReflectance;
+	gBufferData.MetalMask = matMetalMask;
+	gBufferData.FXEmissive = true;
+	gBufferData.ShadingModel = 0;
+	gBufferData.Custom = vec4(0.0f, 0.0f, 0.0f, 0.0f);
+	EncodeGBufferData(gBufferData, outColor0, outColor1, outColor2, outColor3);
+}

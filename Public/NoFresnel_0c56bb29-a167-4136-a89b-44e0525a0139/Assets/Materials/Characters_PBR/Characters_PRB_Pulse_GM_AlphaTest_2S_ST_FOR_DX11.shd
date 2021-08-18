@@ -1,0 +1,320 @@
+[Vertex shader]
+
+
+#include "Shaders/DX11/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_DX11.shdh"
+
+struct VertexInput
+{
+	float4 VertexColor : COLOR0;
+	float4 LocalQTangent : NORMAL0;
+	float3 Position : POSITION0;
+	float2 TexCoords0 : TEXCOORD0;
+};
+
+struct VertexOutput
+{
+	float4 ProjectedPosition : SV_Position0;
+	float2 TexCoords0 : TEXCOORD0;
+	float3 WorldNormal : TEXCOORD1;
+	float3 WorldBinormal : TEXCOORD2;
+	float3 WorldTangent : TEXCOORD3;
+	float3 WorldView : TEXCOORD4;
+	float HeightFog : TEXCOORD5;
+	float DistanceFog : TEXCOORD6;
+};
+
+uniform float FloatParameter_PulseSpeed;
+uniform float FloatParameter_PulseSize;
+uniform float FloatParameter_PulseStrength;
+
+cbuffer CB_PerInstance
+{
+	row_major float4x4 WorldMatrix;
+}
+
+void CalculateMatWorldPositionOffset(float4 in_0,
+	float3 in_1,
+	float3 in_2,
+	float3 in_3,
+	out float3 out_0)
+{
+	float3 Local0 = (in_0.y * in_1);
+	float Local1 = (global_Data.x * FloatParameter_PulseSpeed);
+	float3 Local2 = in_2;
+	float Local3 = length(Local2);
+	float Local4 = in_3.y;
+	float Local5 = (Local4 / FloatParameter_PulseSize);
+	float Local6 = (Local3 + Local5);
+	float Local7 = (Local6 + in_0.z);
+	float Local8 = (Local1 + Local7);
+	//TriangleWave
+	float Local9 = abs(((frac((Local8 + 0.5f)) * 2.0f) - 1.0f));
+	//Smooth TriangleWave
+	float Local10 = ((Local9 * Local9) * (3.0f - (2.0f * Local9)));
+	//Bring TriangleWave between range [min, max]
+	float Local11 = ((Local10 * (FloatParameter_PulseStrength - 0.0f)) + 0.0f);
+	float3 Local12 = (Local0 * Local11);
+	out_0 = Local12;
+}
+
+VertexOutput main(VertexInput In)
+{
+	VertexOutput Out;
+
+	float3 matWorldPositionOffset;
+	//Compute local tangent frame
+	row_major float3x3 LocalTangentFrame = GetTangentFrame(In.LocalQTangent);
+
+	float3 LocalNormal = LocalTangentFrame[2];
+
+	//Normalize Local Normal
+	float3 localNormalNormalized = normalize(LocalNormal);
+
+	//World space Normal
+	float3 worldNormal = mul((float3x3)(WorldMatrix), localNormalNormalized);
+
+	//Normalize World Normal
+	float3 worldNormalNormalized = normalize(worldNormal);
+
+	//Object World Position
+	float3 objectWorldPosition = float3(WorldMatrix[0].w, WorldMatrix[1].w, WorldMatrix[2].w);
+
+	CalculateMatWorldPositionOffset(In.VertexColor, worldNormalNormalized, objectWorldPosition, In.Position.xyz, matWorldPositionOffset);
+	//World space position
+	float4 worldPosition = mul(WorldMatrix, float4(In.Position, 1.0f));
+
+	worldPosition = (worldPosition + float4(matWorldPositionOffset, 0.0f));
+
+	//Projected position
+	float4 projectedPosition = mul(global_ViewProjection, worldPosition);
+
+	//Pass projected position to pixel shader
+	Out.ProjectedPosition = projectedPosition;
+
+	Out.TexCoords0 = In.TexCoords0;
+	Out.WorldNormal = worldNormalNormalized;
+
+	float3 LocalBinormal = LocalTangentFrame[1];
+
+	//Normalize Local Binormal
+	float3 localBinormalNormalized = normalize(LocalBinormal);
+
+	//World space Binormal
+	float3 worldBinormal = mul((float3x3)(WorldMatrix), localBinormalNormalized);
+
+	//Normalize World Binormal
+	float3 worldBinormalNormalized = normalize(worldBinormal);
+
+	Out.WorldBinormal = worldBinormalNormalized;
+
+	float3 LocalTangent = LocalTangentFrame[0];
+
+	//Normalize Local Tangent
+	float3 localTangentNormalized = normalize(LocalTangent);
+
+	//World space Tangent
+	float3 worldTangent = mul((float3x3)(WorldMatrix), localTangentNormalized);
+
+	//Normalize World Tangent
+	float3 worldTangentNormalized = normalize(worldTangent);
+
+	Out.WorldTangent = worldTangentNormalized;
+
+	//World space view vector
+	float3 worldView = (global_ViewPos.xyz - worldPosition.xyz);
+
+	Out.WorldView = worldView;
+
+	//Calculate Height Fog
+	float depthValue = saturate(((global_FogPropertyMatrix[3].y - length(worldView)) / (global_FogPropertyMatrix[3].y - global_FogPropertyMatrix[3].x)));
+	float heightDensity = ((worldPosition.y - global_FogPropertyMatrix[2].z) / global_FogPropertyMatrix[3].z);
+	float heightFog = saturate(max(depthValue, heightDensity));
+
+	Out.HeightFog = heightFog;
+
+	//Calculate Distance Fog
+	float distanceFog = saturate(((global_FogPropertyMatrix[2].y - length(worldView)) / (global_FogPropertyMatrix[2].y - global_FogPropertyMatrix[2].x)));
+
+	Out.DistanceFog = distanceFog;
+
+
+	return Out;
+}
+
+
+[Fragment shader]
+
+
+#include "Shaders/DX11/CommonHelpers.shdh"
+#include "Shaders/DX11/PBR.shdh"
+#include "Shaders/DX11/Exposure.shdh"
+#include "Shaders/DX11/ImageBasedLightingHelpers.shdh"
+#include "Shaders/GlobalConstants_PS_DX11.shdh"
+
+struct PixelInput
+{
+	float4 ProjectedPosition : SV_Position0;
+	float2 TexCoords0 : TEXCOORD0;
+	float3 WorldNormal : TEXCOORD1;
+	float3 WorldBinormal : TEXCOORD2;
+	float3 WorldTangent : TEXCOORD3;
+	float3 WorldView : TEXCOORD4;
+	float HeightFog : TEXCOORD5;
+	float DistanceFog : TEXCOORD6;
+};
+
+struct PixelOutput
+{
+	float4 Color0 : SV_Target0;
+};
+
+uniform SamplerState _DefaultWrapSampler;
+uniform Texture2D Texture2DParameter_basecolor_DefaultWrapSampler;
+uniform float _OpacityFade;
+uniform Texture2D Texture2DParameter_Glowmap_DefaultWrapSampler;
+uniform float FloatParameter_GlowMultiplier;
+uniform Texture2D Texture2DParameter_normalmap_DefaultWrapSampler;
+uniform Texture2D Texture2DParameter_physicalmap_DefaultWrapSampler;
+uniform float FloatParameter_Reflectance;
+
+void CalculateMatOpacity(float2 in_0,
+	out float out_0)
+{
+	float4 Local0 = Texture2DParameter_basecolor_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float3 Local1 = Local0.xyz;
+	float Local2 = Local0.w;
+	out_0 = Local2;
+}
+
+void CalculateMatEmissiveColor(float2 in_0,
+	out float3 out_0)
+{
+	float4 Local0 = Texture2DParameter_Glowmap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float3 Local1 = Local0.xyz;
+	float Local2 = (1.0f * FloatParameter_GlowMultiplier);
+	float3 Local3 = (Local1 * Local2);
+	out_0 = Local3;
+}
+
+void CalculateMatNormal(float2 in_0,
+	out float3 out_0)
+{
+	float4 Local0 = Texture2DParameter_normalmap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Convert normalmaps to tangent space vectors
+	Local0.xyzw = Local0.wzyx;
+	Local0.xyz = ((Local0.xyz * 2.0f) - 1.0f);
+	Local0.z = -(Local0.z);
+	Local0.xyz = normalize(Local0.xyz);
+	//[Local0] Get needed components
+	float3 Local1 = Local0.xyz;
+	out_0 = Local1;
+}
+
+void CalculateMatBaseColor(float2 in_0,
+	out float3 out_0)
+{
+	float4 Local0 = Texture2DParameter_basecolor_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float3 Local1 = Local0.xyz;
+	float Local2 = Local0.w;
+	out_0 = Local1;
+}
+
+void CalculateMatMetalMask(float2 in_0,
+	out float out_0)
+{
+	float4 Local0 = Texture2DParameter_physicalmap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	out_0 = Local1;
+}
+
+void CalculateMatReflectance(out float out_0)
+{
+	out_0 = FloatParameter_Reflectance;
+}
+
+void CalculateMatRoughness(float2 in_0,
+	out float out_0)
+{
+	float4 Local0 = Texture2DParameter_physicalmap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	out_0 = Local2;
+}
+
+PixelOutput main(PixelInput In,
+	bool IsFrontFacing : SV_IsFrontFace)
+{
+	PixelOutput Out;
+
+	float matOpacity;
+	CalculateMatOpacity(In.TexCoords0, matOpacity);
+	matOpacity = (matOpacity * _OpacityFade);
+
+	clip((matOpacity - (0.5f * _OpacityFade)));
+
+	float3 matEmissiveColor;
+	CalculateMatEmissiveColor(In.TexCoords0, matEmissiveColor);
+	float3 matNormal;
+	CalculateMatNormal(In.TexCoords0, matNormal);
+	//Flip back-facing WorldSpace Normal
+	float FrontFace = (((float)IsFrontFacing * 2.0f) - 1.0f);
+	float3 WorldNormal = (In.WorldNormal * FrontFace);
+
+	//Normalize World Normal
+	float3 worldNormalNormalized = normalize(WorldNormal);
+
+	//Normalize World Binormal
+	float3 worldBinormalNormalized = normalize(In.WorldBinormal);
+
+	//Normalize World Tangent
+	float3 worldTangentNormalized = normalize(In.WorldTangent);
+
+	row_major float3x3 NBT = float3x3(worldTangentNormalized, worldNormalNormalized, worldBinormalNormalized);
+
+	matNormal = normalize(mul(matNormal, NBT));
+
+	float3 matBaseColor;
+	CalculateMatBaseColor(In.TexCoords0, matBaseColor);
+	float matMetalMask;
+	CalculateMatMetalMask(In.TexCoords0, matMetalMask);
+	float matReflectance;
+	CalculateMatReflectance(matReflectance);
+	matReflectance = RemapReflectance(matReflectance);
+	float matRoughness;
+	CalculateMatRoughness(In.TexCoords0, matRoughness);
+	matRoughness = max(0.09f, matRoughness);
+	float3 FinalColor = float3(0.0f, 0.0f, 0.0f);
+
+	//Calculate Image Based Lighting
+	//Normalized world space view vector
+	float3 worldViewNormalized = normalize(In.WorldView);
+
+	float3 iblDiffuse;
+	float3 iblSpecular;
+	EvaluateDistantIBL(matBaseColor, matRoughness, float3(matReflectance, matReflectance, matReflectance), matMetalMask, matNormal, worldViewNormalized, iblDiffuse, iblSpecular);
+	FinalColor = ((FinalColor + iblDiffuse) + iblSpecular);
+
+	float3 LightDiffuseColorOut;
+	float3 LightSpecularColorOut;
+	DirectionLight(matNormal, worldViewNormalized, global_LightPropertyMatrix, matBaseColor, matReflectance, matRoughness, matMetalMask, LightDiffuseColorOut, LightSpecularColorOut);
+	FinalColor = ((FinalColor + LightDiffuseColorOut) + LightSpecularColorOut);
+
+	FinalColor = (FinalColor + matEmissiveColor);
+
+	FinalColor = PreExpose(FinalColor);
+
+	FinalColor = lerp(global_FogPropertyMatrix[1].xyz, FinalColor, float3(In.HeightFog, In.HeightFog, In.HeightFog));
+	FinalColor = lerp(global_FogPropertyMatrix[0].xyz, FinalColor, float3(In.DistanceFog, In.DistanceFog, In.DistanceFog));
+
+	Out.Color0 = float4(FinalColor, matOpacity);
+	Out.Color0 = max(Out.Color0, 0.0f);
+
+	return Out;
+}

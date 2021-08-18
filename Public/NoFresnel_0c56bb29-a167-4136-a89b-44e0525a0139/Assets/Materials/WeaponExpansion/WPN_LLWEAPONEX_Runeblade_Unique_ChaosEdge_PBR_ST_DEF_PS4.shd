@@ -1,0 +1,256 @@
+[Vertex shader]
+
+
+#include "Shaders/PS4/srt_struct.h"
+#include "Shaders/PS4/CommonHelpers.shdh"
+
+struct VertexOutput
+{
+	float4 ProjectedPosition : S_Position;
+	float2 TexCoords0 : TEXCOORD0;
+	float3 WorldNormal : TEXCOORD1;
+	float3 WorldBinormal : TEXCOORD2;
+	float3 WorldTangent : TEXCOORD3;
+};
+
+@uniform row_major float4x4 WorldMatrix;
+VertexOutput main(uint id : S_VERTEX_ID,
+	SrtVsData srtData : S_SRT_DATA)
+{
+	// Retrieve SRT data:
+	@uniform(global_View);
+	@uniform(global_ViewProjection);
+	@uniform(WorldMatrix);
+
+	VertexOutput Out;
+
+	float4 tempPosStatic = float4(SRT_VS_BUFFER_POSITION(id).xyz, 1.0f);
+	//World space position
+	float4 worldPosition = mul(WorldMatrix, tempPosStatic);
+
+	//Projected position
+	float4 projectedPosition = mul(global_ViewProjection, worldPosition);
+
+	//Pass projected position to pixel shader
+	Out.ProjectedPosition = projectedPosition;
+
+	Out.TexCoords0 = SRT_VS_BUFFER_TEXCOORD0(id);
+	//Compute local tangent frame
+	row_major float3x3 LocalTangentFrame = GetTangentFrame(SRT_VS_BUFFER_QTANGENT(id));
+
+	float3 LocalNormal = LocalTangentFrame[2];
+
+	//Normalize Local Normal
+	float3 localNormalNormalized = normalize(LocalNormal);
+
+	//World space Normal
+	float3 worldNormal = mul(row_major float3x3(WorldMatrix), localNormalNormalized);
+
+	//Normalize World Normal
+	float3 worldNormalNormalized = normalize(worldNormal);
+
+	Out.WorldNormal = worldNormalNormalized;
+
+	float3 LocalBinormal = LocalTangentFrame[1];
+
+	//Normalize Local Binormal
+	float3 localBinormalNormalized = normalize(LocalBinormal);
+
+	//World space Binormal
+	float3 worldBinormal = mul(row_major float3x3(WorldMatrix), localBinormalNormalized);
+
+	//Normalize World Binormal
+	float3 worldBinormalNormalized = normalize(worldBinormal);
+
+	Out.WorldBinormal = worldBinormalNormalized;
+
+	float3 LocalTangent = LocalTangentFrame[0];
+
+	//Normalize Local Tangent
+	float3 localTangentNormalized = normalize(LocalTangent);
+
+	//World space Tangent
+	float3 worldTangent = mul(row_major float3x3(WorldMatrix), localTangentNormalized);
+
+	//Normalize World Tangent
+	float3 worldTangentNormalized = normalize(worldTangent);
+
+	Out.WorldTangent = worldTangentNormalized;
+
+
+	return Out;
+}
+
+
+[Fragment shader]
+
+
+#include "Shaders/PS4/srt_struct.h"
+#include "Shaders/PS4/CommonHelpers.shdh"
+#include "Shaders/PS4/PBR.shdh"
+
+struct PixelInput
+{
+	float4 ProjectedPosition : S_Position;
+	float2 TexCoords0 : TEXCOORD0;
+	float3 WorldNormal : TEXCOORD1;
+	float3 WorldBinormal : TEXCOORD2;
+	float3 WorldTangent : TEXCOORD3;
+};
+
+struct PixelOutput
+{
+	float4 Color0 : S_TARGET_OUTPUT0;
+	float4 Color1 : S_TARGET_OUTPUT1;
+	float4 Color2 : S_TARGET_OUTPUT2;
+	float4 Color3 : S_TARGET_OUTPUT3;
+};
+
+@uniform SamplerState _DefaultWrapSampler;
+@uniform Texture2D Texture2DParameter_normalmap_DefaultWrapSampler;
+@uniform float4 Vector4Parameter_Color3;
+@uniform Texture2D Texture2DParameter_MSKcloth_DefaultWrapSampler;
+@uniform float4 Vector4Parameter_Color4;
+@uniform float4 Vector4Parameter_Color5;
+@uniform Texture2D Texture2DParameter_basecolor_DefaultWrapSampler;
+@uniform Texture2D Texture2DParameter_physicalmap_DefaultWrapSampler;
+@uniform float _OpacityFade;
+void CalculateMatNormal(SrtPsData srtData : S_SRT_DATA,
+	float2 in_0,
+	out float3 out_0)
+{
+	// Retrieve SRT data:
+	@uniform(_DefaultWrapSampler);
+	@uniform(Texture2DParameter_normalmap_DefaultWrapSampler);
+
+	float4 Local0 = Texture2DParameter_normalmap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Convert normalmaps to tangent space vectors
+	Local0.xyzw = Local0.wzyx;
+	Local0.xyz = ((Local0.xyz * 2.0f) - 1.0f);
+	Local0.z = -(Local0.z);
+	Local0.xyz = normalize(Local0.xyz);
+	//[Local0] Get needed components
+	float3 Local1 = Local0.xyz;
+	out_0 = Local1;
+}
+
+void CalculateMatBaseColor(SrtPsData srtData : S_SRT_DATA,
+	float2 in_0,
+	out float3 out_0)
+{
+	// Retrieve SRT data:
+	@uniform(_DefaultWrapSampler);
+	@uniform(Vector4Parameter_Color3);
+	@uniform(Texture2DParameter_MSKcloth_DefaultWrapSampler);
+	@uniform(Vector4Parameter_Color4);
+	@uniform(Vector4Parameter_Color5);
+	@uniform(Texture2DParameter_basecolor_DefaultWrapSampler);
+
+	float4 Local0 = Texture2DParameter_MSKcloth_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	float Local3 = Local0.z;
+	float4 Local4 = (Vector4Parameter_Color3 * Local1);
+	float4 Local5 = (Vector4Parameter_Color4 * Local2);
+	float4 Local6 = (Local4 + Local5);
+	float4 Local7 = (Vector4Parameter_Color5 * Local3);
+	float4 Local8 = (Local6 + Local7);
+	float Local9 = (1.0f - Local1);
+	float Local10 = (1.0f - Local2);
+	float Local11 = (Local9 * Local10);
+	float Local12 = (1.0f - Local3);
+	float Local13 = (Local11 * Local12);
+	float Local14 = pow(Local13, 2.2f);
+	float4 Local15 = (Local8 + Local14);
+	float3 Local16 = Local15.xyz;
+	float4 Local17 = Texture2DParameter_basecolor_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local17] Get needed components
+	float3 Local18 = Local17.xyz;
+	float3 Local19 = (Local16 * Local18);
+	out_0 = Local19;
+}
+
+void CalculateMatMetalMask(SrtPsData srtData : S_SRT_DATA,
+	float2 in_0,
+	out float out_0)
+{
+	// Retrieve SRT data:
+	@uniform(_DefaultWrapSampler);
+	@uniform(Texture2DParameter_physicalmap_DefaultWrapSampler);
+
+	float4 Local0 = Texture2DParameter_physicalmap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	out_0 = Local1;
+}
+
+void CalculateMatReflectance(SrtPsData srtData : S_SRT_DATA,
+	out float out_0)
+{
+	out_0 = 0.5f;
+}
+
+void CalculateMatRoughness(SrtPsData srtData : S_SRT_DATA,
+	float2 in_0,
+	out float out_0)
+{
+	// Retrieve SRT data:
+	@uniform(_DefaultWrapSampler);
+	@uniform(Texture2DParameter_physicalmap_DefaultWrapSampler);
+
+	float4 Local0 = Texture2DParameter_physicalmap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	out_0 = Local2;
+}
+
+PixelOutput main(PixelInput In,
+	SrtPsData srtData : S_SRT_DATA)
+{
+	// Retrieve SRT data:
+	@uniform(global_View);
+	@uniform(_OpacityFade);
+
+	PixelOutput Out;
+
+	float3 matNormal;
+	CalculateMatNormal(srtData, In.TexCoords0, matNormal);
+	//Normalize World Normal
+	float3 worldNormalNormalized = normalize(In.WorldNormal);
+
+	//Normalize World Binormal
+	float3 worldBinormalNormalized = normalize(In.WorldBinormal);
+
+	//Normalize World Tangent
+	float3 worldTangentNormalized = normalize(In.WorldTangent);
+
+	row_major float3x3 NBT = row_major float3x3(worldTangentNormalized, worldNormalNormalized, worldBinormalNormalized);
+
+	matNormal = mul(row_major float3x3(global_View), normalize(mul(matNormal, NBT)));
+
+	float3 matBaseColor;
+	CalculateMatBaseColor(srtData, In.TexCoords0, matBaseColor);
+	float matMetalMask;
+	CalculateMatMetalMask(srtData, In.TexCoords0, matMetalMask);
+	float matReflectance;
+	CalculateMatReflectance(srtData, matReflectance);
+	float matRoughness;
+	CalculateMatRoughness(srtData, In.TexCoords0, matRoughness);
+	GBufferData gBufferData;
+	gBufferData.Emissive = float3(0.0f, 0.0f, 0.0f);
+	gBufferData.ViewSpaceNormal = matNormal;
+	gBufferData.BaseColor = matBaseColor;
+	gBufferData.FadeOpacity = _OpacityFade;
+	gBufferData.Roughness = matRoughness;
+	gBufferData.Reflectance = matReflectance;
+	gBufferData.MetalMask = matMetalMask;
+	gBufferData.FXEmissive = true;
+	gBufferData.ShadingModel = 0;
+	gBufferData.Custom = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	EncodeGBufferData(gBufferData, Out.Color0, Out.Color1, Out.Color2, Out.Color3);
+
+	return Out;
+}

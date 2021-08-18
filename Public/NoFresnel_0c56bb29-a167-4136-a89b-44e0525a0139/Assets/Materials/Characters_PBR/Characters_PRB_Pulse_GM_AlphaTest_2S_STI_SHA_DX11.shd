@@ -1,0 +1,151 @@
+[Vertex shader]
+
+
+#include "Shaders/DX11/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_DX11.shdh"
+
+struct VertexInput
+{
+	float4 VertexColor : COLOR0;
+	float4 LocalQTangent : NORMAL0;
+	float4 InstanceMatrix1 : COLOR1;
+	float4 InstanceMatrix2 : COLOR2;
+	float4 InstanceMatrix3 : COLOR3;
+	float3 Position : POSITION0;
+	float2 TexCoords0 : TEXCOORD0;
+};
+
+struct VertexOutput
+{
+	float4 ProjectedPosition : SV_Position0;
+	float2 TexCoords0 : TEXCOORD0;
+	float ShadowDepth : TEXCOORD1;
+};
+
+uniform float FloatParameter_PulseSpeed;
+uniform float FloatParameter_PulseSize;
+uniform float FloatParameter_PulseStrength;
+
+void CalculateMatWorldPositionOffset(float4 in_0,
+	float3 in_1,
+	float3 in_2,
+	float3 in_3,
+	out float3 out_0)
+{
+	float3 Local0 = (in_0.y * in_1);
+	float Local1 = (global_Data.x * FloatParameter_PulseSpeed);
+	float3 Local2 = in_2;
+	float Local3 = length(Local2);
+	float Local4 = in_3.y;
+	float Local5 = (Local4 / FloatParameter_PulseSize);
+	float Local6 = (Local3 + Local5);
+	float Local7 = (Local6 + in_0.z);
+	float Local8 = (Local1 + Local7);
+	//TriangleWave
+	float Local9 = abs(((frac((Local8 + 0.5f)) * 2.0f) - 1.0f));
+	//Smooth TriangleWave
+	float Local10 = ((Local9 * Local9) * (3.0f - (2.0f * Local9)));
+	//Bring TriangleWave between range [min, max]
+	float Local11 = ((Local10 * (FloatParameter_PulseStrength - 0.0f)) + 0.0f);
+	float3 Local12 = (Local0 * Local11);
+	out_0 = Local12;
+}
+
+VertexOutput main(VertexInput In)
+{
+	VertexOutput Out;
+
+	float3 matWorldPositionOffset;
+	//Compute local tangent frame
+	row_major float3x3 LocalTangentFrame = GetTangentFrame(In.LocalQTangent);
+
+	float3 LocalNormal = LocalTangentFrame[2];
+
+	//Normalize Local Normal
+	float3 localNormalNormalized = normalize(LocalNormal);
+
+	//Create Instance World Matrix
+	float4 row1 = float4(In.InstanceMatrix1.x, In.InstanceMatrix1.w, In.InstanceMatrix2.z, In.InstanceMatrix3.y);
+	float4 row2 = float4(In.InstanceMatrix1.y, In.InstanceMatrix2.x, In.InstanceMatrix2.w, In.InstanceMatrix3.z);
+	float4 row3 = float4(In.InstanceMatrix1.z, In.InstanceMatrix2.y, In.InstanceMatrix3.x, In.InstanceMatrix3.w);
+	float4 row4 = float4(0.0f, 0.0f, 0.0f, 1.0f);
+	row_major float4x4 WorldMatrix = float4x4(row1, row2, row3, row4);
+
+	//World space Normal
+	float3 worldNormal = mul((float3x3)(WorldMatrix), localNormalNormalized);
+
+	//Normalize World Normal
+	float3 worldNormalNormalized = normalize(worldNormal);
+
+	//Object World Position
+	float3 objectWorldPosition = float3(WorldMatrix[0].w, WorldMatrix[1].w, WorldMatrix[2].w);
+
+	CalculateMatWorldPositionOffset(In.VertexColor, worldNormalNormalized, objectWorldPosition, In.Position.xyz, matWorldPositionOffset);
+	//World space position
+	float4 worldPosition = mul(WorldMatrix, float4(In.Position, 1.0f));
+
+	worldPosition = (worldPosition + float4(matWorldPositionOffset, 0.0f));
+
+	//Projected position
+	float4 projectedPosition = mul(global_ViewProjection, worldPosition);
+
+	//Pass projected position to pixel shader
+	Out.ProjectedPosition = projectedPosition;
+
+	Out.TexCoords0 = In.TexCoords0;
+	float vertexDepth;
+	vertexDepth = distance(worldPosition.xyz, global_ViewPos.xyz);
+	//Pass depth to pixel shader
+	Out.ShadowDepth = vertexDepth;
+
+
+	return Out;
+}
+
+
+[Fragment shader]
+
+
+#include "Shaders/DX11/CommonHelpers.shdh"
+
+struct PixelInput
+{
+	float4 ProjectedPosition : SV_Position0;
+	float2 TexCoords0 : TEXCOORD0;
+	float ShadowDepth : TEXCOORD1;
+};
+
+struct PixelOutput
+{
+	float4 Color0 : SV_Target0;
+};
+
+uniform SamplerState _DefaultWrapSampler;
+uniform Texture2D Texture2DParameter_basecolor_DefaultWrapSampler;
+
+void CalculateMatOpacity(float2 in_0,
+	out float out_0)
+{
+	float4 Local0 = Texture2DParameter_basecolor_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float3 Local1 = Local0.xyz;
+	float Local2 = Local0.w;
+	out_0 = Local2;
+}
+
+PixelOutput main(PixelInput In)
+{
+	PixelOutput Out;
+
+	float matOpacity;
+	CalculateMatOpacity(In.TexCoords0, matOpacity);
+	clip((matOpacity - 0.5f));
+
+	float Local0 = ddx(In.ShadowDepth);
+	float Local1 = ddy(In.ShadowDepth);
+	Out.Color0 = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	Out.Color0.x = In.ShadowDepth;
+	Out.Color0.y = ((In.ShadowDepth * In.ShadowDepth) + (((Local0 * Local0) + (Local1 * Local1)) * 0.25f));
+
+	return Out;
+}

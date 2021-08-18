@@ -1,0 +1,383 @@
+[Vertex shader]
+
+
+#include "Shaders/DX11/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_DX11.shdh"
+
+struct VertexInput
+{
+	float3 Position : POSITION0;
+	float2 TexCoords0 : TEXCOORD0;
+	float4 LocalQTangent : NORMAL0;
+};
+
+struct VertexOutput
+{
+	float4 ProjectedPosition : SV_Position0;
+	float2 TexCoords0 : TEXCOORD0;
+	float3 WorldNormal : TEXCOORD1;
+	float3 WorldBinormal : TEXCOORD2;
+	float3 WorldTangent : TEXCOORD3;
+	float3 WorldView : TEXCOORD4;
+};
+
+cbuffer CB_PerInstance
+{
+	row_major float4x4 WorldMatrix;
+}
+
+VertexOutput main(VertexInput In)
+{
+	VertexOutput Out;
+
+	//World space position
+	float4 worldPosition = mul(WorldMatrix, float4(In.Position, 1.0f));
+
+	//Projected position
+	float4 projectedPosition = mul(global_ViewProjection, worldPosition);
+
+	//Pass projected position to pixel shader
+	Out.ProjectedPosition = projectedPosition;
+
+	Out.TexCoords0 = In.TexCoords0;
+	//Compute local tangent frame
+	row_major float3x3 LocalTangentFrame = GetTangentFrame(In.LocalQTangent);
+
+	float3 LocalNormal = LocalTangentFrame[2];
+
+	//Normalize Local Normal
+	float3 localNormalNormalized = normalize(LocalNormal);
+
+	//World space Normal
+	float3 worldNormal = mul((float3x3)(WorldMatrix), localNormalNormalized);
+
+	//Normalize World Normal
+	float3 worldNormalNormalized = normalize(worldNormal);
+
+	Out.WorldNormal = worldNormalNormalized;
+
+	float3 LocalBinormal = LocalTangentFrame[1];
+
+	//Normalize Local Binormal
+	float3 localBinormalNormalized = normalize(LocalBinormal);
+
+	//World space Binormal
+	float3 worldBinormal = mul((float3x3)(WorldMatrix), localBinormalNormalized);
+
+	//Normalize World Binormal
+	float3 worldBinormalNormalized = normalize(worldBinormal);
+
+	Out.WorldBinormal = worldBinormalNormalized;
+
+	float3 LocalTangent = LocalTangentFrame[0];
+
+	//Normalize Local Tangent
+	float3 localTangentNormalized = normalize(LocalTangent);
+
+	//World space Tangent
+	float3 worldTangent = mul((float3x3)(WorldMatrix), localTangentNormalized);
+
+	//Normalize World Tangent
+	float3 worldTangentNormalized = normalize(worldTangent);
+
+	Out.WorldTangent = worldTangentNormalized;
+
+	//World space view vector
+	float3 worldView = (global_ViewPos.xyz - worldPosition.xyz);
+
+	Out.WorldView = worldView;
+
+
+	return Out;
+}
+
+
+[Fragment shader]
+
+
+#include "Shaders/DX11/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_PS_DX11.shdh"
+#include "Shaders/DX11/PBR.shdh"
+
+struct PixelInput
+{
+	float4 ProjectedPosition : SV_Position0;
+	float2 TexCoords0 : TEXCOORD0;
+	float3 WorldNormal : TEXCOORD1;
+	float3 WorldBinormal : TEXCOORD2;
+	float3 WorldTangent : TEXCOORD3;
+	float3 WorldView : TEXCOORD4;
+};
+
+struct PixelOutput
+{
+	float4 Color0 : SV_Target0;
+	float4 Color1 : SV_Target1;
+	float4 Color2 : SV_Target2;
+	float4 Color3 : SV_Target3;
+};
+
+uniform float FloatParameter_PulseSpeed;
+uniform float FloatParameter_MinGlow;
+uniform float FloatParameter_MaxGlow;
+uniform float FloatParameter_GlowMultiplier;
+uniform SamplerState _DefaultWrapSampler;
+uniform Texture2D Texture2DParameter_GlowMap_DefaultWrapSampler;
+uniform float3 Vector3Parameter_MainColor;
+uniform float FloatParameter_Brightness;
+uniform float FloatParameter_MultUVMagicWall;
+uniform float FloatParameter_PanningSpeed;
+uniform float2 Vector2Parameter_ValuePannerFirstCloud;
+uniform float FloatParameter_PanningScaleBiasSpeed;
+uniform float FloatParameter_CloudUVTilingMult;
+uniform float FloatParameter_UseScaleBiasInsteadPanner;
+uniform Texture2D Texture2DParameter_b1f13545defa4e279372be633d7527fa_DefaultWrapSampler;
+uniform float2 Vector2Parameter_ValuePannerSecondCloud;
+uniform float FloatParameter_TurnOffParallaxTexMagicWall;
+uniform Texture2D Texture2DParameter_MagicWallTexture_DefaultWrapSampler;
+uniform float FloatParameter_ObjectSize;
+uniform Texture2D Texture2DParameter_TilingTextureBC4_DefaultWrapSampler;
+uniform float FloatParameter_TurnOffParallaxTexNM;
+uniform Texture2D Texture2DParameter_TilingTextureNM_DefaultWrapSampler;
+uniform float FloatParameter_FresnelMult;
+uniform Texture2D Texture2DParameter_PanningTextureBW_DefaultWrapSampler;
+uniform float FloatParameter_IntersectionBrightness;
+uniform float3 Vector3Parameter_IntersectionColor;
+uniform float FloatParameter_OpacityMultiplier;
+uniform Texture2D Texture2DParameter_NormalMap_DefaultWrapSampler;
+uniform float4 Vector4Parameter_Color1;
+uniform Texture2D Texture2DParameter_MSKskin_DefaultWrapSampler;
+uniform float4 Vector4Parameter_Color2;
+uniform float4 Vector4Parameter_Color3;
+uniform Texture2D Texture2DParameter_MSKcloth_DefaultWrapSampler;
+uniform float4 Vector4Parameter_Color4;
+uniform float4 Vector4Parameter_Color5;
+uniform Texture2D Texture2DParameter_BaseColor_DefaultWrapSampler;
+uniform Texture2D Texture2DParameter_PhysicalMap_DefaultWrapSampler;
+uniform float FloatParameter_Reflectance;
+uniform float _OpacityFade;
+
+cbuffer CB_PerInstance
+{
+	float4 _MeshVertexColor;
+}
+
+void CalculateMatEmissiveColor(float2 in_0,
+	float3 in_1,
+	out float3 out_0)
+{
+	float Local0 = (global_Data.x * FloatParameter_PulseSpeed);
+	float Local1 = ((((sin(Local0) * 0.5f) + 0.5f) * (FloatParameter_MaxGlow - FloatParameter_MinGlow)) + FloatParameter_MinGlow);
+	float4 Local2 = Texture2DParameter_GlowMap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local2] Get needed components
+	float3 Local3 = Local2.xyz;
+	float2 Local4 = (in_0 * FloatParameter_MultUVMagicWall);
+	float Local5 = (global_Data.x * FloatParameter_PanningSpeed);
+	float Local6 = (global_Data.x * FloatParameter_PanningScaleBiasSpeed);
+	float2 Local7 = (in_0 * FloatParameter_CloudUVTilingMult);
+	float2 Local8 = mad(Vector2Parameter_ValuePannerFirstCloud, Local6, Local7);
+	float2 Local9 = lerp((in_0 + (float2(0.19f, 0.1f) * Local5)), Local8, float2(FloatParameter_UseScaleBiasInsteadPanner, FloatParameter_UseScaleBiasInsteadPanner));
+	float4 Local10 = Texture2DParameter_b1f13545defa4e279372be633d7527fa_DefaultWrapSampler.Sample(_DefaultWrapSampler, Local9);
+	//[Local10] Get needed components
+	float Local11 = Local10.x;
+	float2 Local12 = mad(Vector2Parameter_ValuePannerSecondCloud, Local6, Local7);
+	float2 Local13 = lerp((in_0 + (float2(-0.16f, 0.17f) * Local5)), Local12, float2(FloatParameter_UseScaleBiasInsteadPanner, FloatParameter_UseScaleBiasInsteadPanner));
+	float4 Local14 = Texture2DParameter_b1f13545defa4e279372be633d7527fa_DefaultWrapSampler.Sample(_DefaultWrapSampler, Local13);
+	//[Local14] Get needed components
+	float Local15 = Local14.x;
+	float Local16 = (Local11 * Local15);
+	float Local17 = (Local16 - 0.5f);
+	float Local18 = (Local17 * 0.05f);
+	float2 Local19 = (Local4 + Local18);
+	float2 Local20 = (in_0 + Local18);
+	float2 Local21 = (Local20 + (((0.0f * 0.5f) - 0.25f) * float2(in_1.x, -(in_1.z))));
+	float2 Local22 = lerp(Local19, Local21, float2(FloatParameter_TurnOffParallaxTexMagicWall, FloatParameter_TurnOffParallaxTexMagicWall));
+	float4 Local23 = Texture2DParameter_MagicWallTexture_DefaultWrapSampler.Sample(_DefaultWrapSampler, Local22);
+	//[Local23] Get needed components
+	float Local24 = Local23.x;
+	float Local25 = pow(Local16, 4.0f);
+	float Local26 = (Local17 * 0.05f);
+	float Local27 = (FloatParameter_ObjectSize / 4.0f);
+	float2 Local28 = (in_0 * Local27);
+	float2 Local29 = (Local26 + Local28);
+	float4 Local30 = Texture2DParameter_TilingTextureBC4_DefaultWrapSampler.Sample(_DefaultWrapSampler, Local29);
+	//[Local30] Get needed components
+	float Local31 = Local30.x;
+	float2 Local32 = (Local29 + (((Local31 * 0.02f) - 0.01f) * float2(in_1.x, -(in_1.z))));
+	float2 Local33 = lerp(Local29, Local32, float2(FloatParameter_TurnOffParallaxTexNM, FloatParameter_TurnOffParallaxTexNM));
+	float4 Local34 = Texture2DParameter_TilingTextureNM_DefaultWrapSampler.Sample(_DefaultWrapSampler, Local33);
+	//[Local34] Convert normalmaps to tangent space vectors
+	Local34.xyzw = Local34.wzyx;
+	Local34.xyz = ((Local34.xyz * 2.0f) - 1.0f);
+	Local34.z = -(Local34.z);
+	Local34.xyz = normalize(Local34.xyz);
+	//[Local34] Get needed components
+	float3 Local35 = Local34.xyz;
+	float Local36 = pow((1.0f - saturate(dot(Local35, in_1))), 5.0f);
+	float Local37 = (Local36 * FloatParameter_FresnelMult);
+	float Local38 = (Local25 + Local37);
+	float Local39 = (Local24 + Local38);
+	float Local40 = (FloatParameter_Brightness * Local39);
+	float3 Local41 = (Vector3Parameter_MainColor * Local40);
+	float Local42 = (1.0f - 1.0f);
+	float4 Local43 = Texture2DParameter_PanningTextureBW_DefaultWrapSampler.Sample(_DefaultWrapSampler, Local29);
+	//[Local43] Get needed components
+	float Local44 = Local43.x;
+	float4 Local45 = Texture2DParameter_PanningTextureBW_DefaultWrapSampler.Sample(_DefaultWrapSampler, (in_0 * float2(0.4f, 0.4f)));
+	//[Local45] Get needed components
+	float Local46 = Local45.x;
+	float Local47 = (Local44 * Local46);
+	float Local48 = (1.0f - _MeshVertexColor.w);
+	float Local49 = (Local48 - 0.1f);
+	float Local50 = smoothstep(Local49, Local48, Local47);
+	float Local51 = pow(Local50, 5.0f);
+	float Local52 = (1.0f - Local51);
+	float Local53 = (Local52 * 5.0f);
+	float Local54 = (Local42 + Local53);
+	float Local55 = (Local54 * FloatParameter_IntersectionBrightness);
+	float3 Local56 = (Local55 * Vector3Parameter_IntersectionColor);
+	float3 Local57 = (Local41 + Local56);
+	float Local58 = pow(Local31, 5.0f);
+	float Local59 = (Local58 * 0.5f);
+	float Local60 = (Local16 + Local59);
+	float Local61 = (Local60 * Local16);
+	float Local62 = (Local61 * FloatParameter_OpacityMultiplier);
+	float Local63 = (Local62 + Local42);
+	float Local64 = clamp(Local63, 0.0f, 0.5f);
+	float Local65 = (Local64 * Local50);
+	float3 Local66 = (Local57 * Local65);
+	float3 Local67 = (Local3 * Local66);
+	float3 Local68 = (FloatParameter_GlowMultiplier * Local67);
+	float3 Local69 = (Local1 * Local68);
+	out_0 = Local69;
+}
+
+void CalculateMatNormal(float2 in_0,
+	out float3 out_0)
+{
+	float4 Local0 = Texture2DParameter_NormalMap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Convert normalmaps to tangent space vectors
+	Local0.xyzw = Local0.wzyx;
+	Local0.xyz = ((Local0.xyz * 2.0f) - 1.0f);
+	Local0.z = -(Local0.z);
+	Local0.xyz = normalize(Local0.xyz);
+	//[Local0] Get needed components
+	float3 Local1 = Local0.xyz;
+	out_0 = Local1;
+}
+
+void CalculateMatBaseColor(float2 in_0,
+	out float3 out_0)
+{
+	float4 Local0 = Texture2DParameter_MSKskin_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	float4 Local3 = (Vector4Parameter_Color1 * Local1);
+	float4 Local4 = (Vector4Parameter_Color2 * Local2);
+	float4 Local5 = (Local3 + Local4);
+	float4 Local6 = Texture2DParameter_MSKcloth_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local6] Get needed components
+	float Local7 = Local6.x;
+	float Local8 = Local6.y;
+	float Local9 = Local6.z;
+	float4 Local10 = (Vector4Parameter_Color3 * Local7);
+	float4 Local11 = (Local5 + Local10);
+	float4 Local12 = (Vector4Parameter_Color4 * Local8);
+	float4 Local13 = (Local11 + Local12);
+	float4 Local14 = (Vector4Parameter_Color5 * Local9);
+	float4 Local15 = (Local13 + Local14);
+	float Local16 = (1.0f - Local1);
+	float Local17 = (1.0f - Local2);
+	float Local18 = (Local16 * Local17);
+	float Local19 = (1.0f - Local7);
+	float Local20 = (Local18 * Local19);
+	float Local21 = (1.0f - Local8);
+	float Local22 = (Local20 * Local21);
+	float Local23 = (1.0f - Local9);
+	float Local24 = (Local22 * Local23);
+	float Local25 = pow(Local24, 2.2f);
+	float4 Local26 = (Local15 + Local25);
+	float3 Local27 = Local26.xyz;
+	float4 Local28 = Texture2DParameter_BaseColor_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local28] Get needed components
+	float3 Local29 = Local28.xyz;
+	float3 Local30 = (Local27 * Local29);
+	out_0 = Local30;
+}
+
+void CalculateMatMetalMask(float2 in_0,
+	out float out_0)
+{
+	float4 Local0 = Texture2DParameter_PhysicalMap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	out_0 = Local1;
+}
+
+void CalculateMatReflectance(out float out_0)
+{
+	out_0 = FloatParameter_Reflectance;
+}
+
+void CalculateMatRoughness(float2 in_0,
+	out float out_0)
+{
+	float4 Local0 = Texture2DParameter_PhysicalMap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	out_0 = Local2;
+}
+
+PixelOutput main(PixelInput In)
+{
+	PixelOutput Out;
+
+	float3 matEmissiveColor;
+	//Normalize World Normal
+	float3 worldNormalNormalized = normalize(In.WorldNormal);
+
+	//Normalize World Binormal
+	float3 worldBinormalNormalized = normalize(In.WorldBinormal);
+
+	//Normalize World Tangent
+	float3 worldTangentNormalized = normalize(In.WorldTangent);
+
+	row_major float3x3 NBT = float3x3(worldTangentNormalized, worldNormalNormalized, worldBinormalNormalized);
+
+	//Normalized world space view vector
+	float3 worldViewNormalized = normalize(In.WorldView);
+
+	//Calculate tangent space view vector
+	float3 tangentView = mul(NBT, worldViewNormalized);
+
+	CalculateMatEmissiveColor(In.TexCoords0, tangentView, matEmissiveColor);
+	float3 matNormal;
+	CalculateMatNormal(In.TexCoords0, matNormal);
+	matNormal = mul((float3x3)(global_View), normalize(mul(matNormal, NBT)));
+
+	float3 matBaseColor;
+	CalculateMatBaseColor(In.TexCoords0, matBaseColor);
+	float matMetalMask;
+	CalculateMatMetalMask(In.TexCoords0, matMetalMask);
+	float matReflectance;
+	CalculateMatReflectance(matReflectance);
+	float matRoughness;
+	CalculateMatRoughness(In.TexCoords0, matRoughness);
+	GBufferData gBufferData;
+	gBufferData.Emissive = matEmissiveColor;
+	gBufferData.ViewSpaceNormal = matNormal;
+	gBufferData.BaseColor = matBaseColor;
+	gBufferData.FadeOpacity = _OpacityFade;
+	gBufferData.Roughness = matRoughness;
+	gBufferData.Reflectance = matReflectance;
+	gBufferData.MetalMask = matMetalMask;
+	gBufferData.FXEmissive = true;
+	gBufferData.ShadingModel = 0;
+	gBufferData.Custom = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	EncodeGBufferData(gBufferData, Out.Color0, Out.Color1, Out.Color2, Out.Color3);
+
+	return Out;
+}

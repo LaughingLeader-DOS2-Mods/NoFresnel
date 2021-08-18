@@ -1,0 +1,84 @@
+[Vertex shader]
+
+
+#include "Shaders/PS4/srt_struct.h"
+#include "Shaders/PS4/CommonHelpers.shdh"
+
+struct VertexOutput
+{
+	float4 ProjectedPosition : S_Position;
+	float ShadowDepth : TEXCOORD0;
+};
+
+@uniform row_major float4x4 WorldMatrix;
+VertexOutput main(uint id : S_VERTEX_ID,
+	SrtVsData srtData : S_SRT_DATA)
+{
+	// Retrieve SRT data:
+	@uniform(global_View);
+	@uniform(global_ViewProjection);
+	@uniform(global_ViewPos);
+	@uniform(WorldMatrix);
+
+	VertexOutput Out;
+
+	row_major float3x4 boneMatrix1 = SRT_VS_BONES_BONE(SRT_VS_BONES_INDICIES(id).x);
+	row_major float3x4 boneMatrix2 = SRT_VS_BONES_BONE(SRT_VS_BONES_INDICIES(id).y);
+	row_major float3x4 boneMatrix3 = SRT_VS_BONES_BONE(SRT_VS_BONES_INDICIES(id).z);
+	row_major float3x4 boneMatrix4 = SRT_VS_BONES_BONE(SRT_VS_BONES_INDICIES(id).w);
+	//World space position
+	float4 worldPosition = float4(0.0f, 0.0f, 0.0f, 1.0f);
+	float4 tempPosSkinned = float4(SRT_VS_BUFFER_POSITION(id).xyz, 1.0f);
+	worldPosition.xyz = (worldPosition.xyz + (SRT_VS_BONES_WEIGHTS(id).x * mul(boneMatrix1, tempPosSkinned)));
+	worldPosition.xyz = (worldPosition.xyz + (SRT_VS_BONES_WEIGHTS(id).y * mul(boneMatrix2, tempPosSkinned)));
+	worldPosition.xyz = (worldPosition.xyz + (SRT_VS_BONES_WEIGHTS(id).z * mul(boneMatrix3, tempPosSkinned)));
+	worldPosition.xyz = (worldPosition.xyz + (SRT_VS_BONES_WEIGHTS(id).w * mul(boneMatrix4, tempPosSkinned)));
+	worldPosition = mul(WorldMatrix, worldPosition);
+
+	//Projected position
+	float4 projectedPosition = mul(global_ViewProjection, worldPosition);
+
+	//Pass projected position to pixel shader
+	Out.ProjectedPosition = projectedPosition;
+
+	float vertexDepth;
+	vertexDepth = distance(worldPosition.xyz, global_ViewPos.xyz);
+	//Pass depth to pixel shader
+	Out.ShadowDepth = vertexDepth;
+
+
+	return Out;
+}
+
+
+[Fragment shader]
+
+
+#pragma PSSL_target_output_format(target 0 FMT_32_GR)
+#include "Shaders/PS4/srt_struct.h"
+#include "Shaders/PS4/CommonHelpers.shdh"
+
+struct PixelInput
+{
+	float4 ProjectedPosition : S_Position;
+	float ShadowDepth : TEXCOORD0;
+};
+
+struct PixelOutput
+{
+	float4 Color0 : S_TARGET_OUTPUT0;
+};
+
+PixelOutput main(PixelInput In,
+	SrtPsData srtData : S_SRT_DATA)
+{
+	PixelOutput Out;
+
+	float Local0 = ddx(In.ShadowDepth);
+	float Local1 = ddy(In.ShadowDepth);
+	Out.Color0 = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	Out.Color0.x = In.ShadowDepth;
+	Out.Color0.y = ((In.ShadowDepth * In.ShadowDepth) + (((Local0 * Local0) + (Local1 * Local1)) * 0.25f));
+
+	return Out;
+}
