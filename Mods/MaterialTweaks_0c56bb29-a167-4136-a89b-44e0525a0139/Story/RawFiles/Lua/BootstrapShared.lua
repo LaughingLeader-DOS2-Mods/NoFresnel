@@ -15,8 +15,10 @@ end
 ---@type OptionalOverride
 local playerLight = Ext.Require("Overrides/PlayerLight.lua")
 
+local modOverrides = {}
+
 if isClient then
-	Ext.Require("Overrides/Fresnel.lua")
+	Ext.Require("Overrides/Fresnel__Base.lua")
 end
 
 local function OnSettingsLoaded()
@@ -39,7 +41,7 @@ local function OnPlayerLightChanged(id, b, data, settings)
 end
 
 local registeredListeners = false
-local function RegisterLeaderLibListeners()
+local function SessionSetup()
 	if not registeredListeners then
 		if Mods.LeaderLib then
 			Mods.LeaderLib.RegisterListener("ModSettingsLoaded", OnSettingsLoaded)
@@ -47,8 +49,13 @@ local function RegisterLeaderLibListeners()
 			registeredListeners = true
 		end
 	end
+	if isClient then
+		if Mods.WeaponExpansion ~= nil and not modOverrides.WeaponExpansion then
+			modOverrides.WeaponExpansion = Ext.Require("Overrides/Fresnel_WeaponExpansion.lua")
+		end
+	end
 end
 
-Ext.RegisterListener("SessionLoading", RegisterLeaderLibListeners)
-Ext.RegisterListener("SessionLoaded", RegisterLeaderLibListeners)
-RegisterLeaderLibListeners()
+Ext.RegisterListener("SessionLoading", SessionSetup)
+Ext.RegisterListener("SessionLoaded", SessionSetup)
+SessionSetup()
