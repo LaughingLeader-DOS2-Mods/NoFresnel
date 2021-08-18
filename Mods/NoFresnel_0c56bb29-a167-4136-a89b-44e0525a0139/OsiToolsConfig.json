@@ -1,6 +1,6 @@
 {
     "RequiredExtensionVersion": 55,
-    "ModTable": "LLMaterialTweaks",
+    "ModTable": "LLNoFresnel",
     "FeatureFlags": [
         "OsirisExtensions",
         "Lua"

@@ -1,9 +1,9 @@
 local function CreateFileOverrides(basePath, files)
 	local sharedPath = string.format(basePath, "Shared")
-	local modPath = string.format(basePath, "MaterialTweaks_0c56bb29-a167-4136-a89b-44e0525a0139")
+	local modPath = string.format(basePath, "NoFresnel_0c56bb29-a167-4136-a89b-44e0525a0139")
 	for _,v in pairs(files) do
 		Ext.AddPathOverride(sharedPath .. v, modPath .. v)
-		--Ext.Print(string.format("[MaterialTweaks] Adding path override: (%s) => (%s)", sharedPath .. v, modPath .. v))
+		--Ext.Print(string.format("[NoFresnel] Adding path override: (%s) => (%s)", sharedPath .. v, modPath .. v))
 	end
 end
 
