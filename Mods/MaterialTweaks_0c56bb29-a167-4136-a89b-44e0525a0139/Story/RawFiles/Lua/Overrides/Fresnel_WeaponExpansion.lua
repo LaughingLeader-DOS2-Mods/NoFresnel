@@ -1,6 +1,6 @@
 local function CreateFileOverrides(basePath, files)
 	local sharedPath = string.format(basePath, "WeaponExpansion_c60718c3-ba22-4702-9c5d-5ad92b41ba5f")
-	local modPath = "Public/MaterialTweaks_0c56bb29-a167-4136-a89b-44e0525a0139/Assets/Materials/WeaponExpansion"
+	local modPath = "Public/MaterialTweaks_0c56bb29-a167-4136-a89b-44e0525a0139/Assets/Materials/WeaponExpansion/"
 	for _,v in pairs(files) do
 		Ext.AddPathOverride(sharedPath .. v, modPath .. v)
 		--Ext.Print(string.format("[MaterialTweaks] Adding path override: (%s) => (%s)", sharedPath .. v, modPath .. v))
