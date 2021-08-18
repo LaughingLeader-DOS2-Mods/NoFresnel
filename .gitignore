@@ -4,9 +4,9 @@ SourceControlGenerator.json
 
 # Levels
 ######################
-Mods/MaterialTweaks_0c56bb29-a167-4136-a89b-44e0525a0139/Levels/*
-Mods/MaterialTweaks_0c56bb29-a167-4136-a89b-44e0525a0139/Globals/*
-Editor/Mods/MaterialTweaks_0c56bb29-a167-4136-a89b-44e0525a0139/Levels/*
+Mods/NoFresnel_0c56bb29-a167-4136-a89b-44e0525a0139/Levels/*
+Mods/NoFresnel_0c56bb29-a167-4136-a89b-44e0525a0139/Globals/*
+Editor/Mods/NoFresnel_0c56bb29-a167-4136-a89b-44e0525a0139/Levels/*
 
 # Story files        #
 ######################
@@ -14,13 +14,13 @@ Editor/Mods/MaterialTweaks_0c56bb29-a167-4136-a89b-44e0525a0139/Levels/*
 !story_header.div
 *.raw
 story_orphanqueries_ignore.txt
-Mods/MaterialTweaks_0c56bb29-a167-4136-a89b-44e0525a0139/Story/Dialogs/Autosave/*
-Mods/MaterialTweaks_0c56bb29-a167-4136-a89b-44e0525a0139/Story/Dialogs/Recovered/*
+Mods/NoFresnel_0c56bb29-a167-4136-a89b-44e0525a0139/Story/Dialogs/Autosave/*
+Mods/NoFresnel_0c56bb29-a167-4136-a89b-44e0525a0139/Story/Dialogs/Recovered/*
 
 # Asset Folders      #
 ######################
-Public/MaterialTweaks_0c56bb29-a167-4136-a89b-44e0525a0139/Assets/*
-#Public/MaterialTweaks_0c56bb29-a167-4136-a89b-44e0525a0139/GUI/*
+Public/NoFresnel_0c56bb29-a167-4136-a89b-44e0525a0139/Assets/*
+#Public/NoFresnel_0c56bb29-a167-4136-a89b-44e0525a0139/GUI/*
 
 # Editor files       #
 ######################
