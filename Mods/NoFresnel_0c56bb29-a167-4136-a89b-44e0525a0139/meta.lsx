@@ -10,15 +10,15 @@
                     <attribute id="Author" value="LaughingLeader" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
                     <attribute id="Description" value="Removes fresnel (outer edge glow) from character and weapons using extender path overrides, resulting in a darker look and feel." type="30" />
-                    <attribute id="DescriptionName" value="Removes fresnel from character materials using extender path overrides, and disables the player light." handle="hf4fc7ca7gbc07g4218gb098g58e026c3c592" type="28" />
-                    <attribute id="DisplayName" value="No Fresnel" handle="h5776c885gb285g4ceeg8e7ag4d39d0a7079a" type="28" />
+                    <attribute id="DescriptionName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
+                    <attribute id="DisplayName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
                     <attribute id="Folder" value="NoFresnel_0c56bb29-a167-4136-a89b-44e0525a0139" type="30" />
                     <attribute id="GMTemplate" value="" type="22" />
                     <attribute id="LobbyLevelName" value="" type="22" />
                     <attribute id="MD5" value="" type="23" />
                     <attribute id="MenuLevelName" value="" type="22" />
-                    <attribute id="Name" value="No Fresnel" type="22" />
-                    <attribute id="NumPlayers" value="2" type="1" />
+                    <attribute id="Name" value="No Fresnel (No Edge Glow)" type="22" />
+                    <attribute id="NumPlayers" value="4" type="1" />
                     <attribute id="PhotoBooth" value="" type="22" />
                     <attribute id="StartupLevelName" value="" type="22" />
                     <attribute id="Tags" value="" type="30" />
