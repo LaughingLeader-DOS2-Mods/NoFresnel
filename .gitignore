@@ -45,6 +45,9 @@ story.debugInfo
 *.dds
 *.tga
 *.png
+*.psd
+*.gif
+*.aseprite
 *.ttf
 *.lsb
 *.lsf
