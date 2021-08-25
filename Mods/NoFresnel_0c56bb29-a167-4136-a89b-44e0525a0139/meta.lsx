@@ -9,7 +9,7 @@
                 <node id="ModuleInfo">
                     <attribute id="Author" value="LaughingLeader" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
-                    <attribute id="Description" value="Removes fresnel (outer edge glow) from character and weapons using extender path overrides, resulting in a darker look and feel." type="30" />
+                    <attribute id="Description" value="Removes fresnel (outer edge glow) from character and weapons using extender path overrides, resulting in a darker look and feel. Requires Norbyte&apos;s Divinity Script Extender." type="30" />
                     <attribute id="DescriptionName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
                     <attribute id="DisplayName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
                     <attribute id="Folder" value="NoFresnel_0c56bb29-a167-4136-a89b-44e0525a0139" type="30" />
