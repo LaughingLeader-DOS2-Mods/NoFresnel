@@ -1,0 +1,1966 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfNode xmlns:i="http://www.w3.org/2001/XMLSchema-instance" z:Id="1" z:Size="23" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns="http://schemas.datacontract.org/2004/07/NodeGraph">
+  <Node z:Id="2" xmlns:d2p1="http://schemas.datacontract.org/2004/07/MaterialGenerator" i:type="d2p1:MaterialNode">
+    <Collapsed>false</Collapsed>
+    <ConnectorNamesImage xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="3">
+      <Data z:Id="4" xmlns:d4p1="http://www.w3.org/2001/XMLSchema" i:type="d4p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAIQAAAEYCAYAAACdl14rAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAADaxJREFUeF7tnY2xIzsRRjcAEiABEiABIiACMiADUiAFYiAJsiCZxz219VEfjTQe+9q+vutzqlSjf2m6W63Zt+23P0RERERERERERERERERERERERERERERERERERERERERERERERERERERE5P/4rdK/PtIfPtIj+dNHYp2s+eePdAb6yhNA0H/8mf3x14/0j5/Zh4DyMYas9/uP9Jef2YtoEE+iDYLnP39m787vPhJrYQS3oEE8iRgECvv7R+oTi3HQTvobFR+kX+rj8rkK/v2RqGPcvHpov+R9eg6efZ1QFy71o8wzhi5XgOCSdt8QGEFcPYl8w6nHCHL6MaqpfK4j0g7GthJ5Us5+yMOZfmevIVkwhcuJwwCAk4aicxppRyGUUW4bAO2d6NMwF55lB3PMdrxSjIg54Uy/7F9uAAHGIAADoJw/DZBHwKkHyigGpdNvpaRJTvZOWfc0CPkEbRA84yEQfNw+7ngaDkQR043voH9fS4xjHZhzZM14IfJwtp/cCAJMyomHeAXqOZHxEPlgI1EX5VLP+LRRXoEBpR/PNqL5sZi9AHXhbD8RERERERERERERERERERH59SFWYBfoSj3xDfdiF5fwqD0YB3EDCI2IpUQXhUQhnVEGUU+XIqPgyCA+u4cVu/XkAIRGxFLiDwNKTlTUJejzWYP47B5WaBA3gNAS6hYIlaOMklsZHaZGPaFyPCmnDroOpQbKK6g/u4fV3PTFcFKfUD3yQDseaBfCJwVCQ+gINHGICC7XQJSB+yYft94Bt9SvPEQUkbYoaHJ2D03PTSI/YV6N4UqijBY8AkTxXYcB0LdTTvQ0CIRPXbxJ2sivSJ9Le4DV3PSjzJUTgwXa6asxXEErDKFyQqOAVsbqtw+BPpmD8Tm5nM5uu2QQcLSHo7kps8eMB+Zlz7t9y4JWBieJcgTayuDkdd+GPvktRV8l+X1ExpBfcXYPR3MHrpl8nGY9xmsUJ2mh5r4NrQxAWXHVpLhilEeZvjm5lFEC+cxP3Qrqz+xhN3eMiERdfheS9TJn9isiIiIiIiIiIiIiIiIiIiK/NokjIBHrcCZmgHiDxEVAnvILgDITnMKTMgElRxCc0iHznzGIBNLKi9AGAR3htGP2+YxBnFlPnsj0EB2+RmhcroaEpvGknDpog1iNAZ7MnbGwmqvr8rsLoNyhcn21reaG3V7kgAgxQst1QVAt5YS1d4Ar9SsPsRtzKUB3VZ84yLQxvgN5UTTs5t7tRS4QYXJ6yOcUIUDKnaKEnUHsxnCad1HPcy76UpeT3QbRpLyb+2j/cgCCitCjDECgZ5XIHLAbc3YuXHy8QiKsLxnELWvKAW0QwCmifI2bj3KO3PfRXCgPeJ79Tcdn1pQDptDyIQZ4jLhuEmXYGQTsxvQHXuYH6qljzngFypzuXoe6psu7uXd7ERERERERERERERERERERkfchcQOJK3h0/ADryAuDghKQwpPypd9ofAYN4sVpg4AZGXVvNIgXZ3qI3W80+jqJJwmz3GFs/M6i1yBPO8/kw1Fb7wWjJf4ST0bYXfdf1ckVRHCkxDjCDFiN0lHEkUHMcVFwyuQTYJu20G08MQBgTvbGExKYy5xtwLCqkyuIsla/0Zgh7fm/ztO/FdlllDzHZQ3ocdDlXRt7Id8JY8FAePa/mbGqkytAuFEWyuQkwpFBIGjGhTYI2vvneNBr9Djo8q5ttZeAR6MdI+BagVWdnKSVBQiRcpSetniQnLpuy50NK0/TfdMvdHnXNveyIsbarOrkAlPQ+XiD+VHZpy33Pwmh8wzdlnwMpPtBl4/amCd7IVHudfKhuaqTFwL3jXJE/vtHwHyXyJvCH/vitvnjYf4oKyIiIiIiIiIiIiIiIm9I/uIo6ZYgEGILrg0xu2XMDmIr+i/BiGM4A31lgFCOoodeHZSPMeQdMDIiq86gQSz4zgaRgJlbPY0GsWBnENTjinlyAhE6wSmUZ5BKBJsgFsokTu+qDjKGuTqcjisr11aH3a1C2Gi/9E8W9Bw8+zrJHuBSP8o8v7M3PQUv2SkvTD6KQuiUUQgKRmAtGNqAuvk7hlUdZAyC7iho5sb4YoA5/VwDU/ltPCsY2+/EM+8B2cOZfmevoW9PC6KJsID29grkVycNwaJQlBRFruogY2JgPFFAlJ4I6070a6YxTZhjtnf0dPZwph/7ewt42VsMok9m90VwCBjlxcOs6noMyohy075S0iQne6esexrE28DL3tMgwup3DDshxzP01RJlr/bWMCfj4t4Zh4JhzkEfyvFU2cPZfm8BL9tppbCzBpEPLxJ9EOyqDjImoNRpQIzFq2Q85RWMSz+ebUTzYzEeCHoPZ/uJiIiIiIiIiIiIiIiIiIiI3ErHOJBmrMQ9YZ0Ew8gLsoqCIqLqUkjdPWDtS1Fa8kQSzjbjJClzkmMkj4KoLg3ihSB0bYbbB05v4iUxmg7Poy2g1FU9xoTnSVtIvseRJ3UoHWv3fPIE+FbYfS90G0qLcvAqeI95svEqGAD18Tyr0x+DgPYQGFxfU8zlt8aTQQlnPUTTxsIcKDYfpSh4KrfZGQTQhmFhCLTJk7n0DZETOg0CY8EgcPHxCoyJgle/vQhHBsG8GFOe8gUg/HbPPPEa1AeUGI/AtwFl+qH4eJjUo+AYWis7TIOIF4KszX7kC0HZcfk8o/xAPSeWZ/IQr0AdHqFP/PztRaAc6EOZcQFjaGOUF6SV+Gj8mPwGPMsg8BjtLeRFeYZBYAhcLY/+j2EiIiIiIiIiIiIiIiLyzZkxCeGZf+09+cq1354YREc9gwbxpiB8oqD46+eOr9Qg3hSET+gboWsdPtdKmSFxHQRLXULsmIdnwuMSAYUHojyvptSTZhynfBEIH0XiHcgnhC1KmUGzUXqCWch3sCzlXD8EzaZvorkzT0MbxpM2xsgXgfCjCE56TnGUsgqrb29Cv91Vw7ztFci3d8l68T4axAvQigAUFJcPZwyi6fLKIDKONeIVMCjaNIgXYBoE7j0nFuaVkd9gzKsldPnIIHa/64A5pzyRVkTAA7RS5kdlvhFgKq/LRwYRr0D/+buOOaeIiIiIiIiIiIiIiIiIiIi8J8QQJBGz0KFqO2YwzL1h7gTSyJNBqQkw4Um5Yx1XEJiSgJV7QGDNDLaRL6INAjoCaceZPtdw7/nkE0wPQQBr6BA4lMZVwZNy6oB8/8ai+/TvJhjP/GmD3XxhhuH1lUZd1k1ePkmESUIhuS64wynnLu/gVur7RDO2f2MRmCsR0jPotlnNB3MMT8oYFvS6PDEY+SQReCKYI2wETLlTBL5SYH93cFLpk5NNX+pmWH7YGQR7uDWUX24kCoMoElbKCDsFwu53E7fMp0F8AW0QwKmmfIuLB5R47b+HwXyMC5lvjsl81EP6hVmWG2iBQz7iAI8Rt0/KR9uRQcQrUMfp7r7zAzFQTx19oeebYyiH7gezLCIiIiIiIiIiIiIiIiIi8s4Q0JG/6w/z794TrHEtR2NoWwWMUJ/EPhLWdguMT0DJ5KjtVohmYt7sf4br8y5ph1l+CWa8X5TfEcP0SSTQNRy9KG07g0g9T8ods3grj/79A/MTPhcDRo7IrGVLvo1klq/hYe8zT39i+ToknfL0Imf4rEHAjFC6lXvNsyIynIZLGQ8QI5l7+MyeHvk+/7NprJqFqMsLko97nWFdbSjUUY5SeYYeh3Wnz2TW96nbrc0+MVrqSaknDwgvbeQhbXD2nZKfMH7nQXlXDtncwyzv3qH3Rj9kMcfeHTaSQE8WB+rYDIaQupyEKCxKj8LInwkYjYAvGQRznVmbfHu0QHtAcL1e2q55p95Pg9vfuf5um3voMs/5DuyNPjyB9WN4c667EgtngSyI0nJV8AQ2lHzgBOSFEV67zQh9Na6V0FCfxEtHMUdrIzAUlXzI+jAFmLYz79TMMiCjSx4C5h66vHoHxrFepxjkQw0CJbIYm8nms0GEFfd1q/Bop19D284gVvWX1uYd6MOeMXDo/TzSIJAV9X0YgDL7iYKPDALmO6z2Fh5qEIC74qVyIoGNUZ8XyotnI/SlnPYprJTTr097z9Ps6i+tHXbKRICsG9J26ztNWHfKCq/RB+GSQYS8w9xbM9/n7rABDKDJSzb9kRNLDkfCixGQzn5DTHZrZz4SgorhUQ70TTvMtlveaRIZZp4YZjgyiN07UJ85SfHW831ERERERERERERERERERETkvSHGowNXzkBMQoJf5BeCwBOCSlDws8D4dkE/8sWgHKKOCG/ryKhHMiOl5IXAMxDMilHMANaEqM1wNaAMjGXc7DPD8FKPMaRvwt0yjieGshsL3ZeUq4652qAJUbz2Gnx7EH7C5VEsAuYZKCdwlSfKCbQBc8w40xkMy5Ny4iKnh+h1Lo0lH0XTlz3RByNpg+4AXzkJAuzTh3HM09h0OfkoJVHRgHKnt0GJCbJdGUQM8dLYuSfqu4152Ee8j1wBApypf2BDuely51FCPAhu+xaDCNcaRLeRx6DzlCtAYK38gMBz0qfwuzzbIMphPO1ROu6+58UgUHzouS6NJR8DmG08ead5hckJ5vUQOJ1RVisKupw8c5Anoejc9fPDsD/4yKc/ZK5wNJa6XnO+wy3/TUW+MdN4Jn5MvhlHBoEn8WPyzdgZBIbA9ZIrS0RERERERERERERE5Bfgx4//ADs0ukqOXXAFAAAAAElFTkSuQmCC</Data>
+    </ConnectorNamesImage>
+    <DisplayName z:Id="5"></DisplayName>
+    <DummyInputBounds xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+      <d3p1:height>0</d3p1:height>
+      <d3p1:width>0</d3p1:width>
+      <d3p1:x>0</d3p1:x>
+      <d3p1:y>0</d3p1:y>
+    </DummyInputBounds>
+    <DummyOutputBounds xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+      <d3p1:height>0</d3p1:height>
+      <d3p1:width>0</d3p1:width>
+      <d3p1:x>0</d3p1:x>
+      <d3p1:y>0</d3p1:y>
+    </DummyOutputBounds>
+    <ImageFileName i:nil="true" />
+    <Location xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+      <d3p1:x>0</d3p1:x>
+      <d3p1:y>0</d3p1:y>
+    </Location>
+    <Name z:Id="6">Material</Name>
+    <NameSize xmlns:d3p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+      <d3p1:height>17.4609337</d3p1:height>
+      <d3p1:width>52.5624847</d3p1:width>
+    </NameSize>
+    <OriginalName z:Ref="6" i:nil="true" />
+    <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+    <RenderFlag>Hover Focus</RenderFlag>
+    <m_Inputs z:Id="7" z:Size="10">
+      <NodeConnector z:Id="8">
+        <Enabled>true</Enabled>
+        <Name z:Id="9">Base Color</Name>
+        <Node z:Ref="2" i:nil="true" />
+        <Tag z:Id="10" i:type="d2p1:ShaderVariable">
+          <d2p1:ArrayLength>1</d2p1:ArrayLength>
+          <d2p1:Code i:nil="true" />
+          <d2p1:Semantic i:nil="true" />
+          <d2p1:VariableName z:Id="11">matBaseColor</d2p1:VariableName>
+          <d2p1:m_EnumMember>Float3</d2p1:m_EnumMember>
+        </Tag>
+        <m_Connections z:Id="12" z:Size="1">
+          <NodeConnection z:Id="13">
+            <From z:Id="14">
+              <Enabled>true</Enabled>
+              <Name z:Id="15">RGB</Name>
+              <Node z:Id="16" i:type="d2p1:Texture2DNode">
+                <Collapsed>false</Collapsed>
+                <ConnectorNamesImage xmlns:d9p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="17">
+                  <Data z:Id="18" xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAJsAAACgCAYAAAAb3B7iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAA0VJREFUeF7t3YGNIzUYhuEtgAZogAZogAqogA7ogBZogRpogi5oBvJq+ZEx2axub4xy4nkkK8lk5malfPI/mbPjFwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+5selfX9rX93a7rtbm32+acNf1mPbBx7649Z+vrUC8+ut/XZro+D1uu29/9Ot/X5r395a1mPb3iO8qcBMeFJopvcqZD+8Pv1bAfz69ek/ju2x/eFN98JWmApczx9Zj62M/vL6lCfV57Wrg+gz7LPrMmo3ebhEf8BaRueE9WiVzdEf1D61Cdgc234de9kfxRGPwtbnvncWdTjrZdVnm8B0orUMFqp7YWufHrMHtec8r0dh6/Ko99cviH3++2XUZ+kE01MVuAlS2+6luvfXsM2xaf/12yrP5VHYspfSS0to1sD0D6/p7mR7HRe2L9d7YVtL6eUlNHtg5hosnbD3p8dr+xrA3lvLaI3n9V7YppTm8hKagrJ2lZ1weq70unC1rZOv+7Zt2t4D8nwK0l4W91JZx9Kdhbav12/wSeaL4ISozmMvlXUabZtyCh9SyApcPVytQO3X2O3TeyoVAAAAAAAAwAftw4QMK+GY/od/HQB5+ehMGIVtHanboDlDuzniXtj20Zxwib2MGjTHMRO2Rm2asMJRaxktcPVwcMQatq7Veu32B0esYUsldf3ZBbhMZXP99lmvppQCAAAAAAAAAACbt9YUhcs0fq25os0/KGizsMY6oBIuUcj2lTwKoOl8XKpyWS8Gx9WjrfMNKp1z3aaMcqm5RhsTtrl+g8sUrns/JDO9G1yqa7b9JxeEjSPeW1MULtWtjsJV2PY1RQEAAAAAAAAAgP+1GShZa+4oHNPAyVkorUGTPcIR6wovPVosjWPWsFVGGx4OR0wZbe5BvZoh4RyzXrMVtp7DEWsZTfNI/YoRRwgb/5m9jPo2yjGFbJqJyQAAAAAAAAAAwBsaXrQOooQjZs1RM6s4rl6t0bpNUja7iqPq0Zp30HS+faFbuEwldBa4LXD3VumDS+wL3BY8s6s4op5sZlfVer2GDy7Rl4H55aK1TVmFy9SD3evF6t38VhuX6pbHvVsd3dx1gxcAAAAAAAAAAAAA/u3l5U9KErvEcpUqCwAAAABJRU5ErkJggg==</Data>
+                </ConnectorNamesImage>
+                <DisplayName z:Id="19">BMA</DisplayName>
+                <DummyInputBounds xmlns:d9p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                  <d9p1:height>0</d9p1:height>
+                  <d9p1:width>0</d9p1:width>
+                  <d9p1:x>0</d9p1:x>
+                  <d9p1:y>0</d9p1:y>
+                </DummyInputBounds>
+                <DummyOutputBounds xmlns:d9p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                  <d9p1:height>0</d9p1:height>
+                  <d9p1:width>0</d9p1:width>
+                  <d9p1:x>0</d9p1:x>
+                  <d9p1:y>0</d9p1:y>
+                </DummyOutputBounds>
+                <ImageFileName z:Id="20">C:/console/Stable/LSProjects/Apps/DOS2/Data/Public/Shared/Assets/Textures/Helpers/Default_BM.DDS</ImageFileName>
+                <Location xmlns:d9p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                  <d9p1:x>580.1383</d9p1:x>
+                  <d9p1:y>-167.011856</d9p1:y>
+                </Location>
+                <Name z:Id="21">BMA - Default_BM</Name>
+                <NameSize xmlns:d9p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                  <d9p1:height>0</d9p1:height>
+                  <d9p1:width>0</d9p1:width>
+                </NameSize>
+                <OriginalName z:Id="22">Texture2D</OriginalName>
+                <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                <RenderFlag>Default</RenderFlag>
+                <m_Inputs z:Id="23" z:Size="1">
+                  <NodeConnector z:Id="24">
+                    <Enabled>true</Enabled>
+                    <Name z:Id="25">UV</Name>
+                    <Node z:Ref="16" i:nil="true" />
+                    <Tag i:nil="true" />
+                    <m_Connections z:Id="26" z:Size="1">
+                      <NodeConnection z:Id="27">
+                        <From z:Id="28">
+                          <Enabled>true</Enabled>
+                          <Name z:Ref="5" i:nil="true" />
+                          <Node z:Id="29" i:type="d2p1:AddNode">
+                            <Collapsed>false</Collapsed>
+                            <ConnectorNamesImage xmlns:d15p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="30">
+                              <Data z:Id="31" xmlns:d16p1="http://www.w3.org/2001/XMLSchema" i:type="d16p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAGAAAABYCAYAAAAKsfL4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAAOlJREFUeF7t2mENwjAQBtAJwAAGMIAPFOAAB1jAAhowgQvMQL8tIw0CrgTeSy7p+Hm3XRuuEwAAAAAAAAAAAAAAAAAAwJ/at3gsy7dzi9OypMKtxWFZTtsWKchmfqJEkv5skaRfW6zFoFDaTpKfr4EB1q/A2z9I3v5Li/v8RKmchNbEpwUdlyVVcupJEaLfkCmQ837aTy+tKJsyAAAAAADwG/Lf/+cELL+ZDRfZtegvZq33gijUX8zKhMxMuFjmwSlC5sBuxQ2SxGcObBY8SFpQbkNkD2CAtKEUgEEUYDAFAAAAAADg+0zTC5MsH2ALsIz3AAAAAElFTkSuQmCC</Data>
+                            </ConnectorNamesImage>
+                            <DisplayName z:Ref="5" i:nil="true" />
+                            <DummyInputBounds xmlns:d15p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                              <d15p1:height>0</d15p1:height>
+                              <d15p1:width>0</d15p1:width>
+                              <d15p1:x>0</d15p1:x>
+                              <d15p1:y>0</d15p1:y>
+                            </DummyInputBounds>
+                            <DummyOutputBounds xmlns:d15p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                              <d15p1:height>0</d15p1:height>
+                              <d15p1:width>0</d15p1:width>
+                              <d15p1:x>0</d15p1:x>
+                              <d15p1:y>0</d15p1:y>
+                            </DummyOutputBounds>
+                            <ImageFileName i:nil="true" />
+                            <Location xmlns:d15p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                              <d15p1:x>1148.336</d15p1:x>
+                              <d15p1:y>-448.5561</d15p1:y>
+                            </Location>
+                            <Name z:Id="32">Add</Name>
+                            <NameSize xmlns:d15p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                              <d15p1:height>17.4609337</d15p1:height>
+                              <d15p1:width>27.9941349</d15p1:width>
+                            </NameSize>
+                            <OriginalName z:Ref="32" i:nil="true" />
+                            <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                            <RenderFlag>Default</RenderFlag>
+                            <m_Inputs z:Id="33" z:Size="2">
+                              <NodeConnector z:Id="34">
+                                <Enabled>true</Enabled>
+                                <Name z:Id="35">X</Name>
+                                <Node z:Ref="29" i:nil="true" />
+                                <Tag z:Id="36" i:type="d2p1:ShaderVariable">
+                                  <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                  <d2p1:Code i:nil="true" />
+                                  <d2p1:Semantic i:nil="true" />
+                                  <d2p1:VariableName z:Id="37">in_0</d2p1:VariableName>
+                                  <d2p1:m_EnumMember>Float2</d2p1:m_EnumMember>
+                                </Tag>
+                                <m_Connections z:Id="38" z:Size="1">
+                                  <NodeConnection z:Id="39">
+                                    <From z:Id="40">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Ref="5" i:nil="true" />
+                                      <Node z:Id="41" i:type="d2p1:UVNode">
+                                        <Collapsed>false</Collapsed>
+                                        <ConnectorNamesImage xmlns:d21p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="42">
+                                          <Data z:Id="43" xmlns:d22p1="http://www.w3.org/2001/XMLSchema" i:type="d22p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAGAAAAA8CAYAAACZ1L+0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAAC5JREFUeF7twTEBAAAAwqD1T20NDyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATtQAWjwAAT9xqZoAAAAASUVORK5CYII=</Data>
+                                        </ConnectorNamesImage>
+                                        <DisplayName z:Ref="5" i:nil="true" />
+                                        <DummyInputBounds xmlns:d21p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                          <d21p1:height>0</d21p1:height>
+                                          <d21p1:width>0</d21p1:width>
+                                          <d21p1:x>0</d21p1:x>
+                                          <d21p1:y>0</d21p1:y>
+                                        </DummyInputBounds>
+                                        <DummyOutputBounds xmlns:d21p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                          <d21p1:height>0</d21p1:height>
+                                          <d21p1:width>0</d21p1:width>
+                                          <d21p1:x>0</d21p1:x>
+                                          <d21p1:y>0</d21p1:y>
+                                        </DummyOutputBounds>
+                                        <ImageFileName i:nil="true" />
+                                        <Location xmlns:d21p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                          <d21p1:x>1324.33569</d21p1:x>
+                                          <d21p1:y>-447.5561</d21p1:y>
+                                        </Location>
+                                        <Name z:Id="44">UV</Name>
+                                        <NameSize xmlns:d21p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                          <d21p1:height>17.4609337</d21p1:height>
+                                          <d21p1:width>21.1796818</d21p1:width>
+                                        </NameSize>
+                                        <OriginalName z:Ref="44" i:nil="true" />
+                                        <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                        <RenderFlag>Default</RenderFlag>
+                                        <m_Inputs z:Id="45" z:Size="0" />
+                                        <m_Outputs z:Id="46" z:Size="1">
+                                          <NodeConnector z:Ref="40" i:nil="true" />
+                                        </m_Outputs>
+                                        <d2p1:UTiling>1</d2p1:UTiling>
+                                        <d2p1:UVIndex>0</d2p1:UVIndex>
+                                        <d2p1:VTiling>1</d2p1:VTiling>
+                                        <d2p1:m_OutputConnector z:Ref="40" i:nil="true" />
+                                      </Node>
+                                      <Tag z:Ref="36" i:nil="true" />
+                                      <m_Connections z:Id="47" z:Size="1">
+                                        <NodeConnection z:Ref="39" i:nil="true" />
+                                      </m_Connections>
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </From>
+                                    <RenderFlag>Default</RenderFlag>
+                                    <To z:Ref="34" i:nil="true" />
+                                  </NodeConnection>
+                                </m_Connections>
+                                <m_ConnectorType>Input</m_ConnectorType>
+                              </NodeConnector>
+                              <NodeConnector z:Id="48">
+                                <Enabled>true</Enabled>
+                                <Name z:Id="49">Y</Name>
+                                <Node z:Ref="29" i:nil="true" />
+                                <Tag z:Id="50" i:type="d2p1:ShaderVariable">
+                                  <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                  <d2p1:Code z:Id="51">float2 Local1</d2p1:Code>
+                                  <d2p1:Semantic i:nil="true" />
+                                  <d2p1:VariableName z:Id="52">Local1</d2p1:VariableName>
+                                  <d2p1:m_EnumMember>Float2</d2p1:m_EnumMember>
+                                </Tag>
+                                <m_Connections z:Id="53" z:Size="1">
+                                  <NodeConnection z:Id="54">
+                                    <From z:Id="55">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Ref="5" i:nil="true" />
+                                      <Node z:Id="56" i:type="d2p1:MultiplyNode">
+                                        <Collapsed>false</Collapsed>
+                                        <ConnectorNamesImage xmlns:d21p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="57">
+                                          <Data z:Id="58" xmlns:d22p1="http://www.w3.org/2001/XMLSchema" i:type="d22p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAGAAAABYCAYAAAAKsfL4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAAOlJREFUeF7t2mENwjAQBtAJwAAGMIAPFOAAB1jAAhowgQvMQL8tIw0CrgTeSy7p+Hm3XRuuEwAAAAAAAAAAAAAAAAAAwJ/at3gsy7dzi9OypMKtxWFZTtsWKchmfqJEkv5skaRfW6zFoFDaTpKfr4EB1q/A2z9I3v5Li/v8RKmchNbEpwUdlyVVcupJEaLfkCmQ837aTy+tKJsyAAAAAADwG/Lf/+cELL+ZDRfZtegvZq33gijUX8zKhMxMuFjmwSlC5sBuxQ2SxGcObBY8SFpQbkNkD2CAtKEUgEEUYDAFAAAAAADg+0zTC5MsH2ALsIz3AAAAAElFTkSuQmCC</Data>
+                                        </ConnectorNamesImage>
+                                        <DisplayName z:Ref="5" i:nil="true" />
+                                        <DummyInputBounds xmlns:d21p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                          <d21p1:height>0</d21p1:height>
+                                          <d21p1:width>0</d21p1:width>
+                                          <d21p1:x>0</d21p1:x>
+                                          <d21p1:y>0</d21p1:y>
+                                        </DummyInputBounds>
+                                        <DummyOutputBounds xmlns:d21p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                          <d21p1:height>0</d21p1:height>
+                                          <d21p1:width>0</d21p1:width>
+                                          <d21p1:x>0</d21p1:x>
+                                          <d21p1:y>0</d21p1:y>
+                                        </DummyOutputBounds>
+                                        <ImageFileName i:nil="true" />
+                                        <Location xmlns:d21p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                          <d21p1:x>1268.33582</d21p1:x>
+                                          <d21p1:y>-284.5561</d21p1:y>
+                                        </Location>
+                                        <Name z:Id="59">Multiply</Name>
+                                        <NameSize xmlns:d21p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                          <d21p1:height>17.4609337</d21p1:height>
+                                          <d21p1:width>52.9609222</d21p1:width>
+                                        </NameSize>
+                                        <OriginalName z:Ref="59" i:nil="true" />
+                                        <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                        <RenderFlag>Default</RenderFlag>
+                                        <m_Inputs z:Id="60" z:Size="2">
+                                          <NodeConnector z:Id="61">
+                                            <Enabled>true</Enabled>
+                                            <Name z:Ref="35" i:nil="true" />
+                                            <Node z:Ref="56" i:nil="true" />
+                                            <Tag z:Id="62" i:type="d2p1:ShaderVariable">
+                                              <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                              <d2p1:Code z:Id="63">float2(0.0f, 1.0f)</d2p1:Code>
+                                              <d2p1:Semantic i:nil="true" />
+                                              <d2p1:VariableName z:Ref="63" i:nil="true" />
+                                              <d2p1:m_EnumMember>Float2</d2p1:m_EnumMember>
+                                            </Tag>
+                                            <m_Connections z:Id="64" z:Size="1">
+                                              <NodeConnection z:Id="65">
+                                                <From z:Id="66">
+                                                  <Enabled>true</Enabled>
+                                                  <Name z:Ref="5" i:nil="true" />
+                                                  <Node z:Id="67" i:type="d2p1:ConstantVector2Node">
+                                                    <Collapsed>false</Collapsed>
+                                                    <ConnectorNamesImage xmlns:d27p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="68">
+                                                      <Data z:Id="69" xmlns:d28p1="http://www.w3.org/2001/XMLSchema" i:type="d28p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAGAAAAA8CAYAAACZ1L+0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAAC5JREFUeF7twTEBAAAAwqD1T20NDyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATtQAWjwAAT9xqZoAAAAASUVORK5CYII=</Data>
+                                                    </ConnectorNamesImage>
+                                                    <DisplayName z:Ref="5" i:nil="true" />
+                                                    <DummyInputBounds xmlns:d27p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                      <d27p1:height>0</d27p1:height>
+                                                      <d27p1:width>0</d27p1:width>
+                                                      <d27p1:x>0</d27p1:x>
+                                                      <d27p1:y>0</d27p1:y>
+                                                    </DummyInputBounds>
+                                                    <DummyOutputBounds xmlns:d27p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                      <d27p1:height>0</d27p1:height>
+                                                      <d27p1:width>0</d27p1:width>
+                                                      <d27p1:x>0</d27p1:x>
+                                                      <d27p1:y>0</d27p1:y>
+                                                    </DummyOutputBounds>
+                                                    <ImageFileName i:nil="true" />
+                                                    <Location xmlns:d27p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                      <d27p1:x>1430.33569</d27p1:x>
+                                                      <d27p1:y>-284.5561</d27p1:y>
+                                                    </Location>
+                                                    <Name z:Id="70">0, 1</Name>
+                                                    <NameSize xmlns:d27p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                      <d27p1:height>0</d27p1:height>
+                                                      <d27p1:width>0</d27p1:width>
+                                                    </NameSize>
+                                                    <OriginalName z:Id="71">Constant Vector 2</OriginalName>
+                                                    <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                                    <RenderFlag>Default</RenderFlag>
+                                                    <m_Inputs z:Id="72" z:Size="0" />
+                                                    <m_Outputs z:Id="73" z:Size="1">
+                                                      <NodeConnector z:Ref="66" i:nil="true" />
+                                                    </m_Outputs>
+                                                    <d2p1:GroupName z:Ref="5" i:nil="true" />
+                                                    <d2p1:Parameter>false</d2p1:Parameter>
+                                                    <d2p1:ParameterName z:Ref="5" i:nil="true" />
+                                                    <d2p1:X>0</d2p1:X>
+                                                    <d2p1:Y>1</d2p1:Y>
+                                                    <d2p1:m_OutputConnector z:Ref="66" i:nil="true" />
+                                                  </Node>
+                                                  <Tag z:Ref="62" i:nil="true" />
+                                                  <m_Connections z:Id="74" z:Size="1">
+                                                    <NodeConnection z:Ref="65" i:nil="true" />
+                                                  </m_Connections>
+                                                  <m_ConnectorType>Output</m_ConnectorType>
+                                                </From>
+                                                <RenderFlag>Default</RenderFlag>
+                                                <To z:Ref="61" i:nil="true" />
+                                              </NodeConnection>
+                                            </m_Connections>
+                                            <m_ConnectorType>Input</m_ConnectorType>
+                                          </NodeConnector>
+                                          <NodeConnector z:Id="75">
+                                            <Enabled>true</Enabled>
+                                            <Name z:Ref="49" i:nil="true" />
+                                            <Node z:Ref="56" i:nil="true" />
+                                            <Tag z:Id="76" i:type="d2p1:ShaderVariable">
+                                              <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                              <d2p1:Code z:Id="77">float Local0</d2p1:Code>
+                                              <d2p1:Semantic i:nil="true" />
+                                              <d2p1:VariableName z:Id="78">Local0</d2p1:VariableName>
+                                              <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                                            </Tag>
+                                            <m_Connections z:Id="79" z:Size="1">
+                                              <NodeConnection z:Id="80">
+                                                <From z:Id="81">
+                                                  <Enabled>true</Enabled>
+                                                  <Name z:Ref="5" i:nil="true" />
+                                                  <Node z:Id="82" i:type="d2p1:TimeNode">
+                                                    <Collapsed>false</Collapsed>
+                                                    <ConnectorNamesImage xmlns:d27p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="83">
+                                                      <Data z:Id="84" xmlns:d28p1="http://www.w3.org/2001/XMLSchema" i:type="d28p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAGAAAABACAYAAADlNHIOAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAASxJREFUeF7t1WFtAlEQReEVUAM1gIEaQEEV1AEOsICFasBEXWCGzsm+m0w2XeAP0ITzJZP3eMtCcic7O0mSJEmSJEmSJEmSJEmSJEmSJEmSJEnSP7OtOlWdx7qpujf+62Pevrb3KkJnBaF8zdu7sgEDIRzn7UPZgOGtiidgN/YdIX2OldpXRR9bNDBj65ZzfofVBgwEf6giFIKKhIWMKkJjT7gZW4ys76pL5z3wNNUGLBDIT1WaQEgdTwlFsFzrRXMundPgjms24A+En3cCIXU8DWnAMlCsnXNPH1+wAQMzmpGQ+U+ACZGQCA98j8+Mk+VIibXz3Jv3QZ4UG1AInjlNIBThpxl87i9h9sE+L9V+be28jyfOWG3AFYSkJ7IBT2YDJEmSJEmS9GDT9AuxSVdeSF8yjQAAAABJRU5ErkJggg==</Data>
+                                                    </ConnectorNamesImage>
+                                                    <DisplayName z:Ref="5" i:nil="true" />
+                                                    <DummyInputBounds xmlns:d27p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                      <d27p1:height>0</d27p1:height>
+                                                      <d27p1:width>0</d27p1:width>
+                                                      <d27p1:x>0</d27p1:x>
+                                                      <d27p1:y>0</d27p1:y>
+                                                    </DummyInputBounds>
+                                                    <DummyOutputBounds xmlns:d27p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                      <d27p1:height>0</d27p1:height>
+                                                      <d27p1:width>0</d27p1:width>
+                                                      <d27p1:x>0</d27p1:x>
+                                                      <d27p1:y>0</d27p1:y>
+                                                    </DummyOutputBounds>
+                                                    <ImageFileName i:nil="true" />
+                                                    <Location xmlns:d27p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                      <d27p1:x>1549.62793</d27p1:x>
+                                                      <d27p1:y>-108.473267</d27p1:y>
+                                                    </Location>
+                                                    <Name z:Id="85">Time</Name>
+                                                    <NameSize xmlns:d27p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                      <d27p1:height>21.8261681</d27p1:height>
+                                                      <d27p1:width>40.9472542</d27p1:width>
+                                                    </NameSize>
+                                                    <OriginalName z:Ref="85" i:nil="true" />
+                                                    <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                                    <RenderFlag>Default</RenderFlag>
+                                                    <m_Inputs z:Id="86" z:Size="1">
+                                                      <NodeConnector z:Id="87">
+                                                        <Enabled>true</Enabled>
+                                                        <Name z:Id="88">Speed</Name>
+                                                        <Node z:Ref="82" i:nil="true" />
+                                                        <Tag i:nil="true" />
+                                                        <m_Connections z:Id="89" z:Size="1">
+                                                          <NodeConnection z:Id="90">
+                                                            <From z:Id="91">
+                                                              <Enabled>true</Enabled>
+                                                              <Name z:Ref="5" i:nil="true" />
+                                                              <Node z:Id="92" i:type="d2p1:ConstantFloatNode">
+                                                                <Collapsed>false</Collapsed>
+                                                                <ConnectorNamesImage xmlns:d33p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="93">
+                                                                  <Data z:Id="94" xmlns:d34p1="http://www.w3.org/2001/XMLSchema" i:type="d34p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAJMAAAA8CAYAAABir4guAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAADhJREFUeF7twQEBAAAAgiD/r25IQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC3aooMAAEjaZPMAAAAAElFTkSuQmCC</Data>
+                                                                </ConnectorNamesImage>
+                                                                <DisplayName z:Ref="5" i:nil="true" />
+                                                                <DummyInputBounds xmlns:d33p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                  <d33p1:height>0</d33p1:height>
+                                                                  <d33p1:width>0</d33p1:width>
+                                                                  <d33p1:x>0</d33p1:x>
+                                                                  <d33p1:y>0</d33p1:y>
+                                                                </DummyInputBounds>
+                                                                <DummyOutputBounds xmlns:d33p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                  <d33p1:height>0</d33p1:height>
+                                                                  <d33p1:width>0</d33p1:width>
+                                                                  <d33p1:x>0</d33p1:x>
+                                                                  <d33p1:y>0</d33p1:y>
+                                                                </DummyOutputBounds>
+                                                                <ImageFileName i:nil="true" />
+                                                                <Location xmlns:d33p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                  <d33p1:x>1723.00635</d33p1:x>
+                                                                  <d33p1:y>-109.2301</d33p1:y>
+                                                                </Location>
+                                                                <Name z:Id="95">VPanSpeed = -0.1</Name>
+                                                                <NameSize xmlns:d33p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                  <d33p1:height>0</d33p1:height>
+                                                                  <d33p1:width>0</d33p1:width>
+                                                                </NameSize>
+                                                                <OriginalName z:Id="96">Constant Float</OriginalName>
+                                                                <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                                                <RenderFlag>Default</RenderFlag>
+                                                                <m_Inputs z:Id="97" z:Size="0" />
+                                                                <m_Outputs z:Id="98" z:Size="1">
+                                                                  <NodeConnector z:Ref="91" i:nil="true" />
+                                                                </m_Outputs>
+                                                                <d2p1:GroupName z:Id="99">UV</d2p1:GroupName>
+                                                                <d2p1:Parameter>true</d2p1:Parameter>
+                                                                <d2p1:ParameterName z:Id="100">VPanSpeed</d2p1:ParameterName>
+                                                                <d2p1:X>-0.1</d2p1:X>
+                                                                <d2p1:m_OutputConnector z:Ref="91" i:nil="true" />
+                                                              </Node>
+                                                              <Tag z:Id="101" i:type="d2p1:ShaderVariable">
+                                                                <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                                <d2p1:Code i:nil="true" />
+                                                                <d2p1:Semantic i:nil="true" />
+                                                                <d2p1:VariableName z:Id="102">FloatParameter_VPanSpeed</d2p1:VariableName>
+                                                                <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                                                              </Tag>
+                                                              <m_Connections z:Id="103" z:Size="1">
+                                                                <NodeConnection z:Ref="90" i:nil="true" />
+                                                              </m_Connections>
+                                                              <m_ConnectorType>Output</m_ConnectorType>
+                                                            </From>
+                                                            <RenderFlag>Default</RenderFlag>
+                                                            <To z:Ref="87" i:nil="true" />
+                                                          </NodeConnection>
+                                                        </m_Connections>
+                                                        <m_ConnectorType>Input</m_ConnectorType>
+                                                      </NodeConnector>
+                                                    </m_Inputs>
+                                                    <m_Outputs z:Id="104" z:Size="1">
+                                                      <NodeConnector z:Ref="81" i:nil="true" />
+                                                    </m_Outputs>
+                                                    <d2p1:Speed>1</d2p1:Speed>
+                                                    <d2p1:m_OutputConnector z:Ref="81" i:nil="true" />
+                                                    <d2p1:m_SpeedInputConnector z:Ref="87" i:nil="true" />
+                                                  </Node>
+                                                  <Tag z:Ref="76" i:nil="true" />
+                                                  <m_Connections z:Id="105" z:Size="2">
+                                                    <NodeConnection z:Id="106">
+                                                      <From z:Ref="81" i:nil="true" />
+                                                      <RenderFlag>Default</RenderFlag>
+                                                      <To z:Id="107">
+                                                        <Enabled>true</Enabled>
+                                                        <Name z:Ref="85" i:nil="true" />
+                                                        <Node z:Id="108" i:type="d2p1:PannerNode">
+                                                          <Collapsed>false</Collapsed>
+                                                          <ConnectorNamesImage xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="109">
+                                                            <Data z:Id="110" xmlns:d31p1="http://www.w3.org/2001/XMLSchema" i:type="d31p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAGAAAABYCAYAAAAKsfL4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAAZNJREFUeF7t2oFNwzAQRuEMwAIswAIswARMwAZswAqswAwswRYsU/yU/NLJatIiElIp75NOcWKXSnfBruIMkiRJkiRJkiRJkiRJkiRJkiRJkiRJknSDnlp8tThN8dxia3zP49g8NpJN8pOM+xYvY3NTFqC5a0EiSPp/swANU8/H2JzFmO8WJIxjnZ6W+rjGeRJdx75Nx8MX4HWKOfxn1ERx5PyhxVIfaGcq68fWwhwaiXgfm2eRwL6fu5eiLfWBBDPF4dxYC9Dkzkyien8tQHCNvsoCTEgMv4IydVAUkot+6mAM51xf6gPtSF++g79fP3t43KF1Ma2J6RdazmOpj2tVkk64BkiSJEmSJEmSdBs+W+T5fY08w+f5fzZftCESTjG0Ewuws7kCMB0FbbYjObK/zNSUKaz/bN3GpC/7xJrxmwKAF704J7G8bUGys26kMFk72Ce+9GLY4V1bgOjH084bc3VjPkGBtGCNAuRdIQrQv0ukC9YsAFMPYxmjK61ZADAdZREmMj1JkiRJkiRJkrSfYfgBQsCDI4uHWvsAAAAASUVORK5CYII=</Data>
+                                                          </ConnectorNamesImage>
+                                                          <DisplayName z:Ref="5" i:nil="true" />
+                                                          <DummyInputBounds xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                            <d30p1:height>0</d30p1:height>
+                                                            <d30p1:width>0</d30p1:width>
+                                                            <d30p1:x>0</d30p1:x>
+                                                            <d30p1:y>0</d30p1:y>
+                                                          </DummyInputBounds>
+                                                          <DummyOutputBounds xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                            <d30p1:height>0</d30p1:height>
+                                                            <d30p1:width>0</d30p1:width>
+                                                            <d30p1:x>0</d30p1:x>
+                                                            <d30p1:y>0</d30p1:y>
+                                                          </DummyOutputBounds>
+                                                          <ImageFileName i:nil="true" />
+                                                          <Location xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                            <d30p1:x>1333.60461</d30p1:x>
+                                                            <d30p1:y>-135.811</d30p1:y>
+                                                          </Location>
+                                                          <Name z:Id="111">Panner</Name>
+                                                          <NameSize xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                            <d30p1:height>21.8261681</d30p1:height>
+                                                            <d30p1:width>55.9985237</d30p1:width>
+                                                          </NameSize>
+                                                          <OriginalName z:Ref="111" i:nil="true" />
+                                                          <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                                          <RenderFlag>Default</RenderFlag>
+                                                          <m_Inputs z:Id="112" z:Size="2">
+                                                            <NodeConnector z:Id="113">
+                                                              <Enabled>true</Enabled>
+                                                              <Name z:Id="114">Coord</Name>
+                                                              <Node z:Ref="108" i:nil="true" />
+                                                              <Tag i:nil="true" />
+                                                              <m_Connections z:Id="115" z:Size="0" />
+                                                              <m_ConnectorType>Input</m_ConnectorType>
+                                                            </NodeConnector>
+                                                            <NodeConnector z:Ref="107" i:nil="true" />
+                                                          </m_Inputs>
+                                                          <m_Outputs z:Id="116" z:Size="1">
+                                                            <NodeConnector z:Id="117">
+                                                              <Enabled>true</Enabled>
+                                                              <Name z:Ref="5" i:nil="true" />
+                                                              <Node z:Ref="108" i:nil="true" />
+                                                              <Tag z:Id="118" i:type="d2p1:ShaderVariable">
+                                                                <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                                <d2p1:Code z:Id="119">(in_0 + (float2(0.0f, 1.0f) * Local0))</d2p1:Code>
+                                                                <d2p1:Semantic i:nil="true" />
+                                                                <d2p1:VariableName z:Ref="119" i:nil="true" />
+                                                                <d2p1:m_EnumMember>Float2</d2p1:m_EnumMember>
+                                                              </Tag>
+                                                              <m_Connections z:Id="120" z:Size="1">
+                                                                <NodeConnection z:Id="121">
+                                                                  <From z:Ref="117" i:nil="true" />
+                                                                  <RenderFlag>Default</RenderFlag>
+                                                                  <To z:Id="122">
+                                                                    <Enabled>true</Enabled>
+                                                                    <Name z:Ref="35" i:nil="true" />
+                                                                    <Node z:Id="123" i:type="d2p1:MultiplyNode">
+                                                                      <Collapsed>false</Collapsed>
+                                                                      <ConnectorNamesImage xmlns:d36p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="124">
+                                                                        <Data z:Id="125" xmlns:d37p1="http://www.w3.org/2001/XMLSchema" i:type="d37p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAGAAAABYCAYAAAAKsfL4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAAOlJREFUeF7t2mENwjAQBtAJwAAGMIAPFOAAB1jAAhowgQvMQL8tIw0CrgTeSy7p+Hm3XRuuEwAAAAAAAAAAAAAAAAAAwJ/at3gsy7dzi9OypMKtxWFZTtsWKchmfqJEkv5skaRfW6zFoFDaTpKfr4EB1q/A2z9I3v5Li/v8RKmchNbEpwUdlyVVcupJEaLfkCmQ837aTy+tKJsyAAAAAADwG/Lf/+cELL+ZDRfZtegvZq33gijUX8zKhMxMuFjmwSlC5sBuxQ2SxGcObBY8SFpQbkNkD2CAtKEUgEEUYDAFAAAAAADg+0zTC5MsH2ALsIz3AAAAAElFTkSuQmCC</Data>
+                                                                      </ConnectorNamesImage>
+                                                                      <DisplayName z:Ref="5" i:nil="true" />
+                                                                      <DummyInputBounds xmlns:d36p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                        <d36p1:height>0</d36p1:height>
+                                                                        <d36p1:width>0</d36p1:width>
+                                                                        <d36p1:x>0</d36p1:x>
+                                                                        <d36p1:y>0</d36p1:y>
+                                                                      </DummyInputBounds>
+                                                                      <DummyOutputBounds xmlns:d36p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                        <d36p1:height>0</d36p1:height>
+                                                                        <d36p1:width>0</d36p1:width>
+                                                                        <d36p1:x>0</d36p1:x>
+                                                                        <d36p1:y>0</d36p1:y>
+                                                                      </DummyOutputBounds>
+                                                                      <ImageFileName i:nil="true" />
+                                                                      <Location xmlns:d36p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                        <d36p1:x>1165.10461</d36p1:x>
+                                                                        <d36p1:y>-136.7987</d36p1:y>
+                                                                      </Location>
+                                                                      <Name z:Ref="59" i:nil="true" />
+                                                                      <NameSize xmlns:d36p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                        <d36p1:height>17.4609337</d36p1:height>
+                                                                        <d36p1:width>52.9609222</d36p1:width>
+                                                                      </NameSize>
+                                                                      <OriginalName z:Ref="59" i:nil="true" />
+                                                                      <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                                                      <RenderFlag>Default</RenderFlag>
+                                                                      <m_Inputs z:Id="126" z:Size="2">
+                                                                        <NodeConnector z:Ref="122" i:nil="true" />
+                                                                        <NodeConnector z:Id="127">
+                                                                          <Enabled>true</Enabled>
+                                                                          <Name z:Ref="49" i:nil="true" />
+                                                                          <Node z:Ref="123" i:nil="true" />
+                                                                          <Tag z:Id="128" i:type="d2p1:ShaderVariable">
+                                                                            <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                                            <d2p1:Code z:Id="129">float2(0.0f, 1.0f)</d2p1:Code>
+                                                                            <d2p1:Semantic i:nil="true" />
+                                                                            <d2p1:VariableName z:Ref="129" i:nil="true" />
+                                                                            <d2p1:m_EnumMember>Float2</d2p1:m_EnumMember>
+                                                                          </Tag>
+                                                                          <m_Connections z:Id="130" z:Size="1">
+                                                                            <NodeConnection z:Id="131">
+                                                                              <From z:Id="132">
+                                                                                <Enabled>true</Enabled>
+                                                                                <Name z:Ref="5" i:nil="true" />
+                                                                                <Node z:Id="133" i:type="d2p1:ConstantVector2Node">
+                                                                                  <Collapsed>false</Collapsed>
+                                                                                  <ConnectorNamesImage xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="134">
+                                                                                    <Data z:Id="135" xmlns:d43p1="http://www.w3.org/2001/XMLSchema" i:type="d43p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAGAAAAA8CAYAAACZ1L+0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAAC5JREFUeF7twTEBAAAAwqD1T20NDyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATtQAWjwAAT9xqZoAAAAASUVORK5CYII=</Data>
+                                                                                  </ConnectorNamesImage>
+                                                                                  <DisplayName z:Ref="5" i:nil="true" />
+                                                                                  <DummyInputBounds xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:height>0</d42p1:height>
+                                                                                    <d42p1:width>0</d42p1:width>
+                                                                                    <d42p1:x>0</d42p1:x>
+                                                                                    <d42p1:y>0</d42p1:y>
+                                                                                  </DummyInputBounds>
+                                                                                  <DummyOutputBounds xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:height>0</d42p1:height>
+                                                                                    <d42p1:width>0</d42p1:width>
+                                                                                    <d42p1:x>0</d42p1:x>
+                                                                                    <d42p1:y>0</d42p1:y>
+                                                                                  </DummyOutputBounds>
+                                                                                  <ImageFileName i:nil="true" />
+                                                                                  <Location xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:x>1336.59534</d42p1:x>
+                                                                                    <d42p1:y>-17.38448</d42p1:y>
+                                                                                  </Location>
+                                                                                  <Name z:Id="136">0, 1</Name>
+                                                                                  <NameSize xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:height>0</d42p1:height>
+                                                                                    <d42p1:width>0</d42p1:width>
+                                                                                  </NameSize>
+                                                                                  <OriginalName z:Ref="71" i:nil="true" />
+                                                                                  <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                                                                  <RenderFlag>Default</RenderFlag>
+                                                                                  <m_Inputs z:Id="137" z:Size="0" />
+                                                                                  <m_Outputs z:Id="138" z:Size="1">
+                                                                                    <NodeConnector z:Ref="132" i:nil="true" />
+                                                                                  </m_Outputs>
+                                                                                  <d2p1:GroupName z:Ref="5" i:nil="true" />
+                                                                                  <d2p1:Parameter>false</d2p1:Parameter>
+                                                                                  <d2p1:ParameterName z:Ref="5" i:nil="true" />
+                                                                                  <d2p1:X>0</d2p1:X>
+                                                                                  <d2p1:Y>1</d2p1:Y>
+                                                                                  <d2p1:m_OutputConnector z:Ref="132" i:nil="true" />
+                                                                                </Node>
+                                                                                <Tag z:Ref="128" i:nil="true" />
+                                                                                <m_Connections z:Id="139" z:Size="1">
+                                                                                  <NodeConnection z:Ref="131" i:nil="true" />
+                                                                                </m_Connections>
+                                                                                <m_ConnectorType>Output</m_ConnectorType>
+                                                                              </From>
+                                                                              <RenderFlag>Default</RenderFlag>
+                                                                              <To z:Ref="127" i:nil="true" />
+                                                                            </NodeConnection>
+                                                                          </m_Connections>
+                                                                          <m_ConnectorType>Input</m_ConnectorType>
+                                                                        </NodeConnector>
+                                                                      </m_Inputs>
+                                                                      <m_Outputs z:Id="140" z:Size="1">
+                                                                        <NodeConnector z:Id="141">
+                                                                          <Enabled>true</Enabled>
+                                                                          <Name z:Ref="5" i:nil="true" />
+                                                                          <Node z:Ref="123" i:nil="true" />
+                                                                          <Tag z:Id="142" i:type="d2p1:ShaderVariable">
+                                                                            <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                                            <d2p1:Code z:Id="143">float2 Local1</d2p1:Code>
+                                                                            <d2p1:Semantic i:nil="true" />
+                                                                            <d2p1:VariableName z:Id="144">Local1</d2p1:VariableName>
+                                                                            <d2p1:m_EnumMember>Float2</d2p1:m_EnumMember>
+                                                                          </Tag>
+                                                                          <m_Connections z:Id="145" z:Size="0" />
+                                                                          <m_ConnectorType>Output</m_ConnectorType>
+                                                                        </NodeConnector>
+                                                                      </m_Outputs>
+                                                                      <d2p1:m_ResultConnector z:Ref="141" i:nil="true" />
+                                                                      <d2p1:m_XConnector z:Ref="122" i:nil="true" />
+                                                                      <d2p1:m_YConnector z:Ref="127" i:nil="true" />
+                                                                    </Node>
+                                                                    <Tag z:Ref="118" i:nil="true" />
+                                                                    <m_Connections z:Id="146" z:Size="1">
+                                                                      <NodeConnection z:Ref="121" i:nil="true" />
+                                                                    </m_Connections>
+                                                                    <m_ConnectorType>Input</m_ConnectorType>
+                                                                  </To>
+                                                                </NodeConnection>
+                                                              </m_Connections>
+                                                              <m_ConnectorType>Output</m_ConnectorType>
+                                                            </NodeConnector>
+                                                          </m_Outputs>
+                                                          <d2p1:USpeed>0</d2p1:USpeed>
+                                                          <d2p1:VSpeed>1</d2p1:VSpeed>
+                                                          <d2p1:m_CoordInputConnector z:Ref="113" i:nil="true" />
+                                                          <d2p1:m_OutputConnector z:Ref="117" i:nil="true" />
+                                                          <d2p1:m_TimeInputConnector z:Ref="107" i:nil="true" />
+                                                        </Node>
+                                                        <Tag z:Id="147" i:type="d2p1:ShaderVariable">
+                                                          <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                          <d2p1:Code z:Id="148">float Local0</d2p1:Code>
+                                                          <d2p1:Semantic i:nil="true" />
+                                                          <d2p1:VariableName z:Id="149">Local0</d2p1:VariableName>
+                                                          <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                                                        </Tag>
+                                                        <m_Connections z:Id="150" z:Size="1">
+                                                          <NodeConnection z:Ref="106" i:nil="true" />
+                                                        </m_Connections>
+                                                        <m_ConnectorType>Input</m_ConnectorType>
+                                                      </To>
+                                                    </NodeConnection>
+                                                    <NodeConnection z:Ref="80" i:nil="true" />
+                                                  </m_Connections>
+                                                  <m_ConnectorType>Output</m_ConnectorType>
+                                                </From>
+                                                <RenderFlag>Default</RenderFlag>
+                                                <To z:Ref="75" i:nil="true" />
+                                              </NodeConnection>
+                                            </m_Connections>
+                                            <m_ConnectorType>Input</m_ConnectorType>
+                                          </NodeConnector>
+                                        </m_Inputs>
+                                        <m_Outputs z:Id="151" z:Size="1">
+                                          <NodeConnector z:Ref="55" i:nil="true" />
+                                        </m_Outputs>
+                                        <d2p1:m_ResultConnector z:Ref="55" i:nil="true" />
+                                        <d2p1:m_XConnector z:Ref="61" i:nil="true" />
+                                        <d2p1:m_YConnector z:Ref="75" i:nil="true" />
+                                      </Node>
+                                      <Tag z:Ref="50" i:nil="true" />
+                                      <m_Connections z:Id="152" z:Size="1">
+                                        <NodeConnection z:Ref="54" i:nil="true" />
+                                      </m_Connections>
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </From>
+                                    <RenderFlag>Default</RenderFlag>
+                                    <To z:Ref="48" i:nil="true" />
+                                  </NodeConnection>
+                                </m_Connections>
+                                <m_ConnectorType>Input</m_ConnectorType>
+                              </NodeConnector>
+                            </m_Inputs>
+                            <m_Outputs z:Id="153" z:Size="1">
+                              <NodeConnector z:Ref="28" i:nil="true" />
+                            </m_Outputs>
+                            <d2p1:m_ResultConnector z:Ref="28" i:nil="true" />
+                            <d2p1:m_XConnector z:Ref="34" i:nil="true" />
+                            <d2p1:m_YConnector z:Ref="48" i:nil="true" />
+                          </Node>
+                          <Tag z:Id="154" i:type="d2p1:ShaderVariable">
+                            <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                            <d2p1:Code z:Id="155">float2 Local2</d2p1:Code>
+                            <d2p1:Semantic i:nil="true" />
+                            <d2p1:VariableName z:Id="156">Local2</d2p1:VariableName>
+                            <d2p1:m_EnumMember>Float2</d2p1:m_EnumMember>
+                          </Tag>
+                          <m_Connections z:Id="157" z:Size="4">
+                            <NodeConnection z:Ref="27" i:nil="true" />
+                            <NodeConnection z:Id="158">
+                              <From z:Ref="28" i:nil="true" />
+                              <RenderFlag>Default</RenderFlag>
+                              <To z:Id="159">
+                                <Enabled>true</Enabled>
+                                <Name z:Ref="25" i:nil="true" />
+                                <Node z:Id="160" i:type="d2p1:Texture2DNode">
+                                  <Collapsed>false</Collapsed>
+                                  <ConnectorNamesImage xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="161">
+                                    <Data z:Id="162" xmlns:d19p1="http://www.w3.org/2001/XMLSchema" i:type="d19p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAL4AAACgCAYAAACyqNZ2AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAA3NJREFUeF7t3dGR40QUhtEJgARIYBMgASIgAjIgA1IgBWIgCbIgmcVfDZdquszMLuMH3Dqnqsu2LI388Kt9rVG3XgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHicn5b2w619c2u7729t1vnUgr+s27YOPI3Pt/bLrRXe327t91sbHQS9bnnv/3xrf9zad7eWdduW9whPofBOkFOAp1cv8D++Pv1bB8O3r0//sW2PrQ9P4V7wC3bh7/lb1m0rdX59fQrvKju7Os7yVI4qu3eTzYfoA6ylzuywnr7SZvSBWqc2YZ9tW69tH/ahON5bwS+DeydaR7yW4R824W1Ha6lSwO8Fv3V6zH7Q9By+xFvBr5zu/fVES1ncy+4PaQfTgxf+CXXL7h1hvb8Gf7ZN669nfeDfvBX87OXOQ8ucrOHtD69HWjvbay3B5xHeC/5a7jy8zMke3qnZ0w57f74JWr4eDL23ljo1+BLvBX/KnTy8zEmhXb9C2uH06Ol1QW9ZO1/Xbdm0/ZsB3lKo99JlL2fqcDtb2PK13oenNSdUJtB1qns5U2fasil54OkV+MJfz18r3Pvvw9bpPdUEAAAAAAAAAAA8sf3SYpd/cgld/bYOJnn4SBf4Pyr46wisLvo3fJDj3Qv+PjIGjrOXOi765xIm+I2AMVicy1hLncJfzw/HW4Nfbd9rpzQ53hr8VPasUwfCkSpt1rM49fbKHQAAAAAAAAAAAADgP+i2il2OXDPLAsfr+vvm0mm8baGfmzivg1PgOAV+v2t0B4MpRjhWJU29O1xKPf06vrbyZup8pQ7Hmpp+TPCn3ocjFfR7k8ROrw/Hqsbfpw0UfI7XD9zm1plZ1OZ0pjk0OV6nLwt6we8Hr1OZAAAAAAAAAAAAAMBXmEEntebWgUtoEEo3dS74DUDpEY633tm8xwaaw/HW4FfqNAQRjjelTmNt6+0NO+QS1hq/4PccjreWOmmeHbMlczzB55L2UsdZHS6hwE8ziRQAAAAAAAAAAAAA8AFdkrwOSIHjdZ/bRl6ZYYFLqbdvFFYTSpllgcuop2+cbVOMdGdzOF5lTj19Cn8lDxyvHr6efnQQmGWB49XDzywLtV6vBwIcpx+yM0Py2qb0gSPVs9/r3ev1zZXPsTqNee/0Zf/I8s8sAAAAAAAAAAAAAAAA4FQvL38CXEG7xEcxSIoAAAAASUVORK5CYII=</Data>
+                                  </ConnectorNamesImage>
+                                  <DisplayName z:Id="163">physicalmap</DisplayName>
+                                  <DummyInputBounds xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                    <d18p1:height>0</d18p1:height>
+                                    <d18p1:width>0</d18p1:width>
+                                    <d18p1:x>0</d18p1:x>
+                                    <d18p1:y>0</d18p1:y>
+                                  </DummyInputBounds>
+                                  <DummyOutputBounds xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                    <d18p1:height>0</d18p1:height>
+                                    <d18p1:width>0</d18p1:width>
+                                    <d18p1:x>0</d18p1:x>
+                                    <d18p1:y>0</d18p1:y>
+                                  </DummyOutputBounds>
+                                  <ImageFileName z:Id="164">C:/console/Stable/LSProjects/Apps/DOS2/Data/Public/Shared/Assets/Textures/Helpers/Default_BM.DDS</ImageFileName>
+                                  <Location xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                    <d18p1:x>579.8549</d18p1:x>
+                                    <d18p1:y>22.7725525</d18p1:y>
+                                  </Location>
+                                  <Name z:Id="165">physicalmap - Default_BM</Name>
+                                  <NameSize xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                    <d18p1:height>0</d18p1:height>
+                                    <d18p1:width>0</d18p1:width>
+                                  </NameSize>
+                                  <OriginalName z:Ref="22" i:nil="true" />
+                                  <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                  <RenderFlag>Default</RenderFlag>
+                                  <m_Inputs z:Id="166" z:Size="1">
+                                    <NodeConnector z:Ref="159" i:nil="true" />
+                                  </m_Inputs>
+                                  <m_Outputs z:Id="167" z:Size="5">
+                                    <NodeConnector z:Id="168">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Ref="15" i:nil="true" />
+                                      <Node z:Ref="160" i:nil="true" />
+                                      <Tag i:nil="true" />
+                                      <m_Connections z:Id="169" z:Size="0" />
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                    <NodeConnector z:Id="170">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Id="171">R</Name>
+                                      <Node z:Ref="160" i:nil="true" />
+                                      <Tag z:Id="172" i:type="d2p1:ShaderVariable">
+                                        <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                        <d2p1:Code z:Id="173">float Local4</d2p1:Code>
+                                        <d2p1:Semantic i:nil="true" />
+                                        <d2p1:VariableName z:Id="174">Local4</d2p1:VariableName>
+                                        <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                                      </Tag>
+                                      <m_Connections z:Id="175" z:Size="1">
+                                        <NodeConnection z:Id="176">
+                                          <From z:Ref="170" i:nil="true" />
+                                          <RenderFlag>Default</RenderFlag>
+                                          <To z:Id="177">
+                                            <Enabled>true</Enabled>
+                                            <Name z:Id="178">Metal Mask</Name>
+                                            <Node z:Ref="2" i:nil="true" />
+                                            <Tag z:Id="179" i:type="d2p1:ShaderVariable">
+                                              <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                              <d2p1:Code i:nil="true" />
+                                              <d2p1:Semantic i:nil="true" />
+                                              <d2p1:VariableName z:Id="180">matMetalMask</d2p1:VariableName>
+                                              <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                                            </Tag>
+                                            <m_Connections z:Id="181" z:Size="1">
+                                              <NodeConnection z:Ref="176" i:nil="true" />
+                                            </m_Connections>
+                                            <m_ConnectorType>Input</m_ConnectorType>
+                                          </To>
+                                        </NodeConnection>
+                                      </m_Connections>
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                    <NodeConnector z:Id="182">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Id="183">G</Name>
+                                      <Node z:Ref="160" i:nil="true" />
+                                      <Tag z:Id="184" i:type="d2p1:ShaderVariable">
+                                        <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                        <d2p1:Code z:Id="185">float Local5</d2p1:Code>
+                                        <d2p1:Semantic i:nil="true" />
+                                        <d2p1:VariableName z:Id="186">Local5</d2p1:VariableName>
+                                        <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                                      </Tag>
+                                      <m_Connections z:Id="187" z:Size="1">
+                                        <NodeConnection z:Id="188">
+                                          <From z:Ref="182" i:nil="true" />
+                                          <RenderFlag>Default</RenderFlag>
+                                          <To z:Id="189">
+                                            <Enabled>true</Enabled>
+                                            <Name z:Id="190">Roughness</Name>
+                                            <Node z:Ref="2" i:nil="true" />
+                                            <Tag z:Id="191" i:type="d2p1:ShaderVariable">
+                                              <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                              <d2p1:Code i:nil="true" />
+                                              <d2p1:Semantic i:nil="true" />
+                                              <d2p1:VariableName z:Id="192">matRoughness</d2p1:VariableName>
+                                              <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                                            </Tag>
+                                            <m_Connections z:Id="193" z:Size="1">
+                                              <NodeConnection z:Ref="188" i:nil="true" />
+                                            </m_Connections>
+                                            <m_ConnectorType>Input</m_ConnectorType>
+                                          </To>
+                                        </NodeConnection>
+                                      </m_Connections>
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                    <NodeConnector z:Id="194">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Id="195">B</Name>
+                                      <Node z:Ref="160" i:nil="true" />
+                                      <Tag i:nil="true" />
+                                      <m_Connections z:Id="196" z:Size="0" />
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                    <NodeConnector z:Id="197">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Id="198">A</Name>
+                                      <Node z:Ref="160" i:nil="true" />
+                                      <Tag i:nil="true" />
+                                      <m_Connections z:Id="199" z:Size="0" />
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                  </m_Outputs>
+                                  <d2p1:GroupName z:Id="200">Texture Map</d2p1:GroupName>
+                                  <d2p1:Parameter>true</d2p1:Parameter>
+                                  <d2p1:ParameterName z:Id="201">physicalmap</d2p1:ParameterName>
+                                  <d2p1:IgnoreTexelDensity>false</d2p1:IgnoreTexelDensity>
+                                  <d2p1:IsLuminance>false</d2p1:IsLuminance>
+                                  <d2p1:TextureAddressMode>Wrap</d2p1:TextureAddressMode>
+                                  <d2p1:TextureCompression>Default</d2p1:TextureCompression>
+                                  <d2p1:TextureFilterOverride>Default</d2p1:TextureFilterOverride>
+                                  <d2p1:TextureGUID z:Id="202">50179e15-4bfb-4304-87a9-fd685ac9e853</d2p1:TextureGUID>
+                                  <d2p1:m_InputUV z:Ref="159" i:nil="true" />
+                                  <d2p1:m_OutputA z:Ref="197" i:nil="true" />
+                                  <d2p1:m_OutputB z:Ref="194" i:nil="true" />
+                                  <d2p1:m_OutputG z:Ref="182" i:nil="true" />
+                                  <d2p1:m_OutputR z:Ref="170" i:nil="true" />
+                                  <d2p1:m_OutputRGB z:Ref="168" i:nil="true" />
+                                </Node>
+                                <Tag i:nil="true" />
+                                <m_Connections z:Id="203" z:Size="1">
+                                  <NodeConnection z:Ref="158" i:nil="true" />
+                                </m_Connections>
+                                <m_ConnectorType>Input</m_ConnectorType>
+                              </To>
+                            </NodeConnection>
+                            <NodeConnection z:Id="204">
+                              <From z:Ref="28" i:nil="true" />
+                              <RenderFlag>Default</RenderFlag>
+                              <To z:Id="205">
+                                <Enabled>true</Enabled>
+                                <Name z:Ref="25" i:nil="true" />
+                                <Node z:Id="206" i:type="d2p1:Texture2DNode">
+                                  <Collapsed>false</Collapsed>
+                                  <ConnectorNamesImage xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="207">
+                                    <Data z:Id="208" xmlns:d19p1="http://www.w3.org/2001/XMLSchema" i:type="d19p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAL4AAACgCAYAAACyqNZ2AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAA3NJREFUeF7t3dGR40QUhtEJgARIYBMgASIgAjIgA1IgBWIgCbIgmcVfDZdquszMLuMH3Dqnqsu2LI388Kt9rVG3XgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHicn5b2w619c2u7729t1vnUgr+s27YOPI3Pt/bLrRXe327t91sbHQS9bnnv/3xrf9zad7eWdduW9whPofBOkFOAp1cv8D++Pv1bB8O3r0//sW2PrQ9P4V7wC3bh7/lb1m0rdX59fQrvKju7Os7yVI4qu3eTzYfoA6ylzuywnr7SZvSBWqc2YZ9tW69tH/ahON5bwS+DeydaR7yW4R824W1Ha6lSwO8Fv3V6zH7Q9By+xFvBr5zu/fVES1ncy+4PaQfTgxf+CXXL7h1hvb8Gf7ZN669nfeDfvBX87OXOQ8ucrOHtD69HWjvbay3B5xHeC/5a7jy8zMke3qnZ0w57f74JWr4eDL23ljo1+BLvBX/KnTy8zEmhXb9C2uH06Ol1QW9ZO1/Xbdm0/ZsB3lKo99JlL2fqcDtb2PK13oenNSdUJtB1qns5U2fasil54OkV+MJfz18r3Pvvw9bpPdUEAAAAAAAAAAA8sf3SYpd/cgld/bYOJnn4SBf4Pyr46wisLvo3fJDj3Qv+PjIGjrOXOi765xIm+I2AMVicy1hLncJfzw/HW4Nfbd9rpzQ53hr8VPasUwfCkSpt1rM49fbKHQAAAAAAAAAAAADgP+i2il2OXDPLAsfr+vvm0mm8baGfmzivg1PgOAV+v2t0B4MpRjhWJU29O1xKPf06vrbyZup8pQ7Hmpp+TPCn3ocjFfR7k8ROrw/Hqsbfpw0UfI7XD9zm1plZ1OZ0pjk0OV6nLwt6we8Hr1OZAAAAAAAAAAAAAMBXmEEntebWgUtoEEo3dS74DUDpEY633tm8xwaaw/HW4FfqNAQRjjelTmNt6+0NO+QS1hq/4PccjreWOmmeHbMlczzB55L2UsdZHS6hwE8ziRQAAAAAAAAAAAAA8AFdkrwOSIHjdZ/bRl6ZYYFLqbdvFFYTSpllgcuop2+cbVOMdGdzOF5lTj19Cn8lDxyvHr6efnQQmGWB49XDzywLtV6vBwIcpx+yM0Py2qb0gSPVs9/r3ev1zZXPsTqNee/0Zf/I8s8sAAAAAAAAAAAAAAAA4FQvL38CXEG7xEcxSIoAAAAASUVORK5CYII=</Data>
+                                  </ConnectorNamesImage>
+                                  <DisplayName z:Id="209">normalmap</DisplayName>
+                                  <DummyInputBounds xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                    <d18p1:height>0</d18p1:height>
+                                    <d18p1:width>0</d18p1:width>
+                                    <d18p1:x>0</d18p1:x>
+                                    <d18p1:y>0</d18p1:y>
+                                  </DummyInputBounds>
+                                  <DummyOutputBounds xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                    <d18p1:height>0</d18p1:height>
+                                    <d18p1:width>0</d18p1:width>
+                                    <d18p1:x>0</d18p1:x>
+                                    <d18p1:y>0</d18p1:y>
+                                  </DummyOutputBounds>
+                                  <ImageFileName z:Id="210">C:/console/Stable/LSProjects/Apps/DOS2/Data/Public/Shared/Assets/Textures/Helpers/Default_NM.DDS</ImageFileName>
+                                  <Location xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                    <d18p1:x>599.5057</d18p1:x>
+                                    <d18p1:y>216.632843</d18p1:y>
+                                  </Location>
+                                  <Name z:Id="211">normalmap - Default_NM</Name>
+                                  <NameSize xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                    <d18p1:height>0</d18p1:height>
+                                    <d18p1:width>0</d18p1:width>
+                                  </NameSize>
+                                  <OriginalName z:Ref="22" i:nil="true" />
+                                  <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                  <RenderFlag>Default</RenderFlag>
+                                  <m_Inputs z:Id="212" z:Size="1">
+                                    <NodeConnector z:Ref="205" i:nil="true" />
+                                  </m_Inputs>
+                                  <m_Outputs z:Id="213" z:Size="5">
+                                    <NodeConnector z:Id="214">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Ref="15" i:nil="true" />
+                                      <Node z:Ref="206" i:nil="true" />
+                                      <Tag z:Id="215" i:type="d2p1:ShaderVariable">
+                                        <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                        <d2p1:Code z:Id="216">float3 Local4</d2p1:Code>
+                                        <d2p1:Semantic i:nil="true" />
+                                        <d2p1:VariableName z:Id="217">Local4</d2p1:VariableName>
+                                        <d2p1:m_EnumMember>Float3</d2p1:m_EnumMember>
+                                      </Tag>
+                                      <m_Connections z:Id="218" z:Size="1">
+                                        <NodeConnection z:Id="219">
+                                          <From z:Ref="214" i:nil="true" />
+                                          <RenderFlag>Default</RenderFlag>
+                                          <To z:Id="220">
+                                            <Enabled>true</Enabled>
+                                            <Name z:Id="221">Normal</Name>
+                                            <Node z:Ref="2" i:nil="true" />
+                                            <Tag z:Id="222" i:type="d2p1:ShaderVariable">
+                                              <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                              <d2p1:Code i:nil="true" />
+                                              <d2p1:Semantic i:nil="true" />
+                                              <d2p1:VariableName z:Id="223">matNormal</d2p1:VariableName>
+                                              <d2p1:m_EnumMember>Float3</d2p1:m_EnumMember>
+                                            </Tag>
+                                            <m_Connections z:Id="224" z:Size="1">
+                                              <NodeConnection z:Ref="219" i:nil="true" />
+                                            </m_Connections>
+                                            <m_ConnectorType>Input</m_ConnectorType>
+                                          </To>
+                                        </NodeConnection>
+                                      </m_Connections>
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                    <NodeConnector z:Id="225">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Ref="171" i:nil="true" />
+                                      <Node z:Ref="206" i:nil="true" />
+                                      <Tag i:nil="true" />
+                                      <m_Connections z:Id="226" z:Size="0" />
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                    <NodeConnector z:Id="227">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Ref="183" i:nil="true" />
+                                      <Node z:Ref="206" i:nil="true" />
+                                      <Tag i:nil="true" />
+                                      <m_Connections z:Id="228" z:Size="0" />
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                    <NodeConnector z:Id="229">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Ref="195" i:nil="true" />
+                                      <Node z:Ref="206" i:nil="true" />
+                                      <Tag i:nil="true" />
+                                      <m_Connections z:Id="230" z:Size="0" />
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                    <NodeConnector z:Id="231">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Ref="198" i:nil="true" />
+                                      <Node z:Ref="206" i:nil="true" />
+                                      <Tag i:nil="true" />
+                                      <m_Connections z:Id="232" z:Size="0" />
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                  </m_Outputs>
+                                  <d2p1:GroupName z:Id="233">Texture Map</d2p1:GroupName>
+                                  <d2p1:Parameter>true</d2p1:Parameter>
+                                  <d2p1:ParameterName z:Id="234">normalmap</d2p1:ParameterName>
+                                  <d2p1:IgnoreTexelDensity>false</d2p1:IgnoreTexelDensity>
+                                  <d2p1:IsLuminance>false</d2p1:IsLuminance>
+                                  <d2p1:TextureAddressMode>Wrap</d2p1:TextureAddressMode>
+                                  <d2p1:TextureCompression>NormalMap</d2p1:TextureCompression>
+                                  <d2p1:TextureFilterOverride>Default</d2p1:TextureFilterOverride>
+                                  <d2p1:TextureGUID z:Id="235">5ea1563f-d6ed-474c-a5aa-0f2b39276bde</d2p1:TextureGUID>
+                                  <d2p1:m_InputUV z:Ref="205" i:nil="true" />
+                                  <d2p1:m_OutputA z:Ref="231" i:nil="true" />
+                                  <d2p1:m_OutputB z:Ref="229" i:nil="true" />
+                                  <d2p1:m_OutputG z:Ref="227" i:nil="true" />
+                                  <d2p1:m_OutputR z:Ref="225" i:nil="true" />
+                                  <d2p1:m_OutputRGB z:Ref="214" i:nil="true" />
+                                </Node>
+                                <Tag i:nil="true" />
+                                <m_Connections z:Id="236" z:Size="1">
+                                  <NodeConnection z:Ref="204" i:nil="true" />
+                                </m_Connections>
+                                <m_ConnectorType>Input</m_ConnectorType>
+                              </To>
+                            </NodeConnection>
+                            <NodeConnection z:Id="237">
+                              <From z:Ref="28" i:nil="true" />
+                              <RenderFlag>Default</RenderFlag>
+                              <To z:Id="238">
+                                <Enabled>true</Enabled>
+                                <Name z:Id="239">UV</Name>
+                                <Node z:Id="240" i:type="d2p1:Texture2DNode">
+                                  <Collapsed>false</Collapsed>
+                                  <ConnectorNamesImage xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="241">
+                                    <Data z:Id="242" xmlns:d19p1="http://www.w3.org/2001/XMLSchema" i:type="d19p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAALQAAACgCAYAAAClika/AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAA2ZJREFUeF7t3dGNI0UUhtEJgARIgARIgAiIgAzIgBRIgRhIgixIBvrTcFFRsrwPazFT9jlSyXa7ez0P/9y97umqfgMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPpefl/HjNb65xu6Ha8w+37XhH+ux7QMf7q9r/HqNQvn7Nf64xijcvW577/9yjT+v8f01sh7b9h7hQxXKCWgK5lThgvzT+9N/FfJv35/+59ge2x8+1K1AF9hC3fN71mNrOX57f8oLKxO7Cl05KR+1tbvJ3EP0A6wtx3xglbkWY/QDtU9jQjzHtl/HPuyH4lj3Al229qJX4Vzb3K82oeyD1pah4N4KdPv0mP2Xoee8tnuBrl3t/fXEQxnb29qv0gdMxS3UE9a23frN6f010HNs2n89C8LruRfo7G3HQ9uNrKHsH15/g/qwvecRaO75UqDXtuPh7Ub2UE5PnD6w96dyt30Nee+tLUeD1/alQE/bkYe3GymMa8nvA6cCp9cFuG19+Lpv22bslZzXVFj3FmJvKyqQnRVr+9pPw6czJxgmqBXBva2o+LVtWg/4tApyoa5SNwrt/r2qfXrP/+oAAAAAAAAAAE9uvwTU5Xwcraue1ov0Hz6DAP5PBXqdsdJF16ZRcaxbgd5nHMAx9pbDRdccbQLdzAKTXDne2nIU6io1HGsNdL1zr52641hroFP7sS4BBkepxVjPalSdtR0AAAAAAAAAAAAAT6/bbHXZaMOsb47V9c+txdF8wsI8N9dcL/qHYxTk/W6ehdxSBhyn1qJqDE+hyrzOH6zNmD5ay8FxpmceE+jpp+EoBfjW4oxTpeE49dD78l8CzbH6YtjaHLNq0py2s8Ydx+o0XQEu0H1RdMoOAAAAAAAAAAAA4GnNxfyN1uaAo3Vx/9y8vgv7e4RjrXeS7dEN7DnaGuhajqZiwbGm5WguYdXZ9CuOtvbQBbrncKy15UjrdFh9lGMJNE9lbzmc5eBoBXmGxWUAAAAAAAAAAAAAXkaXjq4X+sOxuk9hM1XM+OYpVJ2btdJCM2Z9c7wqc/MIW8qgO8nCsWo3qswp1LUecKwqcpV5FG6zvjlWFXlmfTd6vQYcjtEXwFlxdB3TgsBRqsS3qnFV2lrRHKfTdbdO0/UHFn9kAQAAAAAAAAAAAAAAYPX29jdXD7vE+quHaQAAAABJRU5ErkJggg==</Data>
+                                  </ConnectorNamesImage>
+                                  <DisplayName z:Id="243">Glowmap</DisplayName>
+                                  <DummyInputBounds xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                    <d18p1:height>0</d18p1:height>
+                                    <d18p1:width>0</d18p1:width>
+                                    <d18p1:x>0</d18p1:x>
+                                    <d18p1:y>0</d18p1:y>
+                                  </DummyInputBounds>
+                                  <DummyOutputBounds xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                    <d18p1:height>0</d18p1:height>
+                                    <d18p1:width>0</d18p1:width>
+                                    <d18p1:x>0</d18p1:x>
+                                    <d18p1:y>0</d18p1:y>
+                                  </DummyOutputBounds>
+                                  <ImageFileName z:Id="244">C:/console/Stable/LSProjects/Apps/DOS2/Data/Public/Shared/Assets/Textures/Helpers/Default_BM.DDS</ImageFileName>
+                                  <Location xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                    <d18p1:x>845.0724</d18p1:x>
+                                    <d18p1:y>724.8507</d18p1:y>
+                                  </Location>
+                                  <Name z:Id="245">Glowmap - Default_BM</Name>
+                                  <NameSize xmlns:d18p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                    <d18p1:height>0</d18p1:height>
+                                    <d18p1:width>0</d18p1:width>
+                                  </NameSize>
+                                  <OriginalName z:Ref="22" i:nil="true" />
+                                  <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                  <RenderFlag>Default</RenderFlag>
+                                  <m_Inputs z:Id="246" z:Size="1">
+                                    <NodeConnector z:Ref="238" i:nil="true" />
+                                  </m_Inputs>
+                                  <m_Outputs z:Id="247" z:Size="5">
+                                    <NodeConnector z:Id="248">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Id="249">RGB</Name>
+                                      <Node z:Ref="240" i:nil="true" />
+                                      <Tag z:Id="250" i:type="d2p1:ShaderVariable">
+                                        <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                        <d2p1:Code z:Id="251">float3 Local6</d2p1:Code>
+                                        <d2p1:Semantic i:nil="true" />
+                                        <d2p1:VariableName z:Id="252">Local6</d2p1:VariableName>
+                                        <d2p1:m_EnumMember>Float3</d2p1:m_EnumMember>
+                                      </Tag>
+                                      <m_Connections z:Id="253" z:Size="1">
+                                        <NodeConnection z:Id="254">
+                                          <From z:Ref="248" i:nil="true" />
+                                          <RenderFlag>Default</RenderFlag>
+                                          <To z:Id="255">
+                                            <Enabled>true</Enabled>
+                                            <Name z:Id="256">X</Name>
+                                            <Node z:Id="257" i:type="d2p1:MultiplyNode">
+                                              <Collapsed>false</Collapsed>
+                                              <ConnectorNamesImage xmlns:d24p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="258">
+                                                <Data z:Id="259" xmlns:d25p1="http://www.w3.org/2001/XMLSchema" i:type="d25p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAGAAAABYCAYAAAAKsfL4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAAOlJREFUeF7t2mENwjAQBtAJwAAGMIAPFOAAB1jAAhowgQvMQL8tIw0CrgTeSy7p+Hm3XRuuEwAAAAAAAAAAAAAAAAAAwJ/at3gsy7dzi9OypMKtxWFZTtsWKchmfqJEkv5skaRfW6zFoFDaTpKfr4EB1q/A2z9I3v5Li/v8RKmchNbEpwUdlyVVcupJEaLfkCmQ837aTy+tKJsyAAAAAADwG/Lf/+cELL+ZDRfZtegvZq33gijUX8zKhMxMuFjmwSlC5sBuxQ2SxGcObBY8SFpQbkNkD2CAtKEUgEEUYDAFAAAAAADg+0zTC5MsH2ALsIz3AAAAAElFTkSuQmCC</Data>
+                                              </ConnectorNamesImage>
+                                              <DisplayName z:Ref="5" i:nil="true" />
+                                              <DummyInputBounds xmlns:d24p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                <d24p1:height>0</d24p1:height>
+                                                <d24p1:width>0</d24p1:width>
+                                                <d24p1:x>0</d24p1:x>
+                                                <d24p1:y>0</d24p1:y>
+                                              </DummyInputBounds>
+                                              <DummyOutputBounds xmlns:d24p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                <d24p1:height>0</d24p1:height>
+                                                <d24p1:width>0</d24p1:width>
+                                                <d24p1:x>0</d24p1:x>
+                                                <d24p1:y>0</d24p1:y>
+                                              </DummyOutputBounds>
+                                              <ImageFileName i:nil="true" />
+                                              <Location xmlns:d24p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                <d24p1:x>696.994751</d24p1:x>
+                                                <d24p1:y>773.3692</d24p1:y>
+                                              </Location>
+                                              <Name z:Id="260">Multiply</Name>
+                                              <NameSize xmlns:d24p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                <d24p1:height>17.4609337</d24p1:height>
+                                                <d24p1:width>52.9609222</d24p1:width>
+                                              </NameSize>
+                                              <OriginalName z:Ref="260" i:nil="true" />
+                                              <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                              <RenderFlag>Default</RenderFlag>
+                                              <m_Inputs z:Id="261" z:Size="2">
+                                                <NodeConnector z:Ref="255" i:nil="true" />
+                                                <NodeConnector z:Id="262">
+                                                  <Enabled>true</Enabled>
+                                                  <Name z:Id="263">Y</Name>
+                                                  <Node z:Ref="257" i:nil="true" />
+                                                  <Tag z:Id="264" i:type="d2p1:ShaderVariable">
+                                                    <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                    <d2p1:Code i:nil="true" />
+                                                    <d2p1:Semantic i:nil="true" />
+                                                    <d2p1:VariableName z:Id="265">FloatParameter_GlowMultiplier</d2p1:VariableName>
+                                                    <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                                                  </Tag>
+                                                  <m_Connections z:Id="266" z:Size="1">
+                                                    <NodeConnection z:Id="267">
+                                                      <From z:Id="268">
+                                                        <Enabled>true</Enabled>
+                                                        <Name z:Ref="5" i:nil="true" />
+                                                        <Node z:Id="269" i:type="d2p1:ConstantFloatNode">
+                                                          <Collapsed>false</Collapsed>
+                                                          <ConnectorNamesImage xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="270">
+                                                            <Data z:Id="271" xmlns:d31p1="http://www.w3.org/2001/XMLSchema" i:type="d31p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAJkAAAA8CAYAAAB1jRjnAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAADtJREFUeF7twTEBAAAAwqD1T20NDyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALhSA4+sAAHXUyQeAAAAAElFTkSuQmCC</Data>
+                                                          </ConnectorNamesImage>
+                                                          <DisplayName z:Ref="5" i:nil="true" />
+                                                          <DummyInputBounds xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                            <d30p1:height>0</d30p1:height>
+                                                            <d30p1:width>0</d30p1:width>
+                                                            <d30p1:x>0</d30p1:x>
+                                                            <d30p1:y>0</d30p1:y>
+                                                          </DummyInputBounds>
+                                                          <DummyOutputBounds xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                            <d30p1:height>0</d30p1:height>
+                                                            <d30p1:width>0</d30p1:width>
+                                                            <d30p1:x>0</d30p1:x>
+                                                            <d30p1:y>0</d30p1:y>
+                                                          </DummyOutputBounds>
+                                                          <ImageFileName i:nil="true" />
+                                                          <Location xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                            <d30p1:x>847.027954</d30p1:x>
+                                                            <d30p1:y>914.5332</d30p1:y>
+                                                          </Location>
+                                                          <Name z:Id="272">GlowMultiplier = 1</Name>
+                                                          <NameSize xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                            <d30p1:height>0</d30p1:height>
+                                                            <d30p1:width>0</d30p1:width>
+                                                          </NameSize>
+                                                          <OriginalName z:Ref="96" i:nil="true" />
+                                                          <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                                          <RenderFlag>Default</RenderFlag>
+                                                          <m_Inputs z:Id="273" z:Size="0" />
+                                                          <m_Outputs z:Id="274" z:Size="1">
+                                                            <NodeConnector z:Ref="268" i:nil="true" />
+                                                          </m_Outputs>
+                                                          <d2p1:GroupName z:Id="275">Glow</d2p1:GroupName>
+                                                          <d2p1:Parameter>true</d2p1:Parameter>
+                                                          <d2p1:ParameterName z:Id="276">GlowMultiplier</d2p1:ParameterName>
+                                                          <d2p1:X>1</d2p1:X>
+                                                          <d2p1:m_OutputConnector z:Ref="268" i:nil="true" />
+                                                        </Node>
+                                                        <Tag z:Ref="264" i:nil="true" />
+                                                        <m_Connections z:Id="277" z:Size="1">
+                                                          <NodeConnection z:Ref="267" i:nil="true" />
+                                                        </m_Connections>
+                                                        <m_ConnectorType>Output</m_ConnectorType>
+                                                      </From>
+                                                      <RenderFlag>Default</RenderFlag>
+                                                      <To z:Ref="262" i:nil="true" />
+                                                    </NodeConnection>
+                                                  </m_Connections>
+                                                  <m_ConnectorType>Input</m_ConnectorType>
+                                                </NodeConnector>
+                                              </m_Inputs>
+                                              <m_Outputs z:Id="278" z:Size="1">
+                                                <NodeConnector z:Id="279">
+                                                  <Enabled>true</Enabled>
+                                                  <Name z:Ref="5" i:nil="true" />
+                                                  <Node z:Ref="257" i:nil="true" />
+                                                  <Tag z:Id="280" i:type="d2p1:ShaderVariable">
+                                                    <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                    <d2p1:Code z:Id="281">float3 Local7</d2p1:Code>
+                                                    <d2p1:Semantic i:nil="true" />
+                                                    <d2p1:VariableName z:Id="282">Local7</d2p1:VariableName>
+                                                    <d2p1:m_EnumMember>Float3</d2p1:m_EnumMember>
+                                                  </Tag>
+                                                  <m_Connections z:Id="283" z:Size="1">
+                                                    <NodeConnection z:Id="284">
+                                                      <From z:Ref="279" i:nil="true" />
+                                                      <RenderFlag>Default</RenderFlag>
+                                                      <To z:Id="285">
+                                                        <Enabled>true</Enabled>
+                                                        <Name z:Id="286">Y</Name>
+                                                        <Node z:Id="287" i:type="d2p1:MultiplyNode">
+                                                          <Collapsed>false</Collapsed>
+                                                          <ConnectorNamesImage xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="288">
+                                                            <Data z:Id="289" xmlns:d31p1="http://www.w3.org/2001/XMLSchema" i:type="d31p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAGAAAABYCAYAAAAKsfL4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAAOlJREFUeF7t2mENwjAQBtAJwAAGMIAPFOAAB1jAAhowgQvMQL8tIw0CrgTeSy7p+Hm3XRuuEwAAAAAAAAAAAAAAAAAAwJ/at3gsy7dzi9OypMKtxWFZTtsWKchmfqJEkv5skaRfW6zFoFDaTpKfr4EB1q/A2z9I3v5Li/v8RKmchNbEpwUdlyVVcupJEaLfkCmQ837aTy+tKJsyAAAAAADwG/Lf/+cELL+ZDRfZtegvZq33gijUX8zKhMxMuFjmwSlC5sBuxQ2SxGcObBY8SFpQbkNkD2CAtKEUgEEUYDAFAAAAAADg+0zTC5MsH2ALsIz3AAAAAElFTkSuQmCC</Data>
+                                                          </ConnectorNamesImage>
+                                                          <DisplayName z:Ref="5" i:nil="true" />
+                                                          <DummyInputBounds xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                            <d30p1:height>0</d30p1:height>
+                                                            <d30p1:width>0</d30p1:width>
+                                                            <d30p1:x>0</d30p1:x>
+                                                            <d30p1:y>0</d30p1:y>
+                                                          </DummyInputBounds>
+                                                          <DummyOutputBounds xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                            <d30p1:height>0</d30p1:height>
+                                                            <d30p1:width>0</d30p1:width>
+                                                            <d30p1:x>0</d30p1:x>
+                                                            <d30p1:y>0</d30p1:y>
+                                                          </DummyOutputBounds>
+                                                          <ImageFileName i:nil="true" />
+                                                          <Location xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                            <d30p1:x>319.499634</d30p1:x>
+                                                            <d30p1:y>624.9999</d30p1:y>
+                                                          </Location>
+                                                          <Name z:Id="290">Multiply</Name>
+                                                          <NameSize xmlns:d30p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                            <d30p1:height>17.4609337</d30p1:height>
+                                                            <d30p1:width>52.9609222</d30p1:width>
+                                                          </NameSize>
+                                                          <OriginalName z:Ref="290" i:nil="true" />
+                                                          <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                                          <RenderFlag>Default</RenderFlag>
+                                                          <m_Inputs z:Id="291" z:Size="2">
+                                                            <NodeConnector z:Id="292">
+                                                              <Enabled>true</Enabled>
+                                                              <Name z:Id="293">X</Name>
+                                                              <Node z:Ref="287" i:nil="true" />
+                                                              <Tag z:Id="294" i:type="d2p1:ShaderVariable">
+                                                                <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                                <d2p1:Code z:Id="295">float Local1</d2p1:Code>
+                                                                <d2p1:Semantic i:nil="true" />
+                                                                <d2p1:VariableName z:Id="296">Local1</d2p1:VariableName>
+                                                                <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                                                              </Tag>
+                                                              <m_Connections z:Id="297" z:Size="1">
+                                                                <NodeConnection z:Id="298">
+                                                                  <From z:Id="299">
+                                                                    <Enabled>true</Enabled>
+                                                                    <Name z:Ref="5" i:nil="true" />
+                                                                    <Node z:Id="300" i:type="d2p1:CosineNode">
+                                                                      <Collapsed>false</Collapsed>
+                                                                      <ConnectorNamesImage xmlns:d36p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="301">
+                                                                        <Data z:Id="302" xmlns:d37p1="http://www.w3.org/2001/XMLSchema" i:type="d37p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAGAAAABwCAYAAADhTnWjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAAjNJREFUeF7t3OFNwzAQhuEOwAIswAIswARMwAZswAqswAwswRYsA36VftJhNakLSVuk95GsOGmSH3fOpaqt7iRJkiRJkiRJkiRJkiRJkiRJkiRJkiTpir219jh1f/hs7XbqHvS13+qPCD5JqO5a+5i6s0zASm5aI5hs46W1p6k7ywSsqC9Dtfy8t0awaSQmkoD71moy+v2H1rgfx7gXT5c6tQzNlR+eEI4TYIwkgCQS9CSTp6ovd2pShtCXH5JDEDOKT0kA96FfG/fRAYzMlIu8D9jPqOcYiegTwOhOH30CXqeujmGkE+xaImrJoDQR2D4BqMcJeD5LcvKZFqQM1ZdxRj3HCeyhJwBcwz7teb8NPkv5otX7S5IkSZIkSZKk68Jv+XPzuRxnriD4/T/zwFoJCWDGrA9sZr1qArQBgsxsF61iEj+zZdpQphPrqgamLNlnmrImgHMj17FNX79A8Ag0o53VEiCYPAHHEpBlLmxrAnWCJKAGO++EYwmo+n0NSgLAKOYpSNBNwBnUBKSmpxSZgDOoCeDlS/kJEyBJkiRJkiRJ0v/G7/ej64G0ARLgeqALIsiuB7ogEjC6Hog+59Py30L1DztyHVsNIpgEemQ9UGTOOHPInEOfa3IPDUoCarDn1gORGPYZ5bkOnMs1cy9zLaiBXFoPxPGMep4AjpuAFdQELK0HWvpvoSSDzy1BJ6qBTG2PmoCMes7PtyM+59tTXsg8Cb6EJUmSJEmSJEnXYbf7BmtgtLXqF3rjAAAAAElFTkSuQmCC</Data>
+                                                                      </ConnectorNamesImage>
+                                                                      <DisplayName z:Ref="5" i:nil="true" />
+                                                                      <DummyInputBounds xmlns:d36p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                        <d36p1:height>0</d36p1:height>
+                                                                        <d36p1:width>0</d36p1:width>
+                                                                        <d36p1:x>0</d36p1:x>
+                                                                        <d36p1:y>0</d36p1:y>
+                                                                      </DummyInputBounds>
+                                                                      <DummyOutputBounds xmlns:d36p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                        <d36p1:height>0</d36p1:height>
+                                                                        <d36p1:width>0</d36p1:width>
+                                                                        <d36p1:x>0</d36p1:x>
+                                                                        <d36p1:y>0</d36p1:y>
+                                                                      </DummyOutputBounds>
+                                                                      <ImageFileName i:nil="true" />
+                                                                      <Location xmlns:d36p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                        <d36p1:x>681.381</d36p1:x>
+                                                                        <d36p1:y>450.4389</d36p1:y>
+                                                                      </Location>
+                                                                      <Name z:Id="303">Cosine</Name>
+                                                                      <NameSize xmlns:d36p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                        <d36p1:height>17.4609337</d36p1:height>
+                                                                        <d36p1:width>42.3788948</d36p1:width>
+                                                                      </NameSize>
+                                                                      <OriginalName z:Ref="303" i:nil="true" />
+                                                                      <RefreshConnectorNamesImage>true</RefreshConnectorNamesImage>
+                                                                      <RenderFlag>Default</RenderFlag>
+                                                                      <m_Inputs z:Id="304" z:Size="3">
+                                                                        <NodeConnector z:Id="305">
+                                                                          <Enabled>true</Enabled>
+                                                                          <Name z:Id="306">Value</Name>
+                                                                          <Node z:Ref="300" i:nil="true" />
+                                                                          <Tag i:nil="true" />
+                                                                          <m_Connections z:Id="307" z:Size="1">
+                                                                            <NodeConnection z:Id="308">
+                                                                              <From z:Id="309">
+                                                                                <Enabled>true</Enabled>
+                                                                                <Name z:Ref="5" i:nil="true" />
+                                                                                <Node z:Id="310" i:type="d2p1:TimeNode">
+                                                                                  <Collapsed>false</Collapsed>
+                                                                                  <ConnectorNamesImage xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="311">
+                                                                                    <Data z:Id="312" xmlns:d43p1="http://www.w3.org/2001/XMLSchema" i:type="d43p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAGAAAABACAYAAADlNHIOAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAASxJREFUeF7t1WFtAlEQReEVUAM1gIEaQEEV1AEOsICFasBEXWCGzsm+m0w2XeAP0ITzJZP3eMtCcic7O0mSJEmSJEmSJEmSJEmSJEmSJEmSJEnSP7OtOlWdx7qpujf+62Pevrb3KkJnBaF8zdu7sgEDIRzn7UPZgOGtiidgN/YdIX2OldpXRR9bNDBj65ZzfofVBgwEf6giFIKKhIWMKkJjT7gZW4ys76pL5z3wNNUGLBDIT1WaQEgdTwlFsFzrRXMundPgjms24A+En3cCIXU8DWnAMlCsnXNPH1+wAQMzmpGQ+U+ACZGQCA98j8+Mk+VIibXz3Jv3QZ4UG1AInjlNIBThpxl87i9h9sE+L9V+be28jyfOWG3AFYSkJ7IBT2YDJEmSJEmS9GDT9AuxSVdeSF8yjQAAAABJRU5ErkJggg==</Data>
+                                                                                  </ConnectorNamesImage>
+                                                                                  <DisplayName z:Ref="5" i:nil="true" />
+                                                                                  <DummyInputBounds xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:height>0</d42p1:height>
+                                                                                    <d42p1:width>0</d42p1:width>
+                                                                                    <d42p1:x>0</d42p1:x>
+                                                                                    <d42p1:y>0</d42p1:y>
+                                                                                  </DummyInputBounds>
+                                                                                  <DummyOutputBounds xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:height>0</d42p1:height>
+                                                                                    <d42p1:width>0</d42p1:width>
+                                                                                    <d42p1:x>0</d42p1:x>
+                                                                                    <d42p1:y>0</d42p1:y>
+                                                                                  </DummyOutputBounds>
+                                                                                  <ImageFileName i:nil="true" />
+                                                                                  <Location xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:x>879.8771</d42p1:x>
+                                                                                    <d42p1:y>425.7837</d42p1:y>
+                                                                                  </Location>
+                                                                                  <Name z:Id="313">Time</Name>
+                                                                                  <NameSize xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:height>17.4609337</d42p1:height>
+                                                                                    <d42p1:width>32.7578049</d42p1:width>
+                                                                                  </NameSize>
+                                                                                  <OriginalName z:Ref="313" i:nil="true" />
+                                                                                  <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                                                                  <RenderFlag>Default</RenderFlag>
+                                                                                  <m_Inputs z:Id="314" z:Size="1">
+                                                                                    <NodeConnector z:Id="315">
+                                                                                      <Enabled>true</Enabled>
+                                                                                      <Name z:Id="316">Speed</Name>
+                                                                                      <Node z:Ref="310" i:nil="true" />
+                                                                                      <Tag i:nil="true" />
+                                                                                      <m_Connections z:Id="317" z:Size="1">
+                                                                                        <NodeConnection z:Id="318">
+                                                                                          <From z:Id="319">
+                                                                                            <Enabled>true</Enabled>
+                                                                                            <Name z:Ref="5" i:nil="true" />
+                                                                                            <Node z:Id="320" i:type="d2p1:ConstantFloatNode">
+                                                                                              <Collapsed>false</Collapsed>
+                                                                                              <ConnectorNamesImage xmlns:d48p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="321">
+                                                                                                <Data z:Id="322" xmlns:d49p1="http://www.w3.org/2001/XMLSchema" i:type="d49p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAIQAAAA8CAYAAACn3RK/AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAADVJREFUeF7twQEBAAAAgiD/r64hQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDVAHv8AAH5pjB3AAAAAElFTkSuQmCC</Data>
+                                                                                              </ConnectorNamesImage>
+                                                                                              <DisplayName z:Ref="5" i:nil="true" />
+                                                                                              <DummyInputBounds xmlns:d48p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                                <d48p1:height>0</d48p1:height>
+                                                                                                <d48p1:width>0</d48p1:width>
+                                                                                                <d48p1:x>0</d48p1:x>
+                                                                                                <d48p1:y>0</d48p1:y>
+                                                                                              </DummyInputBounds>
+                                                                                              <DummyOutputBounds xmlns:d48p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                                <d48p1:height>0</d48p1:height>
+                                                                                                <d48p1:width>0</d48p1:width>
+                                                                                                <d48p1:x>0</d48p1:x>
+                                                                                                <d48p1:y>0</d48p1:y>
+                                                                                              </DummyOutputBounds>
+                                                                                              <ImageFileName i:nil="true" />
+                                                                                              <Location xmlns:d48p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                                <d48p1:x>1027.87708</d48p1:x>
+                                                                                                <d48p1:y>411.7837</d48p1:y>
+                                                                                              </Location>
+                                                                                              <Name z:Id="323">PulseSpeed = 1</Name>
+                                                                                              <NameSize xmlns:d48p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                                <d48p1:height>0</d48p1:height>
+                                                                                                <d48p1:width>0</d48p1:width>
+                                                                                              </NameSize>
+                                                                                              <OriginalName z:Ref="96" i:nil="true" />
+                                                                                              <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                                                                              <RenderFlag>Default</RenderFlag>
+                                                                                              <m_Inputs z:Id="324" z:Size="0" />
+                                                                                              <m_Outputs z:Id="325" z:Size="1">
+                                                                                                <NodeConnector z:Ref="319" i:nil="true" />
+                                                                                              </m_Outputs>
+                                                                                              <d2p1:GroupName z:Id="326">Glow</d2p1:GroupName>
+                                                                                              <d2p1:Parameter>true</d2p1:Parameter>
+                                                                                              <d2p1:ParameterName z:Id="327">PulseSpeed</d2p1:ParameterName>
+                                                                                              <d2p1:X>1</d2p1:X>
+                                                                                              <d2p1:m_OutputConnector z:Ref="319" i:nil="true" />
+                                                                                            </Node>
+                                                                                            <Tag z:Id="328" i:type="d2p1:ShaderVariable">
+                                                                                              <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                                                              <d2p1:Code i:nil="true" />
+                                                                                              <d2p1:Semantic i:nil="true" />
+                                                                                              <d2p1:VariableName z:Id="329">FloatParameter_PulseSpeed</d2p1:VariableName>
+                                                                                              <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                                                                                            </Tag>
+                                                                                            <m_Connections z:Id="330" z:Size="1">
+                                                                                              <NodeConnection z:Ref="318" i:nil="true" />
+                                                                                            </m_Connections>
+                                                                                            <m_ConnectorType>Output</m_ConnectorType>
+                                                                                          </From>
+                                                                                          <RenderFlag>Default</RenderFlag>
+                                                                                          <To z:Ref="315" i:nil="true" />
+                                                                                        </NodeConnection>
+                                                                                      </m_Connections>
+                                                                                      <m_ConnectorType>Input</m_ConnectorType>
+                                                                                    </NodeConnector>
+                                                                                  </m_Inputs>
+                                                                                  <m_Outputs z:Id="331" z:Size="1">
+                                                                                    <NodeConnector z:Ref="309" i:nil="true" />
+                                                                                  </m_Outputs>
+                                                                                  <d2p1:Speed>1</d2p1:Speed>
+                                                                                  <d2p1:m_OutputConnector z:Ref="309" i:nil="true" />
+                                                                                  <d2p1:m_SpeedInputConnector z:Ref="315" i:nil="true" />
+                                                                                </Node>
+                                                                                <Tag z:Id="332" i:type="d2p1:ShaderVariable">
+                                                                                  <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                                                  <d2p1:Code z:Id="333">float Local0</d2p1:Code>
+                                                                                  <d2p1:Semantic i:nil="true" />
+                                                                                  <d2p1:VariableName z:Id="334">Local0</d2p1:VariableName>
+                                                                                  <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                                                                                </Tag>
+                                                                                <m_Connections z:Id="335" z:Size="1">
+                                                                                  <NodeConnection z:Ref="308" i:nil="true" />
+                                                                                </m_Connections>
+                                                                                <m_ConnectorType>Output</m_ConnectorType>
+                                                                              </From>
+                                                                              <RenderFlag>Default</RenderFlag>
+                                                                              <To z:Ref="305" i:nil="true" />
+                                                                            </NodeConnection>
+                                                                          </m_Connections>
+                                                                          <m_ConnectorType>Input</m_ConnectorType>
+                                                                        </NodeConnector>
+                                                                        <NodeConnector z:Id="336">
+                                                                          <Enabled>true</Enabled>
+                                                                          <Name z:Id="337">Min</Name>
+                                                                          <Node z:Ref="300" i:nil="true" />
+                                                                          <Tag i:nil="true" />
+                                                                          <m_Connections z:Id="338" z:Size="1">
+                                                                            <NodeConnection z:Id="339">
+                                                                              <From z:Id="340">
+                                                                                <Enabled>true</Enabled>
+                                                                                <Name z:Ref="5" i:nil="true" />
+                                                                                <Node z:Id="341" i:type="d2p1:ConstantFloatNode">
+                                                                                  <Collapsed>false</Collapsed>
+                                                                                  <ConnectorNamesImage xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="342">
+                                                                                    <Data z:Id="343" xmlns:d43p1="http://www.w3.org/2001/XMLSchema" i:type="d43p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAHcAAAA8CAYAAABcpiUlAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAADJJREFUeF7twQEBAAAAgiD/r25IQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHClBm/MAAHVGOOdAAAAAElFTkSuQmCC</Data>
+                                                                                  </ConnectorNamesImage>
+                                                                                  <DisplayName z:Ref="5" i:nil="true" />
+                                                                                  <DummyInputBounds xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:height>0</d42p1:height>
+                                                                                    <d42p1:width>0</d42p1:width>
+                                                                                    <d42p1:x>0</d42p1:x>
+                                                                                    <d42p1:y>0</d42p1:y>
+                                                                                  </DummyInputBounds>
+                                                                                  <DummyOutputBounds xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:height>0</d42p1:height>
+                                                                                    <d42p1:width>0</d42p1:width>
+                                                                                    <d42p1:x>0</d42p1:x>
+                                                                                    <d42p1:y>0</d42p1:y>
+                                                                                  </DummyOutputBounds>
+                                                                                  <ImageFileName i:nil="true" />
+                                                                                  <Location xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:x>879.8633</d42p1:x>
+                                                                                    <d42p1:y>535.6633</d42p1:y>
+                                                                                  </Location>
+                                                                                  <Name z:Id="344">MinGlow = 1</Name>
+                                                                                  <NameSize xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:height>0</d42p1:height>
+                                                                                    <d42p1:width>0</d42p1:width>
+                                                                                  </NameSize>
+                                                                                  <OriginalName z:Ref="96" i:nil="true" />
+                                                                                  <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                                                                  <RenderFlag>Default</RenderFlag>
+                                                                                  <m_Inputs z:Id="345" z:Size="0" />
+                                                                                  <m_Outputs z:Id="346" z:Size="1">
+                                                                                    <NodeConnector z:Ref="340" i:nil="true" />
+                                                                                  </m_Outputs>
+                                                                                  <d2p1:GroupName z:Id="347">Glow</d2p1:GroupName>
+                                                                                  <d2p1:Parameter>true</d2p1:Parameter>
+                                                                                  <d2p1:ParameterName z:Id="348">MinGlow</d2p1:ParameterName>
+                                                                                  <d2p1:X>1</d2p1:X>
+                                                                                  <d2p1:m_OutputConnector z:Ref="340" i:nil="true" />
+                                                                                </Node>
+                                                                                <Tag z:Id="349" i:type="d2p1:ShaderVariable">
+                                                                                  <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                                                  <d2p1:Code i:nil="true" />
+                                                                                  <d2p1:Semantic i:nil="true" />
+                                                                                  <d2p1:VariableName z:Id="350">FloatParameter_MinGlow</d2p1:VariableName>
+                                                                                  <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                                                                                </Tag>
+                                                                                <m_Connections z:Id="351" z:Size="1">
+                                                                                  <NodeConnection z:Ref="339" i:nil="true" />
+                                                                                </m_Connections>
+                                                                                <m_ConnectorType>Output</m_ConnectorType>
+                                                                              </From>
+                                                                              <RenderFlag>Default</RenderFlag>
+                                                                              <To z:Ref="336" i:nil="true" />
+                                                                            </NodeConnection>
+                                                                          </m_Connections>
+                                                                          <m_ConnectorType>Input</m_ConnectorType>
+                                                                        </NodeConnector>
+                                                                        <NodeConnector z:Id="352">
+                                                                          <Enabled>true</Enabled>
+                                                                          <Name z:Id="353">Max</Name>
+                                                                          <Node z:Ref="300" i:nil="true" />
+                                                                          <Tag i:nil="true" />
+                                                                          <m_Connections z:Id="354" z:Size="1">
+                                                                            <NodeConnection z:Id="355">
+                                                                              <From z:Id="356">
+                                                                                <Enabled>true</Enabled>
+                                                                                <Name z:Ref="5" i:nil="true" />
+                                                                                <Node z:Id="357" i:type="d2p1:ConstantFloatNode">
+                                                                                  <Collapsed>false</Collapsed>
+                                                                                  <ConnectorNamesImage xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="358">
+                                                                                    <Data z:Id="359" xmlns:d43p1="http://www.w3.org/2001/XMLSchema" i:type="d43p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAIAAAAA8CAYAAACuNrLFAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAADVJREFUeF7twTEBAAAAwqD1T20JTyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOCoBng8AAGUbSEcAAAAAElFTkSuQmCC</Data>
+                                                                                  </ConnectorNamesImage>
+                                                                                  <DisplayName z:Ref="5" i:nil="true" />
+                                                                                  <DummyInputBounds xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:height>0</d42p1:height>
+                                                                                    <d42p1:width>0</d42p1:width>
+                                                                                    <d42p1:x>0</d42p1:x>
+                                                                                    <d42p1:y>0</d42p1:y>
+                                                                                  </DummyInputBounds>
+                                                                                  <DummyOutputBounds xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:height>0</d42p1:height>
+                                                                                    <d42p1:width>0</d42p1:width>
+                                                                                    <d42p1:x>0</d42p1:x>
+                                                                                    <d42p1:y>0</d42p1:y>
+                                                                                  </DummyOutputBounds>
+                                                                                  <ImageFileName i:nil="true" />
+                                                                                  <Location xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:x>862.8633</d42p1:x>
+                                                                                    <d42p1:y>622.6634</d42p1:y>
+                                                                                  </Location>
+                                                                                  <Name z:Id="360">MaxGlow = 10</Name>
+                                                                                  <NameSize xmlns:d42p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                                                                                    <d42p1:height>0</d42p1:height>
+                                                                                    <d42p1:width>0</d42p1:width>
+                                                                                  </NameSize>
+                                                                                  <OriginalName z:Ref="96" i:nil="true" />
+                                                                                  <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                                                                                  <RenderFlag>Default</RenderFlag>
+                                                                                  <m_Inputs z:Id="361" z:Size="0" />
+                                                                                  <m_Outputs z:Id="362" z:Size="1">
+                                                                                    <NodeConnector z:Ref="356" i:nil="true" />
+                                                                                  </m_Outputs>
+                                                                                  <d2p1:GroupName z:Id="363">Glow</d2p1:GroupName>
+                                                                                  <d2p1:Parameter>true</d2p1:Parameter>
+                                                                                  <d2p1:ParameterName z:Id="364">MaxGlow</d2p1:ParameterName>
+                                                                                  <d2p1:X>10</d2p1:X>
+                                                                                  <d2p1:m_OutputConnector z:Ref="356" i:nil="true" />
+                                                                                </Node>
+                                                                                <Tag z:Id="365" i:type="d2p1:ShaderVariable">
+                                                                                  <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                                                  <d2p1:Code i:nil="true" />
+                                                                                  <d2p1:Semantic i:nil="true" />
+                                                                                  <d2p1:VariableName z:Id="366">FloatParameter_MaxGlow</d2p1:VariableName>
+                                                                                  <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                                                                                </Tag>
+                                                                                <m_Connections z:Id="367" z:Size="1">
+                                                                                  <NodeConnection z:Ref="355" i:nil="true" />
+                                                                                </m_Connections>
+                                                                                <m_ConnectorType>Output</m_ConnectorType>
+                                                                              </From>
+                                                                              <RenderFlag>Default</RenderFlag>
+                                                                              <To z:Ref="352" i:nil="true" />
+                                                                            </NodeConnection>
+                                                                          </m_Connections>
+                                                                          <m_ConnectorType>Input</m_ConnectorType>
+                                                                        </NodeConnector>
+                                                                      </m_Inputs>
+                                                                      <m_Outputs z:Id="368" z:Size="1">
+                                                                        <NodeConnector z:Ref="299" i:nil="true" />
+                                                                      </m_Outputs>
+                                                                      <d2p1:Maximum>1</d2p1:Maximum>
+                                                                      <d2p1:Minimum>-1</d2p1:Minimum>
+                                                                      <d2p1:m_MaxConnector z:Ref="352" i:nil="true" />
+                                                                      <d2p1:m_MinConnector z:Ref="336" i:nil="true" />
+                                                                      <d2p1:m_ResultConnector z:Ref="299" i:nil="true" />
+                                                                      <d2p1:m_ValueConnector z:Ref="305" i:nil="true" />
+                                                                    </Node>
+                                                                    <Tag z:Ref="294" i:nil="true" />
+                                                                    <m_Connections z:Id="369" z:Size="1">
+                                                                      <NodeConnection z:Ref="298" i:nil="true" />
+                                                                    </m_Connections>
+                                                                    <m_ConnectorType>Output</m_ConnectorType>
+                                                                  </From>
+                                                                  <RenderFlag>Default</RenderFlag>
+                                                                  <To z:Ref="292" i:nil="true" />
+                                                                </NodeConnection>
+                                                              </m_Connections>
+                                                              <m_ConnectorType>Input</m_ConnectorType>
+                                                            </NodeConnector>
+                                                            <NodeConnector z:Ref="285" i:nil="true" />
+                                                          </m_Inputs>
+                                                          <m_Outputs z:Id="370" z:Size="1">
+                                                            <NodeConnector z:Id="371">
+                                                              <Enabled>true</Enabled>
+                                                              <Name z:Ref="5" i:nil="true" />
+                                                              <Node z:Ref="287" i:nil="true" />
+                                                              <Tag z:Id="372" i:type="d2p1:ShaderVariable">
+                                                                <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                                <d2p1:Code z:Id="373">float3 Local8</d2p1:Code>
+                                                                <d2p1:Semantic i:nil="true" />
+                                                                <d2p1:VariableName z:Id="374">Local8</d2p1:VariableName>
+                                                                <d2p1:m_EnumMember>Float3</d2p1:m_EnumMember>
+                                                              </Tag>
+                                                              <m_Connections z:Id="375" z:Size="1">
+                                                                <NodeConnection z:Id="376">
+                                                                  <From z:Ref="371" i:nil="true" />
+                                                                  <RenderFlag>Default</RenderFlag>
+                                                                  <To z:Id="377">
+                                                                    <Enabled>true</Enabled>
+                                                                    <Name z:Id="378">Emissive Color</Name>
+                                                                    <Node z:Ref="2" i:nil="true" />
+                                                                    <Tag z:Id="379" i:type="d2p1:ShaderVariable">
+                                                                      <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                                                                      <d2p1:Code i:nil="true" />
+                                                                      <d2p1:Semantic i:nil="true" />
+                                                                      <d2p1:VariableName z:Id="380">matEmissiveColor</d2p1:VariableName>
+                                                                      <d2p1:m_EnumMember>Float3</d2p1:m_EnumMember>
+                                                                    </Tag>
+                                                                    <m_Connections z:Id="381" z:Size="1">
+                                                                      <NodeConnection z:Ref="376" i:nil="true" />
+                                                                    </m_Connections>
+                                                                    <m_ConnectorType>Input</m_ConnectorType>
+                                                                  </To>
+                                                                </NodeConnection>
+                                                              </m_Connections>
+                                                              <m_ConnectorType>Output</m_ConnectorType>
+                                                            </NodeConnector>
+                                                          </m_Outputs>
+                                                          <d2p1:m_ResultConnector z:Ref="371" i:nil="true" />
+                                                          <d2p1:m_XConnector z:Ref="292" i:nil="true" />
+                                                          <d2p1:m_YConnector z:Ref="285" i:nil="true" />
+                                                        </Node>
+                                                        <Tag z:Ref="280" i:nil="true" />
+                                                        <m_Connections z:Id="382" z:Size="1">
+                                                          <NodeConnection z:Ref="284" i:nil="true" />
+                                                        </m_Connections>
+                                                        <m_ConnectorType>Input</m_ConnectorType>
+                                                      </To>
+                                                    </NodeConnection>
+                                                  </m_Connections>
+                                                  <m_ConnectorType>Output</m_ConnectorType>
+                                                </NodeConnector>
+                                              </m_Outputs>
+                                              <d2p1:m_ResultConnector z:Ref="279" i:nil="true" />
+                                              <d2p1:m_XConnector z:Ref="255" i:nil="true" />
+                                              <d2p1:m_YConnector z:Ref="262" i:nil="true" />
+                                            </Node>
+                                            <Tag z:Ref="250" i:nil="true" />
+                                            <m_Connections z:Id="383" z:Size="1">
+                                              <NodeConnection z:Ref="254" i:nil="true" />
+                                            </m_Connections>
+                                            <m_ConnectorType>Input</m_ConnectorType>
+                                          </To>
+                                        </NodeConnection>
+                                      </m_Connections>
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                    <NodeConnector z:Id="384">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Id="385">R</Name>
+                                      <Node z:Ref="240" i:nil="true" />
+                                      <Tag i:nil="true" />
+                                      <m_Connections z:Id="386" z:Size="0" />
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                    <NodeConnector z:Id="387">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Id="388">G</Name>
+                                      <Node z:Ref="240" i:nil="true" />
+                                      <Tag i:nil="true" />
+                                      <m_Connections z:Id="389" z:Size="0" />
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                    <NodeConnector z:Id="390">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Id="391">B</Name>
+                                      <Node z:Ref="240" i:nil="true" />
+                                      <Tag i:nil="true" />
+                                      <m_Connections z:Id="392" z:Size="0" />
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                    <NodeConnector z:Id="393">
+                                      <Enabled>true</Enabled>
+                                      <Name z:Id="394">A</Name>
+                                      <Node z:Ref="240" i:nil="true" />
+                                      <Tag i:nil="true" />
+                                      <m_Connections z:Id="395" z:Size="0" />
+                                      <m_ConnectorType>Output</m_ConnectorType>
+                                    </NodeConnector>
+                                  </m_Outputs>
+                                  <d2p1:GroupName z:Id="396">Texture Map</d2p1:GroupName>
+                                  <d2p1:Parameter>true</d2p1:Parameter>
+                                  <d2p1:ParameterName z:Id="397">Glowmap</d2p1:ParameterName>
+                                  <d2p1:IgnoreTexelDensity>false</d2p1:IgnoreTexelDensity>
+                                  <d2p1:IsLuminance>false</d2p1:IsLuminance>
+                                  <d2p1:TextureAddressMode>Wrap</d2p1:TextureAddressMode>
+                                  <d2p1:TextureCompression>Default</d2p1:TextureCompression>
+                                  <d2p1:TextureFilterOverride>Default</d2p1:TextureFilterOverride>
+                                  <d2p1:TextureGUID z:Id="398">50179e15-4bfb-4304-87a9-fd685ac9e853</d2p1:TextureGUID>
+                                  <d2p1:m_InputUV z:Ref="238" i:nil="true" />
+                                  <d2p1:m_OutputA z:Ref="393" i:nil="true" />
+                                  <d2p1:m_OutputB z:Ref="390" i:nil="true" />
+                                  <d2p1:m_OutputG z:Ref="387" i:nil="true" />
+                                  <d2p1:m_OutputR z:Ref="384" i:nil="true" />
+                                  <d2p1:m_OutputRGB z:Ref="248" i:nil="true" />
+                                </Node>
+                                <Tag i:nil="true" />
+                                <m_Connections z:Id="399" z:Size="1">
+                                  <NodeConnection z:Ref="237" i:nil="true" />
+                                </m_Connections>
+                                <m_ConnectorType>Input</m_ConnectorType>
+                              </To>
+                            </NodeConnection>
+                          </m_Connections>
+                          <m_ConnectorType>Output</m_ConnectorType>
+                        </From>
+                        <RenderFlag>Default</RenderFlag>
+                        <To z:Ref="24" i:nil="true" />
+                      </NodeConnection>
+                    </m_Connections>
+                    <m_ConnectorType>Input</m_ConnectorType>
+                  </NodeConnector>
+                </m_Inputs>
+                <m_Outputs z:Id="400" z:Size="5">
+                  <NodeConnector z:Ref="14" i:nil="true" />
+                  <NodeConnector z:Id="401">
+                    <Enabled>true</Enabled>
+                    <Name z:Ref="171" i:nil="true" />
+                    <Node z:Ref="16" i:nil="true" />
+                    <Tag i:nil="true" />
+                    <m_Connections z:Id="402" z:Size="0" />
+                    <m_ConnectorType>Output</m_ConnectorType>
+                  </NodeConnector>
+                  <NodeConnector z:Id="403">
+                    <Enabled>true</Enabled>
+                    <Name z:Ref="183" i:nil="true" />
+                    <Node z:Ref="16" i:nil="true" />
+                    <Tag i:nil="true" />
+                    <m_Connections z:Id="404" z:Size="0" />
+                    <m_ConnectorType>Output</m_ConnectorType>
+                  </NodeConnector>
+                  <NodeConnector z:Id="405">
+                    <Enabled>true</Enabled>
+                    <Name z:Ref="195" i:nil="true" />
+                    <Node z:Ref="16" i:nil="true" />
+                    <Tag i:nil="true" />
+                    <m_Connections z:Id="406" z:Size="0" />
+                    <m_ConnectorType>Output</m_ConnectorType>
+                  </NodeConnector>
+                  <NodeConnector z:Id="407">
+                    <Enabled>true</Enabled>
+                    <Name z:Ref="198" i:nil="true" />
+                    <Node z:Ref="16" i:nil="true" />
+                    <Tag z:Id="408" i:type="d2p1:ShaderVariable">
+                      <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                      <d2p1:Code z:Id="409">float Local5</d2p1:Code>
+                      <d2p1:Semantic i:nil="true" />
+                      <d2p1:VariableName z:Id="410">Local5</d2p1:VariableName>
+                      <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                    </Tag>
+                    <m_Connections z:Id="411" z:Size="1">
+                      <NodeConnection z:Id="412">
+                        <From z:Ref="407" i:nil="true" />
+                        <RenderFlag>Default</RenderFlag>
+                        <To z:Id="413">
+                          <Enabled>true</Enabled>
+                          <Name z:Id="414">Opacity</Name>
+                          <Node z:Ref="2" i:nil="true" />
+                          <Tag z:Id="415" i:type="d2p1:ShaderVariable">
+                            <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                            <d2p1:Code i:nil="true" />
+                            <d2p1:Semantic i:nil="true" />
+                            <d2p1:VariableName z:Id="416">matOpacity</d2p1:VariableName>
+                            <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+                          </Tag>
+                          <m_Connections z:Id="417" z:Size="1">
+                            <NodeConnection z:Ref="412" i:nil="true" />
+                          </m_Connections>
+                          <m_ConnectorType>Input</m_ConnectorType>
+                        </To>
+                      </NodeConnection>
+                    </m_Connections>
+                    <m_ConnectorType>Output</m_ConnectorType>
+                  </NodeConnector>
+                </m_Outputs>
+                <d2p1:GroupName z:Id="418">Texture Map</d2p1:GroupName>
+                <d2p1:Parameter>true</d2p1:Parameter>
+                <d2p1:ParameterName z:Id="419">BMA</d2p1:ParameterName>
+                <d2p1:IgnoreTexelDensity>false</d2p1:IgnoreTexelDensity>
+                <d2p1:IsLuminance>false</d2p1:IsLuminance>
+                <d2p1:TextureAddressMode>Wrap</d2p1:TextureAddressMode>
+                <d2p1:TextureCompression>Default</d2p1:TextureCompression>
+                <d2p1:TextureFilterOverride>Default</d2p1:TextureFilterOverride>
+                <d2p1:TextureGUID z:Id="420">50179e15-4bfb-4304-87a9-fd685ac9e853</d2p1:TextureGUID>
+                <d2p1:m_InputUV z:Ref="24" i:nil="true" />
+                <d2p1:m_OutputA z:Ref="407" i:nil="true" />
+                <d2p1:m_OutputB z:Ref="405" i:nil="true" />
+                <d2p1:m_OutputG z:Ref="403" i:nil="true" />
+                <d2p1:m_OutputR z:Ref="401" i:nil="true" />
+                <d2p1:m_OutputRGB z:Ref="14" i:nil="true" />
+              </Node>
+              <Tag z:Id="421" i:type="d2p1:ShaderVariable">
+                <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                <d2p1:Code z:Id="422">float3 Local4</d2p1:Code>
+                <d2p1:Semantic i:nil="true" />
+                <d2p1:VariableName z:Id="423">Local4</d2p1:VariableName>
+                <d2p1:m_EnumMember>Float3</d2p1:m_EnumMember>
+              </Tag>
+              <m_Connections z:Id="424" z:Size="1">
+                <NodeConnection z:Ref="13" i:nil="true" />
+              </m_Connections>
+              <m_ConnectorType>Output</m_ConnectorType>
+            </From>
+            <RenderFlag>Default</RenderFlag>
+            <To z:Ref="8" i:nil="true" />
+          </NodeConnection>
+        </m_Connections>
+        <m_ConnectorType>Input</m_ConnectorType>
+      </NodeConnector>
+      <NodeConnector z:Ref="177" i:nil="true" />
+      <NodeConnector z:Id="425">
+        <Enabled>true</Enabled>
+        <Name z:Id="426">Reflectance</Name>
+        <Node z:Ref="2" i:nil="true" />
+        <Tag z:Id="427" i:type="d2p1:ShaderVariable">
+          <d2p1:ArrayLength>1</d2p1:ArrayLength>
+          <d2p1:Code i:nil="true" />
+          <d2p1:Semantic i:nil="true" />
+          <d2p1:VariableName z:Id="428">matReflectance</d2p1:VariableName>
+          <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+        </Tag>
+        <m_Connections z:Id="429" z:Size="1">
+          <NodeConnection z:Id="430">
+            <From z:Id="431">
+              <Enabled>true</Enabled>
+              <Name z:Ref="5" i:nil="true" />
+              <Node z:Id="432" i:type="d2p1:ConstantFloatNode">
+                <Collapsed>false</Collapsed>
+                <ConnectorNamesImage xmlns:d9p1="http://schemas.datacontract.org/2004/07/System.Drawing" z:Id="433">
+                  <Data z:Id="434" xmlns:d10p1="http://www.w3.org/2001/XMLSchema" i:type="d10p1:base64Binary" xmlns="">iVBORw0KGgoAAAANSUhEUgAAAJAAAAA8CAYAAACJmDMtAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvAAADrwBlbxySQAAADlJREFUeF7twTEBAAAAwqD1T20GfyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC41ACHPAABOBKY9wAAAABJRU5ErkJggg==</Data>
+                </ConnectorNamesImage>
+                <DisplayName z:Ref="5" i:nil="true" />
+                <DummyInputBounds xmlns:d9p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                  <d9p1:height>0</d9p1:height>
+                  <d9p1:width>0</d9p1:width>
+                  <d9p1:x>0</d9p1:x>
+                  <d9p1:y>0</d9p1:y>
+                </DummyInputBounds>
+                <DummyOutputBounds xmlns:d9p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                  <d9p1:height>0</d9p1:height>
+                  <d9p1:width>0</d9p1:width>
+                  <d9p1:x>0</d9p1:x>
+                  <d9p1:y>0</d9p1:y>
+                </DummyOutputBounds>
+                <ImageFileName i:nil="true" />
+                <Location xmlns:d9p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                  <d9p1:x>206.431473</d9p1:x>
+                  <d9p1:y>96.86647</d9p1:y>
+                </Location>
+                <Name z:Id="435">Reflectance = 0.5</Name>
+                <NameSize xmlns:d9p1="http://schemas.datacontract.org/2004/07/System.Drawing">
+                  <d9p1:height>0</d9p1:height>
+                  <d9p1:width>0</d9p1:width>
+                </NameSize>
+                <OriginalName z:Ref="96" i:nil="true" />
+                <RefreshConnectorNamesImage>false</RefreshConnectorNamesImage>
+                <RenderFlag>Default</RenderFlag>
+                <m_Inputs z:Id="436" z:Size="0" />
+                <m_Outputs z:Id="437" z:Size="1">
+                  <NodeConnector z:Ref="431" i:nil="true" />
+                </m_Outputs>
+                <d2p1:GroupName z:Ref="5" i:nil="true" />
+                <d2p1:Parameter>true</d2p1:Parameter>
+                <d2p1:ParameterName z:Id="438">Reflectance</d2p1:ParameterName>
+                <d2p1:X>0.5</d2p1:X>
+                <d2p1:m_OutputConnector z:Ref="431" i:nil="true" />
+              </Node>
+              <Tag z:Id="439" i:type="d2p1:ShaderVariable">
+                <d2p1:ArrayLength>1</d2p1:ArrayLength>
+                <d2p1:Code i:nil="true" />
+                <d2p1:Semantic i:nil="true" />
+                <d2p1:VariableName z:Id="440">FloatParameter_Reflectance</d2p1:VariableName>
+                <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+              </Tag>
+              <m_Connections z:Id="441" z:Size="1">
+                <NodeConnection z:Ref="430" i:nil="true" />
+              </m_Connections>
+              <m_ConnectorType>Output</m_ConnectorType>
+            </From>
+            <RenderFlag>Default</RenderFlag>
+            <To z:Ref="425" i:nil="true" />
+          </NodeConnection>
+        </m_Connections>
+        <m_ConnectorType>Input</m_ConnectorType>
+      </NodeConnector>
+      <NodeConnector z:Ref="189" i:nil="true" />
+      <NodeConnector z:Ref="377" i:nil="true" />
+      <NodeConnector z:Ref="413" i:nil="true" />
+      <NodeConnector z:Ref="220" i:nil="true" />
+      <NodeConnector z:Id="442">
+        <Enabled>false</Enabled>
+        <Name z:Id="443">Refraction</Name>
+        <Node z:Ref="2" i:nil="true" />
+        <Tag z:Id="444" i:type="d2p1:ShaderVariable">
+          <d2p1:ArrayLength>1</d2p1:ArrayLength>
+          <d2p1:Code i:nil="true" />
+          <d2p1:Semantic i:nil="true" />
+          <d2p1:VariableName z:Id="445">matRefraction</d2p1:VariableName>
+          <d2p1:m_EnumMember>Float2</d2p1:m_EnumMember>
+        </Tag>
+        <m_Connections z:Id="446" z:Size="0" />
+        <m_ConnectorType>Input</m_ConnectorType>
+      </NodeConnector>
+      <NodeConnector z:Id="447">
+        <Enabled>true</Enabled>
+        <Name z:Id="448">World Position Offset</Name>
+        <Node z:Ref="2" i:nil="true" />
+        <Tag z:Id="449" i:type="d2p1:ShaderVariable">
+          <d2p1:ArrayLength>1</d2p1:ArrayLength>
+          <d2p1:Code i:nil="true" />
+          <d2p1:Semantic i:nil="true" />
+          <d2p1:VariableName z:Id="450">matWorldPositionOffset</d2p1:VariableName>
+          <d2p1:m_EnumMember>Float3</d2p1:m_EnumMember>
+        </Tag>
+        <m_Connections z:Id="451" z:Size="0" />
+        <m_ConnectorType>Input</m_ConnectorType>
+      </NodeConnector>
+      <NodeConnector z:Id="452">
+        <Enabled>false</Enabled>
+        <Name z:Id="453">Anisotropy</Name>
+        <Node z:Ref="2" i:nil="true" />
+        <Tag z:Id="454" i:type="d2p1:ShaderVariable">
+          <d2p1:ArrayLength>1</d2p1:ArrayLength>
+          <d2p1:Code i:nil="true" />
+          <d2p1:Semantic i:nil="true" />
+          <d2p1:VariableName z:Id="455">matAnisotropy</d2p1:VariableName>
+          <d2p1:m_EnumMember>Float</d2p1:m_EnumMember>
+        </Tag>
+        <m_Connections z:Id="456" z:Size="0" />
+        <m_ConnectorType>Input</m_ConnectorType>
+      </NodeConnector>
+    </m_Inputs>
+    <m_Outputs z:Id="457" z:Size="0" />
+    <d2p1:AlphaTestClipValue>0.5</d2p1:AlphaTestClipValue>
+    <d2p1:BillboardAlignment>None</d2p1:BillboardAlignment>
+    <d2p1:BlendMode>AlphaTest</d2p1:BlendMode>
+    <d2p1:DepthFunction>LessOrEqual</d2p1:DepthFunction>
+    <d2p1:DepthTest>true</d2p1:DepthTest>
+    <d2p1:DepthWrite>true</d2p1:DepthWrite>
+    <d2p1:EarlyDepthStencil>false</d2p1:EarlyDepthStencil>
+    <d2p1:EmissiveMode>FX</d2p1:EmissiveMode>
+    <d2p1:EnableFog>true</d2p1:EnableFog>
+    <d2p1:FlipBackFaceNormals>false</d2p1:FlipBackFaceNormals>
+    <d2p1:ForceToFarPlane>false</d2p1:ForceToFarPlane>
+    <d2p1:ForwardLightingMode>DirectionalOnly</d2p1:ForwardLightingMode>
+    <d2p1:IsDecalMaterial>false</d2p1:IsDecalMaterial>
+    <d2p1:MaterialType>Unassigned</d2p1:MaterialType>
+    <d2p1:NormalMapSpace>TangentSpace</d2p1:NormalMapSpace>
+    <d2p1:PolygonOffset>false</d2p1:PolygonOffset>
+    <d2p1:PostRefractionAlpha>false</d2p1:PostRefractionAlpha>
+    <d2p1:PreAlphaRefraction>false</d2p1:PreAlphaRefraction>
+    <d2p1:RenderPass>Default</d2p1:RenderPass>
+    <d2p1:ShadingModel>DefaultLit</d2p1:ShadingModel>
+    <d2p1:TwoSided>true</d2p1:TwoSided>
+    <d2p1:Usage>Default</d2p1:Usage>
+    <d2p1:Wireframe>false</d2p1:Wireframe>
+    <d2p1:m_MatAnisotropyConnector z:Ref="452" i:nil="true" />
+    <d2p1:m_MatBaseColorConnector z:Ref="8" i:nil="true" />
+    <d2p1:m_MatEmissiveColorConnector z:Ref="377" i:nil="true" />
+    <d2p1:m_MatMetalMaskConnector z:Ref="177" i:nil="true" />
+    <d2p1:m_MatNormalConnector z:Ref="220" i:nil="true" />
+    <d2p1:m_MatOpacityConnector z:Ref="413" i:nil="true" />
+    <d2p1:m_MatReflectanceConnector z:Ref="425" i:nil="true" />
+    <d2p1:m_MatRefractionConnector z:Ref="442" i:nil="true" />
+    <d2p1:m_MatRoughnessConnector z:Ref="189" i:nil="true" />
+    <d2p1:m_MatWorldPositionOffsetConnector z:Ref="447" i:nil="true" />
+  </Node>
+  <Node z:Ref="269" i:nil="true" />
+  <Node z:Ref="357" i:nil="true" />
+  <Node z:Ref="341" i:nil="true" />
+  <Node z:Ref="320" i:nil="true" />
+  <Node z:Ref="240" i:nil="true" />
+  <Node z:Ref="206" i:nil="true" />
+  <Node z:Ref="160" i:nil="true" />
+  <Node z:Ref="16" i:nil="true" />
+  <Node z:Ref="287" i:nil="true" />
+  <Node z:Ref="257" i:nil="true" />
+  <Node z:Ref="310" i:nil="true" />
+  <Node z:Ref="300" i:nil="true" />
+  <Node z:Ref="432" i:nil="true" />
+  <Node z:Ref="29" i:nil="true" />
+  <Node z:Ref="92" i:nil="true" />
+  <Node z:Ref="82" i:nil="true" />
+  <Node z:Ref="67" i:nil="true" />
+  <Node z:Ref="56" i:nil="true" />
+  <Node z:Ref="41" i:nil="true" />
+  <Node z:Ref="133" i:nil="true" />
+  <Node z:Ref="108" i:nil="true" />
+  <Node z:Ref="123" i:nil="true" />
+</ArrayOfNode>

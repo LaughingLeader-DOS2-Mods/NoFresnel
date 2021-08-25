@@ -54,7 +54,7 @@ story.debugInfo
 *.lsfx
 *.lsefx
 #*.lsx
-*.lsmg
+#*.lsmg
 *.wem
 
 # Logs               #
@@ -120,7 +120,4 @@ launch.json
 ehthumbs.db
 Thumbs.db
 *.lnk
-
-
-
 *.jpg
